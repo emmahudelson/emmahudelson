@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:26px 44px;background:var(--paper);height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:18px;justify-content:center}
+  .field{display:flex;flex-direction:column;gap:6px}
+  label{font-family:var(--font-sans);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:500}
+  input,textarea{font-family:var(--font-serif);font-size:17px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 0;outline:none;width:100%;box-sizing:border-box}
+  input::placeholder,textarea::placeholder{color:var(--ink-mute);font-style:italic}
+  input:focus,textarea:focus{border-bottom-color:var(--sage-deep);border-bottom-width:2px}
+  textarea{min-height:36px;resize:none}
+</style></head>
+<body>
+  <div class="field"><label>Your email</label><input type="email" placeholder="name@domain.com" value="reader@example.com"></div>
+  <div class="field"><label>Message</label><textarea placeholder="A note about a workshop, reading, or event…"></textarea></div>
+</body></html>

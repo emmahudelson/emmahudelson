@@ -1,0 +1,230 @@
+/* ============================================================
+   Emma Hudelson — Design System
+   Colors, type, spacing, and semantic aliases
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------- Color: paper & ink ---------- */
+  --paper:       #F6F2EA;
+  --paper-alt:   #EFE8DB;
+  --paper-deep:  #E7DEC9;
+  --ink:         #1A1A1A;
+  --ink-soft:    #3C3A36;
+  --ink-mute:    #8A857C;
+  --rule:        #D9D1C2;
+
+  /* ---------- Color: accents ---------- */
+  --sage:        #6B7A5A;
+  --sage-deep:   #4C5A3F;
+  --oxblood:     #7A2E28;
+  --sky:         #7E93A3;   /* for Sky Watch hero accents only */
+
+  /* ---------- Semantic color aliases ---------- */
+  --bg:          var(--paper);
+  --bg-alt:      var(--paper-alt);
+  --fg:          var(--ink);
+  --fg-2:        var(--ink-soft);
+  --fg-mute:     var(--ink-mute);
+  --divider:     var(--rule);
+  --link:        var(--sage);
+  --link-hover:  var(--sage-deep);
+
+  /* ---------- Typography: families ---------- */
+  --font-display:   'Fraunces', 'Times New Roman', Georgia, serif;
+  --font-serif:     'Source Serif 4', 'Iowan Old Style', 'Sitka Text', Georgia, serif;
+  --font-sans:      'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+
+  /* ---------- Type scale ---------- */
+  --fs-display-xl: clamp(3.5rem, 7vw + 1rem, 7.5rem);   /* 56–120 */
+  --fs-display-l:  clamp(2.75rem, 4.5vw + 1rem, 5rem);  /* 44–80  */
+  --fs-display-m:  clamp(2rem, 2.5vw + 1rem, 3.25rem);  /* 32–52 */
+  --fs-h1:         clamp(2rem, 2vw + 1rem, 2.75rem);
+  --fs-h2:         1.75rem;   /* 28 */
+  --fs-h3:         1.375rem;  /* 22 */
+  --fs-lead:       1.375rem;  /* 22 */
+  --fs-body:       1.125rem;  /* 18 */
+  --fs-body-sm:    1rem;      /* 16 */
+  --fs-caption:    0.8125rem; /* 13 */
+  --fs-meta:       0.6875rem; /* 11 — small caps labels */
+
+  /* ---------- Leading ---------- */
+  --lh-display:    1.04;
+  --lh-title:      1.14;
+  --lh-lead:       1.45;
+  --lh-body:       1.6;
+  --lh-caption:    1.5;
+
+  /* ---------- Tracking ---------- */
+  --tr-display:   -0.015em;
+  --tr-title:     -0.01em;
+  --tr-body:       0;
+  --tr-meta:       0.16em;
+
+  /* ---------- Spacing (8px system) ---------- */
+  --s-0:  0;
+  --s-1:  0.25rem;   /* 4 */
+  --s-2:  0.5rem;    /* 8 */
+  --s-3:  0.75rem;   /* 12 */
+  --s-4:  1rem;      /* 16 */
+  --s-5:  1.5rem;    /* 24 */
+  --s-6:  2rem;      /* 32 */
+  --s-7:  3rem;      /* 48 */
+  --s-8:  4rem;      /* 64 */
+  --s-9:  6rem;      /* 96 */
+  --s-10: 8rem;      /* 128 */
+  --s-11: 10rem;     /* 160 */
+
+  /* ---------- Layout ---------- */
+  --measure:         620px;    /* ideal reading width */
+  --measure-wide:    720px;
+  --page-max:        1320px;
+  --page-gutter:     clamp(1.25rem, 4vw, 3rem);
+
+  /* ---------- Motion ---------- */
+  --ease:           cubic-bezier(.2, .6, .2, 1);
+  --dur-fast:       120ms;
+  --dur:            220ms;
+  --dur-slow:       420ms;
+}
+
+/* ============================================================
+   Base semantic styles
+   ============================================================ */
+
+html {
+  color: var(--fg);
+  background: var(--bg);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-size: var(--fs-body);
+}
+
+/* --- display --- */
+.display-xl,
+h1.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-variation-settings: "opsz" 120, "SOFT" 30;
+  margin: 0;
+}
+
+.display-l {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-display-l);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-variation-settings: "opsz" 72;
+  margin: 0;
+}
+
+.display-m {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-display-m);
+  line-height: var(--lh-title);
+  letter-spacing: var(--tr-title);
+  font-variation-settings: "opsz" 48;
+  margin: 0;
+}
+
+/* --- headings --- */
+h1 { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-h1); line-height: var(--lh-title); letter-spacing: var(--tr-title); margin: 0; }
+h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-h2); line-height: var(--lh-title); letter-spacing: var(--tr-title); margin: 0; }
+h3 { font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-h3); line-height: 1.3; margin: 0; }
+
+/* --- body --- */
+p { margin: 0 0 var(--s-4); }
+p.lead { font-size: var(--fs-lead); line-height: var(--lh-lead); color: var(--fg); }
+.body-sm { font-size: var(--fs-body-sm); }
+.caption { font-size: var(--fs-caption); color: var(--fg-mute); font-style: italic; }
+
+/* --- meta / labels (small caps) --- */
+.meta,
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--tr-meta);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--fg-mute);
+}
+
+/* --- pull quote / blurb --- */
+.blurb {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1.2vw + 1rem, 1.75rem);
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+}
+.blurb cite {
+  display: block;
+  margin-top: var(--s-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tr-meta);
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--fg-mute);
+}
+
+/* --- links --- */
+a {
+  color: var(--link);
+  text-decoration: none;
+  background-image: linear-gradient(var(--link), var(--link));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-size var(--dur) var(--ease), color var(--dur) var(--ease);
+  padding-bottom: 1px;
+}
+a:hover {
+  color: var(--link-hover);
+  background-size: 100% 2px;
+  background-image: linear-gradient(var(--link-hover), var(--link-hover));
+}
+
+/* --- rules --- */
+hr {
+  border: 0;
+  border-top: 1px solid var(--divider);
+  margin: var(--s-8) 0;
+}
+hr.short { width: 3rem; margin: var(--s-6) auto; border-top-color: var(--fg); }
+
+/* --- italic for titles --- */
+em, i, .title-italic { font-style: italic; }
+
+/* --- selection --- */
+::selection { background: var(--sage); color: var(--paper); }
+
+/* --- utility: editorial container --- */
+.measure        { max-width: var(--measure); }
+.measure-wide   { max-width: var(--measure-wide); }
+.page           { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); }
+
+/* --- asterism ornament --- */
+.asterism {
+  text-align: center;
+  font-family: var(--font-display);
+  color: var(--fg-mute);
+  letter-spacing: 0.5em;
+  margin: var(--s-8) 0;
+  font-size: 1rem;
+}
+.asterism::before { content: "⁂"; }

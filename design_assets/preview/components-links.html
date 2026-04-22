@@ -1,0 +1,16 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:28px 44px;background:var(--paper);height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:20px}
+  a{font-family:var(--font-serif);font-size:18px}
+  a.nav{font-family:var(--font-sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+  .row{display:flex;gap:36px;align-items:baseline}
+  .lbl{font-family:var(--font-sans);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute);width:130px}
+  a.ext::after{content:" ↗";color:var(--ink-mute)}
+</style></head>
+<body>
+  <div class="row"><div class="lbl">Inline link</div><div>Read the <a href="#">full review in <i>The Good Life Review</i></a>.</div></div>
+  <div class="row"><div class="lbl">Hover state</div><div>Underline thickens · <a href="#" style="background-size:100% 2px;color:var(--sage-deep);background-image:linear-gradient(var(--sage-deep),var(--sage-deep))">about the author</a></div></div>
+  <div class="row"><div class="lbl">External</div><div><a class="ext" href="#">University Press of Kentucky</a></div></div>
+  <div class="row"><div class="lbl">Nav</div><div><a class="nav" href="#">Publications</a></div></div>
+</body></html>

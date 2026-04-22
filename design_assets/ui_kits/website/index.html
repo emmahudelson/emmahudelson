@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Emma Hudelson — Website UI Kit</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+
+/* ---------- Chrome ---------- */
+const NAV_ITEMS = [
+  { id: 'landing',     label: 'Home' },
+  { id: 'sky-watch',   label: 'Sky Watch' },
+  { id: 'publications',label: 'Publications' },
+  { id: 'wellness',    label: 'Writing for Wellness' },
+  { id: 'bio',         label: 'Bio & Contact' },
+  { id: 'events',      label: 'Events', draft: true },
+];
+
+function TopNav({ current, onNavigate }) {
+  return (
+    <nav className="eh-nav">
+      <a className="eh-brand" href="#" onClick={e => { e.preventDefault(); onNavigate('landing'); }}>
+        Emma Hudelson
+      </a>
+      <div className="eh-nav-links">
+        {NAV_ITEMS.filter(i => i.id !== 'landing').map(item => (
+          <a key={item.id} href="#"
+             className={current === item.id ? 'active' : ''}
+             onClick={e => { e.preventDefault(); onNavigate(item.id); }}>
+            {item.label}
+            {item.draft && <span className="eh-draft">draft</span>}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+function Footer({ onNavigate }) {
+  return (
+    <footer className="eh-footer">
+      <div className="eh-footer-col">
+        <div className="eh-footer-brand">Emma Hudelson</div>
+        <div className="eh-footer-meta">Indianapolis, Indiana · © 2026</div>
+      </div>
+      <div className="eh-footer-col">
+        <div className="eh-footer-label">Elsewhere</div>
+        <div className="eh-footer-links">
+          <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+          <a href="#" onClick={e => { e.preventDefault(); onNavigate('bio'); }}>Email</a>
+        </div>
+      </div>
+      <div className="eh-footer-col">
+        <div className="eh-footer-label">The book</div>
+        <div className="eh-footer-links">
+          <a href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+          <a href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ---------- Landing ---------- */
+function Landing({ onNavigate }) {
+  return (
+    <div className="eh-landing">
+      <section className="eh-masthead">
+        <div className="eh-eyebrow">Literary nonfiction · Indianapolis</div>
+        <h1 className="eh-masthead-name">Emma<br/>Hudelson</h1>
+        <div className="eh-masthead-lede">
+          <p>
+            Author of <em>Sky&nbsp;Watch: Chasing an American Saddlebred Story</em> — a
+            braided memoir about horses, obsession, and the years they carry us back to
+            ourselves.
+          </p>
+          <p className="eh-muted">
+            Essays in the <em>Cincinnati Review</em>, the <em>Chattahoochee Review</em>,
+            and the <em>Rumpus</em>. Director of the Writing for Wellness program at Butler
+            University.
+          </p>
+        </div>
+        <div className="eh-masthead-links">
+          <a href="#" onClick={e => { e.preventDefault(); onNavigate('sky-watch'); }}>The book</a>
+          <span className="eh-dot">·</span>
+          <a href="#" onClick={e => { e.preventDefault(); onNavigate('publications'); }}>Selected work</a>
+          <span className="eh-dot">·</span>
+          <a href="#" onClick={e => { e.preventDefault(); onNavigate('wellness'); }}>Workshops</a>
+          <span className="eh-dot">·</span>
+          <a href="#" onClick={e => { e.preventDefault(); onNavigate('bio'); }}>Contact</a>
+        </div>
+      </section>
+
+      <section className="eh-latest">
+        <div className="eh-rule" />
+        <div className="eh-latest-grid">
+          <div className="eh-latest-item">
+            <div className="eh-eyebrow accent">New book</div>
+            <h3 className="eh-latest-title"><em>Sky Watch</em></h3>
+            <p className="eh-latest-body">
+              Out now from the University Press of Kentucky. A 2024 Foreword Reviews INDIES
+              Award finalist in adult nonfiction.
+            </p>
+            <a href="#" onClick={e => { e.preventDefault(); onNavigate('sky-watch'); }}>Read more →</a>
+          </div>
+          <div className="eh-latest-item">
+            <div className="eh-eyebrow accent">Workshops</div>
+            <h3 className="eh-latest-title">Writing for Wellness</h3>
+            <p className="eh-latest-body">
+              Generative workshops for teens, adults in recovery, medical students, and
+              anyone who wants to write through a hard season.
+            </p>
+            <a href="#" onClick={e => { e.preventDefault(); onNavigate('wellness'); }}>See the program →</a>
+          </div>
+          <div className="eh-latest-item">
+            <div className="eh-eyebrow accent">Recent essay</div>
+            <h3 className="eh-latest-title">On braided nonfiction</h3>
+            <p className="eh-latest-body">
+              A craft essay on weaving research and memoir, published in <em>The Southeast
+              Review</em>.
+            </p>
+            <a href="https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson" target="_blank" rel="noopener">Read at SER →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- Sky Watch ---------- */
+const PRAISE = [
+  { quote: "A beautiful braided memoir deftly weaving the dramatic story of Saddlebred horses' biggest star, Sky Watch; the history of horsemanship; and Hudelson's own life with horses.", who: "Tessa Fontaine", work: "author of The Electric Woman" },
+  { quote: "What is more compelling than a remarkable horse making history? Beautiful horses and masterful showmanship abound, but ultimately this is a story about love — in all its forms.", who: "Kristen Iversen", work: "author of Full Body Burden" },
+  { quote: "With the heart and humor of Susan Orlean and the research chops of Laura Hillenbrand, Hudelson has written a chronicle and a testament to the American Saddlebred that will surely enter the canon of great equestrian writing.", who: "Foreword Reviews", work: "2024 INDIES Award Finalist" },
+  { quote: "Hudelson is the perfect guide — knowledgeable and determined, adept with narrative and deeply engaged. Her passion for both Sky Watch and the American Saddlebred is clear, contagious, and propulsive.", who: "Chris Bachelder", work: "author of The Throwback Special" },
+  { quote: "In meticulously reported detail, Emma Hudelson details her 'horse-sized love' for a legendary stallion. Hudelson's flair for writing and deeply researched history make her own story and this legendary horse's come movingly alive.", who: "Sarah Maslin Nir", work: "two-time Pulitzer finalist, author of Horse Crazy" },
+];
+
+const MEDIA = [
+  { where: "Mirror Indy",          title: "Local author pens biography of champion horse, tells her own story", href: "https://mirrorindy.org/local-author-emma-hudelson-sky-watch-horse/" },
+  { where: "The Good Life Review", title: "Under Saddle and Spirit — a review of Sky Watch", href: "https://thegoodlifereview.com/2024/07/27/rory-gould-review-of-sky-watch-by-emma-hudelson/" },
+  { where: "The Southeast Review", title: "Craft essay: On braided nonfiction", href: "https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson" },
+];
+
+function SkyWatch() {
+  return (
+    <div className="eh-book">
+      <section className="eh-book-head">
+        <div className="eh-book-head-text">
+          <div className="eh-eyebrow">A memoir · University Press of Kentucky · 2024</div>
+          <h1 className="eh-book-title"><em>Sky Watch</em></h1>
+          <div className="eh-book-subtitle">Chasing an American Saddlebred Story</div>
+          <p className="eh-book-byline">Emma Hudelson</p>
+        </div>
+        <div className="eh-book-cover-wrap">
+          <img src="../../assets/sky-watch-cover.jpg" alt="Sky Watch book cover" className="eh-book-cover" />
+        </div>
+      </section>
+
+      <section className="eh-praise">
+        <div className="eh-rule" />
+        <div className="eh-eyebrow centered">Praise for Sky Watch</div>
+        <div className="eh-praise-grid">
+          {PRAISE.map((p, i) => (
+            <figure className="eh-praise-item" key={i}>
+              <blockquote><span className="eh-openq">&ldquo;</span>{p.quote}&rdquo;</blockquote>
+              <figcaption>
+                <span className="eh-praise-who">{p.who}</span>
+                <span className="eh-praise-work">{p.work}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="eh-book-about">
+        <div className="eh-rule" />
+        <div className="eh-eyebrow">About the book</div>
+        <div className="eh-prose">
+          <p className="eh-drop">
+            Horse shows used to draw crowds by the thousands to state fairs and venues such
+            as Madison Square Garden. And in the 1980s, no performance horse filled more
+            arena seats than the American Saddlebred Sky Watch. He pushed the saddle seat
+            industry to a peak that hasn&rsquo;t been seen since.
+          </p>
+          <p>
+            An athlete through and through, the stallion dominated the sport with the same
+            power and intensity as a Kentucky Derby winner. With unmatched talent, Sky Watch
+            earned four World Grand Championships and twelve World titles overall — making
+            his career one for the history books.
+          </p>
+          <p>
+            Years after Sky Watch finished competing, videos of his legacy in the ring
+            captured the heart of author and lifelong horsewoman Emma Hudelson. Her
+            fascination with the unstoppable stallion sent her on a journey to discover how
+            a horse becomes a legend, convinced that if she could capture the magic behind
+            the greatest show horse of all time, she might understand her own obsession
+            with Saddlebreds.
+          </p>
+          <div className="eh-asterism">⁂</div>
+          <p>
+            <em>Sky Watch: Chasing an American Saddlebred Story</em> is not only the tale
+            of a remarkable horse, but of the American Saddlebred breed and the way these
+            horses carried one rider back to herself.
+          </p>
+        </div>
+      </section>
+
+      <section className="eh-buy">
+        <div className="eh-eyebrow">Where to buy</div>
+        <div className="eh-buy-list">
+          <a className="eh-buy-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+          <a className="eh-buy-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+          <a className="eh-buy-link" href="https://www.amazon.com/Sky-Watch-Chasing-American-Saddlebred/dp/0813199107" target="_blank" rel="noopener">Amazon</a>
+          <a className="eh-buy-link" href="#">Ask your local bookseller</a>
+        </div>
+      </section>
+
+      <section className="eh-media">
+        <div className="eh-rule" />
+        <div className="eh-eyebrow">Reviews &amp; media</div>
+        <ul className="eh-media-list">
+          {MEDIA.map((m, i) => (
+            <li key={i}>
+              <a href={m.href} target="_blank" rel="noopener">
+                <span className="eh-media-where">{m.where}</span>
+                <span className="eh-media-title">{m.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- Publications ---------- */
+const PUBLICATIONS = [
+  { year: '2024', title: 'Sky Watch: Chasing an American Saddlebred Story', where: 'University Press of Kentucky', kind: 'Book', href: 'https://www.kentuckypress.com/9780813199108/sky-watch/' },
+  { year: '2024', title: 'On braided nonfiction', where: 'The Southeast Review', kind: 'Craft essay', href: 'https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson' },
+  { year: '—',    title: 'Selected essays & reviews', where: 'The Cincinnati Review',  kind: 'Essay',  href: '#' },
+  { year: '—',    title: 'Selected essays & reviews', where: 'The Chattahoochee Review', kind: 'Essay', href: '#' },
+  { year: '—',    title: 'Selected essays & reviews', where: 'The Rumpus',             kind: 'Essay',  href: '#' },
+  { year: '—',    title: 'Ongoing column on the show horse world', where: 'Saddle & Bridle', kind: 'Column', href: '#' },
+];
+
+function Publications() {
+  return (
+    <div className="eh-pubs">
+      <section className="eh-page-head">
+        <div className="eh-eyebrow">Writing</div>
+        <h1 className="eh-page-title">Publications</h1>
+        <p className="eh-page-lede measure">
+          A running list of books, essays, and columns. For the most current bylines,
+          follow along on <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>.
+        </p>
+      </section>
+
+      <section className="eh-pub-list">
+        <div className="eh-rule" />
+        <table className="eh-table">
+          <tbody>
+            {PUBLICATIONS.map((p, i) => (
+              <tr key={i}>
+                <td className="eh-t-year">{p.year}</td>
+                <td className="eh-t-kind">{p.kind}</td>
+                <td className="eh-t-title"><a href={p.href} target="_blank" rel="noopener"><em>{p.title}</em></a></td>
+                <td className="eh-t-where">{p.where}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <section className="eh-note">
+        <p className="eh-muted measure">
+          Looking for a specific piece that isn&rsquo;t listed? <a href="#">Send a note</a> &mdash;
+          most back-issue journals will dig out a copy on request.
+        </p>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- Wellness ---------- */
+function Wellness({ onNavigate }) {
+  return (
+    <div className="eh-wellness">
+      <section className="eh-page-head">
+        <div className="eh-eyebrow">Teaching &amp; workshops</div>
+        <h1 className="eh-page-title">Writing for Wellness</h1>
+        <p className="eh-page-lede measure">
+          I direct the Writing for Wellness initiative with the Butler University Master of
+          Fine Arts in Creative Writing program, and lead workshops both virtually and in
+          the Indianapolis community.
+        </p>
+      </section>
+
+      <section className="eh-wellness-body">
+        <div className="eh-rule" />
+        <div className="eh-two-col">
+          <div className="measure">
+            <div className="eh-eyebrow accent">The practice</div>
+            <p>
+              In my writing for wellness workshops, the focus is on process, not product.
+              We write from a generative prompt that invites sensory and memory work,
+              reflection, and integration, then share our experiences and &mdash; if it
+              feels right &mdash; share what we&rsquo;ve written.
+            </p>
+            <p>
+              Writing in this way releases stress, reduces chronic illness symptoms, and
+              improves physical and emotional health. <a href="#">Read the science behind it →</a>
+            </p>
+          </div>
+          <div className="measure">
+            <div className="eh-eyebrow accent">Who I&rsquo;ve worked with</div>
+            <p>
+              I&rsquo;ve led Writing for Wellness workshops for teens and adults in
+              addiction recovery, pre-med and medical students, healthcare workers,
+              corporate employees facing burnout, and students of all ages.
+            </p>
+            <p>
+              I&rsquo;m available for workshops in your office, school, or community
+              space, and I also offer virtual sessions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="eh-wellness-seasonal">
+        <div className="eh-rule" />
+        <div className="eh-eyebrow">A seasonal series</div>
+        <h2 className="eh-section-title measure-wide"><em>Writing the natural world</em></h2>
+        <p className="measure">
+          A seasonal, nature-based approach to writing for wellness, offered in partnership
+          with Bailey Sims of Mind Body Nature Counseling. For as long as humans have been
+          writing, we&rsquo;ve written about and through the natural world. Keep an eye out
+          for the next session.
+        </p>
+        <div className="eh-cta-row">
+          <a className="eh-btn" href="#" onClick={e => { e.preventDefault(); onNavigate('events'); }}>
+            See upcoming workshops
+          </a>
+          <a className="eh-btn-text" href="#" onClick={e => { e.preventDefault(); onNavigate('bio'); }}>
+            Bring a workshop to your community →
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- Bio ---------- */
+function Bio() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const submit = (e) => { e.preventDefault(); setSent(true); };
+
+  return (
+    <div className="eh-bio">
+      <section className="eh-page-head">
+        <div className="eh-eyebrow">About</div>
+        <h1 className="eh-page-title">Bio &amp; contact</h1>
+      </section>
+
+      <section className="eh-bio-body">
+        <div className="eh-rule" />
+        <div className="eh-two-col">
+          <div className="measure">
+            <p className="eh-lead">
+              Emma Hudelson is a nonfiction writer from Indiana. She is the author of
+              <em> Sky Watch: Chasing an American Saddlebred Story</em> (University Press
+              of Kentucky, 2024), and her work can be found in the <em>Cincinnati Review</em>,
+              the <em>Chattahoochee Review</em>, and the <em>Rumpus</em>.
+            </p>
+            <p>
+              Emma writes about horses, women, and wellness, and she is passionate about
+              the therapeutic power of expressive writing. She holds a PhD in creative
+              writing from the University of Cincinnati and an MFA from Butler University,
+              where she directs the Writing for Wellness program.
+            </p>
+            <p>
+              Her Writing for Wellness work takes her to hospitals, addiction recovery
+              centers, medical schools, and community centers. When she&rsquo;s not
+              teaching or writing, Emma is usually at the barn. She has one daughter, one
+              husband, one dog, one cat, and one horse.
+            </p>
+          </div>
+
+          <aside className="eh-contact">
+            <div className="eh-eyebrow accent">Get in touch</div>
+            {!sent ? (
+              <form onSubmit={submit} className="eh-form">
+                <div className="eh-field">
+                  <label>Name</label>
+                  <input type="text" required value={form.name}
+                         onChange={e => setForm({ ...form, name: e.target.value })} />
+                </div>
+                <div className="eh-field">
+                  <label>Email</label>
+                  <input type="email" required value={form.email}
+                         onChange={e => setForm({ ...form, email: e.target.value })}
+                         placeholder="name@domain.com" />
+                </div>
+                <div className="eh-field">
+                  <label>Message</label>
+                  <textarea rows="4" required value={form.message}
+                            onChange={e => setForm({ ...form, message: e.target.value })}
+                            placeholder="A note about a workshop, reading, or event…" />
+                </div>
+                <button className="eh-btn" type="submit">Send</button>
+              </form>
+            ) : (
+              <div className="eh-form-sent">
+                <p><em>Thank you.</em> Emma will be in touch soon.</p>
+              </div>
+            )}
+            <div className="eh-contact-alt">
+              <div className="eh-eyebrow">Or find me</div>
+              <ul>
+                <li><a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- Events ---------- */
+function Events() {
+  return (
+    <div className="eh-events">
+      <div className="eh-draft-banner">
+        <span className="eh-eyebrow">Draft · not linked in public nav</span>
+      </div>
+
+      <section className="eh-page-head">
+        <div className="eh-eyebrow">Readings &amp; workshops</div>
+        <h1 className="eh-page-title">Events</h1>
+        <p className="eh-page-lede measure">
+          Upcoming readings, workshops, and appearances. For private or corporate
+          workshops, <a href="#">get in touch</a>.
+        </p>
+      </section>
+
+      <section className="eh-events-body">
+        <div className="eh-rule" />
+        <div className="eh-empty measure">
+          <div className="eh-asterism">⁂</div>
+          <p className="eh-muted">
+            Nothing on the calendar at the moment. Check back soon, or follow on
+            <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener"> Instagram</a>
+            for short-notice announcements.
+          </p>
+        </div>
+
+        <div className="eh-rule" />
+        <div className="eh-eyebrow">Sample layout · for future use</div>
+        <ul className="eh-event-list">
+          <li className="eh-event">
+            <div className="eh-event-date">
+              <div className="eh-event-month">May</div>
+              <div className="eh-event-day">14</div>
+            </div>
+            <div className="eh-event-meta">
+              <h3 className="eh-event-title"><em>Sky Watch</em> reading &amp; Q&amp;A</h3>
+              <div className="eh-event-where">Indy Reads · Indianapolis, IN · 7:00 pm</div>
+              <p>A reading from the book followed by an audience Q&amp;A.</p>
+            </div>
+            <a className="eh-btn-text" href="#">Details →</a>
+          </li>
+          <li className="eh-event">
+            <div className="eh-event-date">
+              <div className="eh-event-month">Jun</div>
+              <div className="eh-event-day">08</div>
+            </div>
+            <div className="eh-event-meta">
+              <h3 className="eh-event-title">Writing for Wellness: Summer solstice</h3>
+              <div className="eh-event-where">Virtual · 10:00 am ET</div>
+              <p>A seasonal, nature-based writing workshop.</p>
+            </div>
+            <a className="eh-btn-text" href="#">Register →</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- App ---------- */
+function App() {
+  const [page, setPage] = useState(() => {
+    try { return localStorage.getItem('eh-page') || 'landing'; } catch { return 'landing'; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem('eh-page', page); } catch {}
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [page]);
+
+  const go = (id) => setPage(id);
+
+  let Page;
+  switch (page) {
+    case 'sky-watch':    Page = <SkyWatch />;                   break;
+    case 'publications': Page = <Publications />;               break;
+    case 'wellness':     Page = <Wellness onNavigate={go} />;   break;
+    case 'bio':          Page = <Bio />;                        break;
+    case 'events':       Page = <Events />;                     break;
+    case 'landing':
+    default:             Page = <Landing onNavigate={go} />;
+  }
+
+  return (
+    <div className="eh-app" data-screen-label={page}>
+      <TopNav current={page} onNavigate={go} />
+      <main className="eh-main">{Page}</main>
+      <Footer onNavigate={go} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
