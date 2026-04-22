@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nonfiction Writing | Emma Hudelson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Home-only styles ─────────────────────────── */
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:none; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── Full-height dark hero ───────────────────── */
+    #home {
+      min-height: calc(100vh - var(--nav-h));
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Atmospheric radial glow behind book */
+    #home::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 70%; height: 100%;
+      background: radial-gradient(ellipse at 60% 50%, rgba(122,74,46,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* ── Left: author intro ──────────────────────── */
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s ease 0.15s both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      opacity: 0.7;
+    }
+
+    .hero-title {
+      font-size: clamp(3.2rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.02;
+      color: var(--cream);
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+
+    .hero-rule {
+      width: 50px; height: 1px;
+      background: rgba(184,146,42,0.5);
+      margin: 26px 0;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245,240,232,0.55);
+      max-width: 340px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .hero-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      border: 1px solid rgba(184,146,42,0.3);
+      padding: 7px 14px;
+      margin-bottom: 36px;
+      width: fit-content;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Light buttons on dark bg */
+    .btn-cream {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--cream);
+      text-decoration: none;
+      padding: 13px 26px;
+      transition: all 0.3s ease;
+    }
+    .btn-cream:hover { background: var(--parchment); gap: 16px; }
+
+    .btn-ghost-cream {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.7);
+      text-decoration: none;
+      padding: 12px 24px;
+      border: 1px solid rgba(245,240,232,0.2);
+      transition: all 0.3s ease;
+    }
+    .btn-ghost-cream:hover { color: var(--cream); border-color: rgba(245,240,232,0.5); gap: 16px; }
+
+    /* ── Right: book display ──────────────────────── */
+    .hero-book-col {
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1s ease 0.4s both;
+      /* Fill the full column height so the book image is edge-to-edge vertically */
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-book-stage {
+      position: relative;
+      width: 100%;
+      /* No max-width — let it fill the column */
+    }
+
+    .hero-book-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow: -12px 0 48px rgba(0,0,0,0.4);
+    }
+
+    /* Award ribbon — overlaid on image bottom-left */
+    .hero-book-ribbon {
+      position: absolute;
+      bottom: 32px;
+      left: 28px;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      line-height: 1.6;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Publisher tag — overlaid on image bottom-right */
+    .hero-book-publisher {
+      position: absolute;
+      bottom: 32px;
+      right: 28px;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      color: rgba(245,240,232,0.45);
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    /* ── Featured sections ────────────────────────── */
+    .featured-strip {
+      background: var(--ink);
+      padding: 64px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 0;
+      align-items: center;
+    }
+
+    .strip-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 auto;
+    }
+
+    .strip-item {
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .strip-item:first-child { padding-left: 0; }
+    .strip-item:last-child  { padding-right: 0; }
+
+    .strip-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      color: rgba(245,240,232,0.35);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .strip-value {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+
+    .strip-value em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    /* ── About the Book ───────────────────────────── */
+    #book-teaser {
+      background: var(--warm-white);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .book-text-col {
+      padding: 80px;
+      background: var(--warm-white);
+    }
+
+    .book-award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      border: 1px solid rgba(184,146,42,0.35);
+      padding: 6px 14px;
+      margin-bottom: 28px;
+    }
+
+    .book-title-large {
+      font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .book-title-large em { font-style: italic; color: var(--chestnut); }
+
+    .book-subtitle {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--ink-light);
+      margin-bottom: 28px;
+    }
+
+    .book-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .book-meta {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+      margin: 24px 0 36px;
+      display: flex;
+      gap: 24px;
+    }
+
+    .book-meta span { opacity: 0.6; }
+
+    /* ── Selected pubs teaser ─────────────────────── */
+    #pubs-teaser {
+      padding: 90px 80px;
+      background: var(--parchment);
+    }
+
+    .pubs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 52px;
+    }
+
+    .pubs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .pub-card {
+      background: var(--cream);
+      padding: 36px 32px;
+      position: relative;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .pub-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
+    .pub-card:hover { background: var(--warm-white); transform: translateY(-2px); }
+    .pub-card:hover::before { height: 100%; }
+
+    .pub-venue {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .pub-title {
+      font-size: 1.18rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .pub-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.65;
+    }
+
+    /* ── Wellness teaser ──────────────────────────── */
+    #wellness-teaser {
+      background: var(--moss);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 90px 80px;
+    }
+
+    #wellness-teaser .section-label {
+      color: rgba(245,240,232,0.4);
+      justify-content: flex-start;
+    }
+    #wellness-teaser .section-label::before { background: rgba(245,240,232,0.4); }
+
+    #wellness-teaser .section-title { color: var(--cream); }
+    #wellness-teaser .section-title em { color: var(--gold-light); }
+
+    .wellness-pull-quote {
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,240,232,0.85);
+      line-height: 1.7;
+      border-left: 2px solid var(--gold-light);
+      padding-left: 24px;
+    }
+
+    .wellness-venues {
+      margin-top: 32px;
+    }
+
+    .wellness-venues-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      color: rgba(245,240,232,0.3);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .venues-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .venue-name {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.55);
+    }
+
+    @media (max-width: 900px) {
+      #home { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { padding: 52px 24px 36px; }
+      .hero-book-col { min-height: 60vw; }
+      .hero-book-img { object-position: center center; }
+      .featured-strip { grid-template-columns: 1fr; gap: 28px; padding: 48px 24px; }
+      .strip-divider { display: none; }
+      #book-teaser { grid-template-columns: 1fr; }
+      .book-image-col { height: 50vw; min-height: 260px; }
+      .book-text-col { padding: 48px 24px; }
+      #pubs-teaser { padding: 56px 24px; }
+      .pubs-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .pubs-grid { grid-template-columns: 1fr; }
+      #wellness-teaser { grid-template-columns: 1fr; padding: 56px 24px; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Emma Hudelson</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Writing</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="wellness.html">Workshops</a></li>
+    <li><a href="events.html">Events</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-body">
+
+  <!-- ── Hero ──────────────────────────────────────── -->
+  <section id="home" style="padding:0;">
+
+    <!-- Left: Author intro -->
+    <div class="hero-text">
+      <p class="hero-eyebrow">A New Book from</p>
+      <h1 class="hero-title">Emma<br/><em>Hudelson</em></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-tagline">
+        Nonfiction writer. Essays on animals, women,<br/>and the lives we build alongside them.
+      </p>
+      <div class="hero-award">★ 2025 Equine Media Award Winner</div>
+      <div class="hero-ctas">
+        <a href="https://www.kentuckypress.com/9780813199108/sky-watch/"
+           target="_blank" rel="noopener" class="btn-cream">Order Sky Watch</a>
+        <a href="work.html" class="btn-ghost-cream">View All Work</a>
+      </div>
+    </div>
+
+    <!-- Right: Book cover -->
+    <div class="hero-book-col">
+      <div class="hero-book-stage">
+        <img class="hero-book-img"
+             src="assets/images/book-bg.jpg"
+             alt="Sky Watch: Chasing an American Saddlebred Story by Emma Hudelson" />
+        <div class="hero-book-ribbon">2025<br/>Equine<br/>Media<br/>Award</div>
+        <p class="hero-book-publisher">University Press of Kentucky · 2024</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Stats strip ────────────────────────────────── -->
+  <div class="featured-strip reveal">
+    <div class="strip-item">
+      <p class="strip-label">Debut Book</p>
+      <p class="strip-value"><em>Sky Watch</em></p>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <p class="strip-label">Recognition</p>
+      <p class="strip-value">2025 Equine <em>Media Award</em></p>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <p class="strip-label">Published In</p>
+      <p class="strip-value">The Cincinnati Review <em>& more</em></p>
+    </div>
+  </div>
+
+  <!-- ── About the Book ───────────────────────────── -->
+  <div id="book-teaser">
+    <div class="book-text-col reveal" style="grid-column:1/-1;max-width:800px;margin:0 auto;text-align:center;padding:80px 80px;">
+      <p style="font-family:'Cormorant SC',serif;font-size:0.68rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;">About the Book</p>
+      <h2 class="book-title-large" style="font-size:clamp(2rem,3.5vw,3rem);margin-bottom:14px;"><em>Sky Watch</em></h2>
+      <p class="book-subtitle">Chasing an American Saddlebred Story</p>
+      <p class="book-desc" style="max-width:620px;margin:0 auto 16px;">
+        In the 1980s, the American Saddlebred Sky Watch filled more arena seats than
+        any other performance horse, dominating the sport with the power and intensity
+        of a Kentucky Derby winner — earning four World Grand Championships and twelve
+        World titles overall. Sky Watch is not only the tale of a remarkable horse, but
+        of the American Saddlebred breed and the way these horses carried one rider
+        back to herself.
+      </p>
+      <p class="book-desc" style="max-width:580px;margin:0 auto;">
+        A deeply personal homage to one of the sport's greatest show horses.
+        A Foreword Indies Book of the Year Finalist, praised alongside Susan Orlean
+        and Laura Hillenbrand.
+      </p>
+      <div class="book-meta" style="justify-content:center;margin-top:28px;">
+        <span>University Press of Kentucky</span>
+        <span>·</span>
+        <span>March 2024</span>
+        <span>·</span>
+        <span>280 pp.</span>
+      </div>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:32px;">
+        <a href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank"
+           rel="noopener" class="btn-dark">Order from UPK →</a>
+        <a href="https://www.amazon.com/stores/author/B0CV887V7P" target="_blank"
+           rel="noopener" class="btn-outline">Amazon →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Selected pubs teaser ───────────────────────── -->
+  <section id="pubs-teaser">
+    <div class="pubs-header">
+      <div>
+        <p class="section-label reveal">Selected Work</p>
+        <h2 class="section-title reveal">From the <em>page</em></h2>
+      </div>
+      <a href="work.html" class="text-link reveal">All Publications</a>
+    </div>
+
+    <div class="pubs-grid stagger">
+      <div class="pub-card">
+        <p class="pub-venue">The Cincinnati Review — Issue 19.2</p>
+        <p class="pub-title">"When Riders Write"</p>
+        <p class="pub-desc">A review of <em>Horse Girls</em>, Halimah Marcus's anthology — on women, horses, and the identities we forge on horseback.</p>
+      </div>
+      <div class="pub-card">
+        <p class="pub-venue">Flying Island Journal — 2021</p>
+        <p class="pub-title">"Damline"</p>
+        <p class="pub-desc">Creative nonfiction on lineage, landscape, and what we inherit from the animals who shaped us.</p>
+      </div>
+      <div class="pub-card">
+        <p class="pub-venue">Southeast Review</p>
+        <p class="pub-title">Craft Essay</p>
+        <p class="pub-desc">On the art of the biographical essay — how to write about real people, real animals, real lives.</p>
+      </div>
+      <div class="pub-card">
+        <p class="pub-venue">The Chattahoochee Review · The Rumpus · BUST</p>
+        <p class="pub-title">Essays</p>
+        <p class="pub-desc">Personal essays on women, ambition, and the consuming nature of passion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Wellness teaser ────────────────────────────── -->
+  <section id="wellness-teaser">
+    <div class="reveal">
+      <p class="section-label">Workshop</p>
+      <h2 class="section-title">Writing for<br/><em>Wellness</em></h2>
+      <p style="font-size:1rem;font-weight:300;color:rgba(245,240,232,0.65);line-height:1.85;margin-bottom:32px;max-width:400px;">
+        Workshops for individuals and groups — in offices, schools, hospitals,
+        and community spaces across Indiana and virtually.
+      </p>
+      <a href="wellness.html" class="btn-gold">Learn More →</a>
+    </div>
+    <div class="reveal" style="transition-delay:0.2s">
+      <p class="wellness-pull-quote">
+        "Writing for Wellness harnesses the therapeutic power of creative writing,
+        turning the blank page into a site of exploration, revelation,
+        and even healing."
+      </p>
+      <div class="wellness-venues">
+        <p class="wellness-venues-label">Past participants include</p>
+        <div class="venues-list">
+          <span class="venue-name">University of Cincinnati College of Medicine</span>
+          <span class="venue-name">Eskenazi Hospital</span>
+          <span class="venue-name">Fairbanks Addiction Treatment Center</span>
+          <span class="venue-name">IPS · Hope Academy · Butler University</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.page-body -->
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Emma Hudelson</p>
+      <p class="footer-tagline">Nonfiction writer, teacher, and witness to horses.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Writing</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="wellness.html">Workshops</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Emma Hudelson. All rights reserved.</p>
+    <p class="footer-copy" style="font-style:italic;">Indianapolis, Indiana</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+</body>
+</html>

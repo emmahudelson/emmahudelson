@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events | Emma Hudelson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Events-only styles ─────────────────────────── */
+    .events-body { padding: 0 80px 80px; }
+
+    /* Event type filter */
+    .event-filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 40px 0 52px;
+    }
+
+    .event-filter-pill {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      background: none;
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      padding: 8px 18px;
+      transition: all 0.3s ease;
+    }
+
+    .event-filter-pill:hover { border-color: var(--ink); color: var(--ink); }
+
+    .event-filter-pill.active {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
+    }
+
+    /* Large event list */
+    .event-block {
+      padding: 40px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 100px 1fr 180px;
+      gap: 36px;
+      align-items: start;
+      transition: background 0.25s ease;
+    }
+
+    .event-block:last-child { border-bottom: 1px solid var(--rule); }
+
+    /* Date column */
+    .event-date-col { text-align: center; padding-top: 4px; }
+
+    .event-date-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--chestnut);
+    }
+
+    .event-date-rest {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      color: var(--ink-light);
+      margin-top: 4px;
+    }
+
+    /* Main content */
+    .event-content {}
+
+    .event-type-tag {
+      display: inline-block;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: var(--moss);
+      border: 1px solid rgba(61,82,64,0.35);
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    .event-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .event-subtitle {
+      font-size: 0.95rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink-light);
+      margin-bottom: 14px;
+    }
+
+    .event-desc {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    /* Details column */
+    .event-details-col {}
+
+    .event-detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .event-detail-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .event-detail-value {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+    }
+
+    /* Past events section */
+    .past-events-section {
+      background: var(--parchment);
+      padding: 80px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .past-events-grid {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .past-event-tile {
+      background: var(--cream);
+      padding: 28px 24px;
+      transition: background 0.3s ease;
+    }
+
+    .past-event-tile:hover { background: var(--warm-white); }
+
+    .past-event-date {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .past-event-title {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .past-event-venue {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ink-light);
+    }
+
+    /* Speaker invite box */
+    .invite-box {
+      background: var(--moss);
+      color: var(--cream);
+      padding: 80px;
+      text-align: center;
+    }
+
+    .invite-box .section-label {
+      color: rgba(212,170,90,0.6);
+      justify-content: center;
+    }
+    .invite-box .section-label::before { background: rgba(212,170,90,0.6); }
+
+    .invite-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.18;
+    }
+    .invite-title em { font-style: italic; color: var(--gold-light); }
+
+    .invite-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.65);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.85;
+    }
+
+    .invite-details {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .invite-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .invite-detail-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: rgba(212,170,90,0.5);
+    }
+
+    .invite-detail-value {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.8);
+    }
+
+    @media (max-width: 900px) {
+      .events-body { padding: 0 24px 56px; }
+      .event-block { grid-template-columns: 80px 1fr; }
+      .event-details-col { display: none; }
+      .past-events-section { padding: 56px 24px; }
+      .past-events-grid { grid-template-columns: 1fr; }
+      .invite-box { padding: 56px 24px; }
+      .invite-details { flex-direction: column; align-items: center; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Emma Hudelson</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Writing</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="wellness.html">Workshops</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-body">
+
+  <div class="page-hero" style="animation: fadeUp 0.9s ease both;">
+    <p class="section-label">Calendar</p>
+    <h1>Events &amp;<br/><em>Readings</em></h1>
+    <div class="hero-rule"></div>
+    <p class="lead">
+      Book readings, Writing for Wellness workshops, craft lectures,
+      and public events.
+    </p>
+  </div>
+
+  <div class="events-body">
+
+    <!-- Filters -->
+    <div class="event-filters">
+      <button class="event-filter-pill active">All Events</button>
+      <button class="event-filter-pill">Readings</button>
+      <button class="event-filter-pill">Workshops</button>
+      <button class="event-filter-pill">Lectures</button>
+      <button class="event-filter-pill">Virtual</button>
+    </div>
+
+    <!-- Upcoming events -->
+    <p class="section-label reveal" style="margin-bottom:0;">Upcoming</p>
+
+    <div class="stagger">
+
+      <div class="event-block">
+        <div class="event-date-col">
+          <div class="event-date-num">TBA</div>
+          <div class="event-date-rest">Spring<br/>2026</div>
+        </div>
+        <div class="event-content">
+          <span class="event-type-tag">Reading</span>
+          <p class="event-title">Sky Watch — Author Reading &amp; Q&amp;A</p>
+          <p class="event-subtitle">Celebrating the book's paperback release</p>
+          <p class="event-desc">
+            Emma reads from <em>Sky Watch: Chasing an American Saddlebred Story</em>
+            and answers questions about the book, the horse, and the writing process.
+            Open to the public.
+          </p>
+        </div>
+        <div class="event-details-col">
+          <div class="event-detail-item">
+            <span class="event-detail-label">Location</span>
+            <span class="event-detail-value">TBD — Indiana</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Cost</span>
+            <span class="event-detail-value">Free &amp; open to public</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Format</span>
+            <span class="event-detail-value">In-person</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-block">
+        <div class="event-date-col">
+          <div class="event-date-num">TBA</div>
+          <div class="event-date-rest">Spring<br/>2026</div>
+        </div>
+        <div class="event-content">
+          <span class="event-type-tag">Workshop</span>
+          <p class="event-title">Writing for Wellness Workshop</p>
+          <p class="event-subtitle">Open community session — Indianapolis</p>
+          <p class="event-desc">
+            A generative writing workshop open to adults of all backgrounds.
+            No prior writing experience needed. Participants write from prompts
+            designed to invite reflection, memory, and sensory detail.
+          </p>
+        </div>
+        <div class="event-details-col">
+          <div class="event-detail-item">
+            <span class="event-detail-label">Location</span>
+            <span class="event-detail-value">Indianapolis, IN</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Duration</span>
+            <span class="event-detail-value">90 minutes</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Format</span>
+            <span class="event-detail-value">In-person</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-block">
+        <div class="event-date-col">
+          <div class="event-date-num">TBA</div>
+          <div class="event-date-rest">Summer<br/>2026</div>
+        </div>
+        <div class="event-content">
+          <span class="event-type-tag">Lecture</span>
+          <p class="event-title">Bluegrass Writers Studio — Guest Lecture</p>
+          <p class="event-subtitle">Eastern Kentucky University MFA Program</p>
+          <p class="event-desc">
+            Emma gives a craft lecture on writing about animals and the ethics
+            of the biographical essay — for students in the Bluegrass Writers
+            Studio MFA program.
+          </p>
+        </div>
+        <div class="event-details-col">
+          <div class="event-detail-item">
+            <span class="event-detail-label">Location</span>
+            <span class="event-detail-value">Eastern Kentucky University</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Audience</span>
+            <span class="event-detail-value">MFA students</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Format</span>
+            <span class="event-detail-value">In-person</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-block">
+        <div class="event-date-col">
+          <div class="event-date-num">TBA</div>
+          <div class="event-date-rest">Fall<br/>2026</div>
+        </div>
+        <div class="event-content">
+          <span class="event-type-tag">Virtual Workshop</span>
+          <p class="event-title">Writing for Wellness — Virtual Session</p>
+          <p class="event-subtitle">Open to participants nationwide</p>
+          <p class="event-desc">
+            A virtual version of the Writing for Wellness workshop, open to
+            anyone with an internet connection. Same prompt-based format,
+            adapted for the online environment.
+          </p>
+        </div>
+        <div class="event-details-col">
+          <div class="event-detail-item">
+            <span class="event-detail-label">Location</span>
+            <span class="event-detail-value">Virtual / Zoom</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Cost</span>
+            <span class="event-detail-value">TBD</span>
+          </div>
+          <div class="event-detail-item">
+            <span class="event-detail-label">Registration</span>
+            <span class="event-detail-value">Coming soon</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.stagger -->
+  </div><!-- /.events-body -->
+
+  <!-- ── Past events ───────────────────────────────── -->
+  <div class="past-events-section">
+    <p class="section-label reveal">Archive</p>
+    <h2 class="section-title reveal">Past <em>Events</em></h2>
+
+    <div class="past-events-grid stagger">
+      <div class="past-event-tile">
+        <p class="past-event-date">2025</p>
+        <p class="past-event-title">Sky Watch — Book Launch</p>
+        <p class="past-event-venue">Indiana, with University Press of Kentucky</p>
+      </div>
+      <div class="past-event-tile">
+        <p class="past-event-date">2025</p>
+        <p class="past-event-title">Writing for Wellness — Eskenazi Hospital</p>
+        <p class="past-event-venue">Healthcare staff workshop, Indianapolis</p>
+      </div>
+      <div class="past-event-tile">
+        <p class="past-event-date">2024</p>
+        <p class="past-event-title">Foreword INDIES Award — Finalist Event</p>
+        <p class="past-event-venue">Adult Nonfiction category</p>
+      </div>
+      <div class="past-event-tile">
+        <p class="past-event-date">2024</p>
+        <p class="past-event-title">Writing for Wellness — Fairbanks</p>
+        <p class="past-event-venue">Fairbanks Addiction Treatment Center, Indianapolis</p>
+      </div>
+      <div class="past-event-tile">
+        <p class="past-event-date">2023</p>
+        <p class="past-event-title">Cincinnati Review — Reading</p>
+        <p class="past-event-venue">Issue 19.2 contributors reading</p>
+      </div>
+      <div class="past-event-tile">
+        <p class="past-event-date">2023</p>
+        <p class="past-event-title">Writing for Wellness — UC College of Medicine</p>
+        <p class="past-event-venue">Medical student workshop, Cincinnati</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Invite box ────────────────────────────────── -->
+  <div class="invite-box reveal">
+    <p class="section-label">Book Emma</p>
+    <h2 class="invite-title">Invite Emma to your <em>event or organization</em></h2>
+    <p class="invite-desc">
+      Available for book readings, craft lectures, Writing for Wellness workshops,
+      panel discussions, and residencies. Get in touch to check availability
+      and discuss your needs.
+    </p>
+    <div class="invite-details">
+      <div class="invite-detail">
+        <span class="invite-detail-label">Type</span>
+        <span class="invite-detail-value">Readings, Lectures, Workshops</span>
+      </div>
+      <div class="invite-detail">
+        <span class="invite-detail-label">Format</span>
+        <span class="invite-detail-value">In-person &amp; Virtual</span>
+      </div>
+      <div class="invite-detail">
+        <span class="invite-detail-label">Location</span>
+        <span class="invite-detail-value">Indiana &amp; Nationwide</span>
+      </div>
+    </div>
+    <a href="mailto:hello@emmahudelson.com" class="btn-gold">Get in Touch →</a>
+  </div>
+
+</div><!-- /.page-body -->
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Emma Hudelson</p>
+      <p class="footer-tagline">Nonfiction writer, teacher, and witness to horses.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Writing</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="wellness.html">Workshops</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Emma Hudelson. All rights reserved.</p>
+    <p class="footer-copy" style="font-style:italic;">Indianapolis, Indiana</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+  // Filter pills (visual only in static HTML)
+  document.querySelectorAll('.event-filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.event-filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+<style>
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:none; }
+  }
+</style>
+</body>
+</html>

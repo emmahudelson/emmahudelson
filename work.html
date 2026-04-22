@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work | Emma Hudelson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Work-only styles ───────────────────────────── */
+    .work-body { padding: 0 80px 80px; }
+
+    /* Category filter bar */
+    .filter-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 56px;
+      overflow-x: auto;
+    }
+
+    .filter-btn {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 14px 24px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover { color: var(--ink); }
+    .filter-btn.active {
+      color: var(--chestnut);
+      border-bottom-color: var(--chestnut);
+    }
+
+    /* Book feature — edge-to-edge, image fills full left column */
+    .book-feature {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      align-items: stretch;
+      margin-bottom: 56px;
+      overflow: hidden;
+    }
+
+    .book-feature-cover {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .book-feature-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .book-feature-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      padding: 8px 14px;
+      text-align: center;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Text side of the book feature */
+    .book-feature > div:last-child {
+      background: var(--parchment);
+      padding: 60px 56px;
+      border: 1px solid var(--rule);
+      border-left: none;
+    }
+
+    .book-feature-type {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .book-feature-title {
+      font-size: 2.4rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.12;
+      margin-bottom: 8px;
+    }
+
+    .book-feature-subtitle {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--ink-light);
+      margin-bottom: 24px;
+    }
+
+    .book-feature-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .book-feature-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 24px 0 28px;
+    }
+
+    .meta-pill {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+      border: 1px solid var(--rule);
+      padding: 5px 12px;
+    }
+
+    /* Work section heading */
+    .work-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .work-section-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .work-section-count {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-light);
+    }
+
+    /* Publication list */
+    .pub-list {
+      margin-bottom: 60px;
+    }
+
+    .pub-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.25s ease;
+    }
+
+    .pub-row:hover .pub-row-title { color: var(--chestnut); }
+
+    .pub-row-venue {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .pub-row-title {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink);
+      transition: color 0.3s ease;
+      margin-bottom: 5px;
+    }
+
+    .pub-row-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.6;
+      max-width: 580px;
+    }
+
+    .pub-row-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .pub-row-date {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--ink-light);
+      margin-bottom: 8px;
+    }
+
+    .pub-row-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--moss);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .pub-row-link:hover { border-bottom-color: var(--moss); gap: 10px; }
+    .pub-row-link::after { content: '→'; }
+
+    /* Saddle & Bridle section */
+    .saddle-feature {
+      background: var(--ink);
+      padding: 56px;
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .saddle-feature-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .saddle-feature-title {
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .saddle-feature-title em { font-style: italic; color: var(--gold-light); }
+
+    .saddle-feature-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.6);
+      line-height: 1.85;
+    }
+
+    .saddle-feature-img {
+      background: var(--ink-mid);
+      aspect-ratio: 3/2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(184,146,42,0.2);
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(245,240,232,0.25);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .work-body { padding: 0 24px 56px; }
+      .book-feature { grid-template-columns: 1fr; }
+      .book-feature-cover { min-height: 60vw; }
+      .book-feature > div:last-child { padding: 32px 24px; border-left: 1px solid var(--rule); border-top: none; }
+      .saddle-feature { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Emma Hudelson</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Writing</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="wellness.html">Workshops</a></li>
+    <li><a href="events.html">Events</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-body">
+
+  <div class="page-hero" style="animation: fadeUp 0.9s ease both;">
+    <p class="section-label">Publications</p>
+    <h1>The <em>Work</em></h1>
+    <div class="hero-rule"></div>
+    <p class="lead">
+      Essays, reviews, criticism, and one book —
+      on horses, women, and the world they share.
+    </p>
+  </div>
+
+  <div class="work-body">
+
+    <!-- Filter bar -->
+    <div class="filter-bar" style="margin-top:40px;">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Book</button>
+      <button class="filter-btn">Essays</button>
+      <button class="filter-btn">Reviews</button>
+      <button class="filter-btn">Craft</button>
+      <button class="filter-btn">Journalism</button>
+    </div>
+
+    <!-- Book feature -->
+    <div class="book-feature reveal">
+      <div class="book-feature-cover">
+        <img src="assets/images/skywatch-portrait.jpg" alt="Sky Watch book cover" />
+        <div class="book-feature-badge">★ Award Winner</div>
+      </div>
+      <div>
+        <p class="book-feature-type">Book · Narrative Nonfiction</p>
+        <h2 class="book-feature-title">Sky Watch</h2>
+        <p class="book-feature-subtitle">Chasing an American Saddlebred Story</p>
+        <p class="book-feature-desc">
+          Horse shows used to draw crowds by the thousands to state fairs and venues
+          like Madison Square Garden. In the 1980s, no performance horse filled more
+          arena seats than the American Saddlebred Sky Watch. He pushed the saddle seat
+          industry to a peak that hasn't been seen since. An athlete through and through,
+          the stallion dominated the sport with the same power and intensity as a
+          Kentucky Derby winner. With unmatched talent, his career was one for the
+          history books, earning four World Grand Championships and twelve World titles
+          overall.
+        </p>
+        <p class="book-feature-desc">
+          Years after he finished competing, videos of Sky Watch's legacy in the ring
+          captured the heart of author Emma Hudelson. A lifelong horsewoman, her
+          rediscovery of the unstoppable stallion sent her on a journey to discover how
+          a horse becomes a legend. If she can capture the magic behind the greatest
+          show horse of all time, maybe she can understand her own obsession with
+          Saddlebreds.
+        </p>
+        <p class="book-feature-desc">
+          <em>Sky Watch: Chasing an American Saddlebred Story</em> is the tale of not
+          only a remarkable horse, but of the American Saddlebred breed and the way
+          these horses carried one rider back to herself. Tracking the path of Sky
+          Watch's success, Hudelson's book is a deeply personal homage to one of the
+          sport's greatest show horses and the indelible impression he left on the breed
+          and in the hearts of those who loved him.
+        </p>
+        <div class="book-feature-meta">
+          <span class="meta-pill">March 2024</span>
+          <span class="meta-pill">University Press of Kentucky</span>
+          <span class="meta-pill">280 pages</span>
+          <span class="meta-pill">9 b&amp;w illustrations</span>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://www.kentuckypress.com/9780813199108/sky-watch/"
+             target="_blank" rel="noopener" class="btn-dark">Order from UPK →</a>
+          <a href="https://www.amazon.com/stores/author/B0CV887V7P"
+             target="_blank" rel="noopener" class="btn-outline">Amazon →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Essays -->
+    <div class="work-section-head reveal">
+      <span class="work-section-title">Essays &amp; Criticism</span>
+      <span class="work-section-count">6 pieces</span>
+    </div>
+
+    <div class="pub-list stagger">
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">The Cincinnati Review — Issue 19.2</p>
+          <p class="pub-row-title">"When Riders Write"</p>
+          <p class="pub-row-desc">
+            A 2,255-word review of <em>Horse Girls</em>, Halimah Marcus's essay
+            anthology — on women, equestrianism, race, class, and the bond between
+            horse and rider. One of Emma's most widely read pieces.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">Dec 12, 2022</p>
+          <a href="https://www.cincinnatireview.com/articles/when-riders-write-by-emma-hudelson/"
+             target="_blank" rel="noopener" class="pub-row-link">Read</a>
+        </div>
+      </div>
+
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">Flying Island Journal</p>
+          <p class="pub-row-title">"Damline"</p>
+          <p class="pub-row-desc">
+            Creative nonfiction on lineage, landscape, and what we inherit — genetically,
+            spiritually — from the animals who shaped our families.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">May 2021</p>
+          <a href="http://www.flyingislandjournal.org/2021/05/damline-creative-nonfiction-by-emma.html"
+             target="_blank" rel="noopener" class="pub-row-link">Read</a>
+        </div>
+      </div>
+
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">Southeast Review</p>
+          <p class="pub-row-title">Craft Essay</p>
+          <p class="pub-row-desc">
+            On the art of the biographical essay: how to write about real people,
+            real animals, real lives — and the ethical weight of the nonfiction narrator.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">2022</p>
+          <a href="https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson"
+             target="_blank" rel="noopener" class="pub-row-link">Read</a>
+        </div>
+      </div>
+
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">The Chattahoochee Review</p>
+          <p class="pub-row-title">Personal Essay</p>
+          <p class="pub-row-desc">
+            An essay on equine obsession and the ethics of witness — the consuming
+            nature of passion and what it costs.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">2021</p>
+        </div>
+      </div>
+
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">The Rumpus</p>
+          <p class="pub-row-title">Personal Essay</p>
+          <p class="pub-row-desc">
+            On women, ambition, and the stories we tell ourselves to keep moving forward.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">2020</p>
+        </div>
+      </div>
+
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">BUST</p>
+          <p class="pub-row-title">Essay</p>
+          <p class="pub-row-desc">
+            Writing for one of feminism's signature cultural publications.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">2019</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interviews -->
+    <div class="work-section-head reveal">
+      <span class="work-section-title">Interviews &amp; Features</span>
+      <span class="work-section-count">2 pieces</span>
+    </div>
+
+    <div class="pub-list stagger">
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">The Cincinnati Review</p>
+          <p class="pub-row-title">"On Creating an Artistic Legacy"</p>
+          <p class="pub-row-desc">
+            One-question interview with Marianne Chan and Maggie Su — on legacy,
+            influence, and what writers leave behind.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">2023</p>
+          <a href="https://www.cincinnatireview.com/interviews/marianne-chan-emma-hudelson-and-maggie-su-on-artistic-legacy/"
+             target="_blank" rel="noopener" class="pub-row-link">Read</a>
+        </div>
+      </div>
+      <div class="pub-row">
+        <div>
+          <p class="pub-row-venue">Indiana Writers Center</p>
+          <p class="pub-row-title">Profile — Emma Hudelson</p>
+          <p class="pub-row-desc">
+            Feature on Emma's work, her path to Sky Watch, and her role in
+            Indiana's literary community.
+          </p>
+        </div>
+        <div class="pub-row-right">
+          <p class="pub-row-date">2024</p>
+          <a href="https://www.indianawriters.org/blogs/news/team-members/emma-hudelson/"
+             target="_blank" rel="noopener" class="pub-row-link">Read</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saddle & Bridle -->
+    <div class="saddle-feature reveal">
+      <div>
+        <p class="saddle-feature-label">Regular Contributor</p>
+        <h3 class="saddle-feature-title"><em>Saddle &amp; Bridle</em></h3>
+        <p class="saddle-feature-desc">
+          The American Saddlebred's premier publication. Emma contributes regular
+          features on horses, horsepeople, and the culture of the Saddlebred show
+          world — bringing her essayist's eye to a community she has been part of
+          since childhood.
+        </p>
+      </div>
+      <div class="saddle-feature-img">
+        Saddle &amp; Bridle<br/>Regular Contributor
+      </div>
+    </div>
+
+  </div><!-- /.work-body -->
+
+</div><!-- /.page-body -->
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Emma Hudelson</p>
+      <p class="footer-tagline">Nonfiction writer, teacher, and witness to horses.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Writing</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="wellness.html">Workshops</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Emma Hudelson. All rights reserved.</p>
+    <p class="footer-copy" style="font-style:italic;">Indianapolis, Indiana</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+  // Filter buttons (visual only — all items always shown in static HTML)
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+<style>
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:none; }
+  }
+</style>
+</body>
+</html>

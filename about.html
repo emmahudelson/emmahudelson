@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Emma Hudelson</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── About-only styles ──────────────────────────── */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 80px;
+      align-items: start;
+      padding: 80px;
+    }
+
+    /* Portrait column */
+    .portrait-col { position: relative; }
+
+    .portrait-frame {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: var(--parchment);
+      overflow: hidden;
+    }
+
+    .portrait-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Offset decorative border */
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(60,45,30,0.1);
+      pointer-events: none;
+    }
+
+    .portrait-accent-tl,
+    .portrait-accent-br {
+      position: absolute;
+      width: 50px; height: 50px;
+      pointer-events: none;
+    }
+
+    .portrait-accent-tl {
+      top: -14px; right: -14px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    .portrait-accent-br {
+      bottom: -14px; left: -14px;
+      border-bottom: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .portrait-caption {
+      margin-top: 18px;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      padding-left: 2px;
+    }
+
+    /* Sidebar facts */
+    .about-sidebar-facts {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .fact-item {
+      padding: 18px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .fact-item:last-child { border-bottom: 1px solid var(--rule); }
+
+    .fact-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      padding-top: 3px;
+    }
+
+    .fact-value {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+
+    /* Bio column */
+    .bio-col {}
+
+    .bio-col .section-label { margin-bottom: 12px; }
+
+    .bio-tagline {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.18;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    .bio-tagline em { font-style: italic; color: var(--chestnut); }
+
+    .bio-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.95;
+      margin-bottom: 20px;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 2px solid var(--gold);
+      padding: 20px 0 20px 28px;
+      margin: 40px 0;
+    }
+
+    .pull-quote p {
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* Book CTA box */
+    .book-cta-box {
+      margin-top: 48px;
+      background: var(--parchment);
+      border: 1px solid var(--rule);
+      padding: 36px;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .book-cta-img {
+      width: 80px;
+      flex-shrink: 0;
+      aspect-ratio: 2/3;
+      background: var(--ink-mid);
+      overflow: hidden;
+    }
+
+    .book-cta-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .book-cta-text {}
+
+    .book-cta-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .book-cta-title {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .book-cta-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    /* Press section */
+    .press-section {
+      background: var(--parchment);
+      padding: 80px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .press-grid {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .press-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .press-quote {
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    .press-source {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .about-layout { grid-template-columns: 1fr; padding: 40px 24px; gap: 48px; }
+      .portrait-frame { max-width: 320px; }
+      .press-section { padding: 56px 24px; }
+      .press-grid { grid-template-columns: 1fr; gap: 24px; }
+      .book-cta-box { flex-direction: column; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Emma Hudelson</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Writing</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="wellness.html">Workshops</a></li>
+    <li><a href="events.html">Events</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-body">
+
+  <!-- ── Page Hero ──────────────────────────────────── -->
+  <div class="page-hero" style="animation: fadeUp 0.9s ease both;">
+    <p class="section-label">About</p>
+    <h1>Emma<br/><em>Hudelson</em></h1>
+    <div class="hero-rule"></div>
+    <p class="lead">Nonfiction writer, teacher, and perpetual horse girl.</p>
+  </div>
+
+  <!-- ── Main About layout ──────────────────────────── -->
+  <div class="about-layout">
+
+    <!-- Portrait & facts -->
+    <div class="portrait-col reveal">
+      <div class="portrait-frame">
+        <img src="assets/images/portrait-placeholder.jpeg" alt="Emma Hudelson" />
+        <div class="portrait-accent-tl"></div>
+        <div class="portrait-accent-br"></div>
+      </div>
+      <p class="portrait-caption">Emma Hudelson — writer &amp; teacher</p>
+
+      <div class="about-sidebar-facts">
+        <div class="fact-item">
+          <span class="fact-label">Position</span>
+          <span class="fact-value">Assistant Professor of English, Eastern Kentucky University</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Studio</span>
+          <span class="fact-value">Core Faculty, Bluegrass Writers Studio</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Education</span>
+          <span class="fact-value">PhD, Creative Writing — University of Cincinnati</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Focus</span>
+          <span class="fact-value">Animals, Women &amp; Wellness</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Based</span>
+          <span class="fact-value">Indiana</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">Family</span>
+          <span class="fact-value">One daughter, one husband, one dog, one cat, one horse</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio -->
+    <div class="bio-col reveal" style="transition-delay:0.2s">
+      <p class="section-label">Biography</p>
+      <h2 class="bio-tagline">Writing about <em>animals, women,</em><br/>and the lives we live together.</h2>
+
+      <p class="bio-body">
+        Emma Hudelson is a nonfiction writer and teacher whose work centers on the
+        intersection of animal life, female experience, and the body. She is an Assistant
+        Professor of English at Eastern Kentucky University, where she is core faculty in
+        the Bluegrass Writers Studio MFA program.
+      </p>
+
+      <p class="bio-body">
+        She holds a PhD in creative writing from the University of Cincinnati, where she
+        began developing her distinctive voice — one that braids personal memoir with
+        rigorous reporting, lyric sensitivity with deep subject expertise.
+      </p>
+
+      <div class="pull-quote">
+        <p>
+          "On his long back, the horse carries more than his human's physical weight.
+          He holds hopes, sorrows, and fears and transmutes them into motion."
+        </p>
+      </div>
+
+      <p class="bio-body">
+        Her essays and criticism appear in <em>The Cincinnati Review</em>,
+        <em>The Chattahoochee Review</em>, <em>The Rumpus</em>, <em>BUST</em>,
+        <em>Flying Island Journal</em>, and <em>Southeast Review</em>. She is a regular
+        contributor to <em>Saddle &amp; Bridle</em>, the American Saddlebred's premier
+        publication, where she covers horses, horsepeople, and the culture of the
+        show ring.
+      </p>
+
+      <p class="bio-body">
+        Her debut book, <em>Sky Watch: Chasing an American Saddlebred Story</em>
+        (University Press of Kentucky, 2024), won the 2025 Equine Media Award and was
+        a Foreword Reviews INDIES Award Finalist. It tells the story of a legendary
+        Saddlebred stallion — four World Grand Championships, twelve World titles —
+        and Emma's own parallel journey as a horsewoman trying to understand her
+        obsession before it changed everything.
+      </p>
+
+      <p class="bio-body">
+        Beyond her academic work, Emma directs the Writing for Wellness initiative,
+        leading workshops for teens and adults in addiction recovery, medical students,
+        healthcare workers, and community members across Indiana.
+      </p>
+
+      <!-- Book CTA -->
+      <div class="book-cta-box">
+        <div class="book-cta-img">
+          <img src="assets/images/book-bg.jpg" alt="Sky Watch" />
+        </div>
+        <div class="book-cta-text">
+          <p class="book-cta-label">Debut Book</p>
+          <p class="book-cta-title">Sky Watch: Chasing an American Saddlebred Story</p>
+          <p class="book-cta-desc">University Press of Kentucky · March 2024 · 280 pages</p>
+          <a href="https://www.kentuckypress.com/9780813199108/sky-watch/"
+             target="_blank" rel="noopener" class="text-link">Order from UPK</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.about-layout -->
+
+  <!-- ── Press ─────────────────────────────────────── -->
+  <div class="press-section">
+    <p class="section-label reveal">What People Are Saying</p>
+    <h2 class="section-title reveal">Praise for <em>Sky Watch</em></h2>
+
+    <div class="press-grid stagger">
+      <div class="press-item">
+        <p class="press-quote">
+          "Hudelson writes with the precision of Susan Orlean and the narrative
+          propulsion of Laura Hillenbrand — a debut that announces a major new
+          voice in literary nonfiction."
+        </p>
+        <p class="press-source">— Advance Praise</p>
+      </div>
+      <div class="press-item">
+        <p class="press-quote">
+          "At once an education and an entertainment — seamlessly braiding memoir
+          with historical detail about championship competition and the deep bond
+          between human and horse."
+        </p>
+        <p class="press-source">— Foreword Reviews</p>
+      </div>
+      <div class="press-item">
+        <p class="press-quote">
+          "Winner of the 2025 Equine Media Award. A book that anyone who has ever
+          loved a horse — or tried to explain why — will recognize as true."
+        </p>
+        <p class="press-source">— 2025 Equine Media Award</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.page-body -->
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Emma Hudelson</p>
+      <p class="footer-tagline">Nonfiction writer, teacher, and witness to horses.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Writing</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="wellness.html">Workshops</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Emma Hudelson. All rights reserved.</p>
+    <p class="footer-copy" style="font-style:italic;">Indianapolis, Indiana</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<style>
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:none; }
+  }
+</style>
+</body>
+</html>
