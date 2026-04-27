@@ -17,9 +17,9 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## Landing page
 
-- [ ] #9 — Replace homepage hero with horse.jpeg (/) — Move /horse.jpeg → /assets/images/horse.jpeg and use it as the homepage hero. Source file is at repo root; it's a 3024×4032 portrait-orientation JPEG.
-- [ ] #10 — Strip homepage to photo + name only (/) — Make the landing page clean and crisp: just the hero photo and Emma's name. Remove anything else.
-- [ ] #11 — Delete "nonfiction indianapolis kentucky" tagline (/) — Remove the "nonfiction indianapolis kentucky" line from the homepage.
+- [ ] VALIDATING-9 — Replace homepage hero with horse.jpeg (/) — Move /horse.jpeg → /assets/images/horse.jpeg and use it as the homepage hero. Source file is at repo root; it's a 3024×4032 portrait-orientation JPEG. — PR https://github.com/emmahudelson/emmahudelson/pull/11
+- [ ] VALIDATING-10 — Strip homepage to photo + name only (/) — Make the landing page clean and crisp: just the hero photo and Emma's name. Remove anything else. — PR https://github.com/emmahudelson/emmahudelson/pull/11
+- [ ] VALIDATING-11 — Delete "nonfiction indianapolis kentucky" tagline (/) — Remove the "nonfiction indianapolis kentucky" line from the homepage. — PR https://github.com/emmahudelson/emmahudelson/pull/11
 
 ## About
 
