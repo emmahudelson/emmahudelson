@@ -6,7 +6,7 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## General
 
-- [ ] #1 — Add "literary" before "nonfiction" (site-wide) — Add "literary" in front of nonfiction in every instance where it describes Emma as a writer.
+- [ ] VALIDATING-1 — Add "literary" before "nonfiction" (site-wide) — Add "literary" in front of nonfiction in every instance where it describes Emma as a writer. — PR https://github.com/emmahudelson/emmahudelson/pull/1
 - [ ] #2 — Cut commentary about Emma's writing not from a linked review/media piece (site-wide) — Remove all editorial commentary about her writing unless it comes from a linked review or media outlet.
 - [ ] #3 — Swap serif display for characterful sans serif (site-wide) — Replace the current serif (with the wiggly letter quirks) with a characterful sans serif used site-wide. NOT a default like Inter, Arial, Roboto, or system-ui — pick a deliberate, distinctive sans (e.g. National 2, GT America, Söhne, Neue Haas Grotesk, Söhne Breit, etc.).
 - [ ] #4 — Tone down beige in tokens.css (site-wide) — Adjust `--paper` and any warm-cream values in css/tokens.css to a cleaner, less warm, less sepia-toned background. Cooler/closer-to-white cream, not "old timey King's Island photo."
