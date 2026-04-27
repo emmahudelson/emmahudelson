@@ -1,0 +1,106 @@
+Website notes:
+
+General: 
+
+* Add “literary” in front of nonfiction in every instance where it’s describing me as a writer
+* Cut all the commentary about my writing that isn’t from a linked review or media piece 
+* Change the serifed font that adds weird wiggles into random letters to something more streamlined—maybe try sans serif for everything
+* Tone down the beige background. Cleaner, less warm, less sepia-toned “this is an old timey photo taken at King’s Island.” 
+* Footer:
+    * Delete Indianapolis, IN
+    * Delete “elsewhere” and everything under it
+    * Delete “the book” and everything under it
+    * no footer on landing page—everywhere else, just add (c)2026 underneath the little three-asterisk pyramid
+
+Landing page: Make it clean and crisp. Just the photo and my name
+* New photo (horse.jpeg)
+* Delete “nonfiction indianapolis kentucky”
+About:
+* Delete everything except the author’s photo and the bio, which needs to be changed to read: Emma Hudelson is a writer and Assistant Professor of Creative Writing at Eastern Kentucky University, where she is core faculty in the Bluegrass Writers Studio. Sky Watch: Chasing an American Saddlebred Story is her first book, and it received the 2025 Equine Media Award and was a finalist for the Foreword Indies Book of the Year. Her work can also be found in the Cincinnati Review, the Chattahoochee Review, and the Rumpus. Emma holds a PhD in creative writing from the University of Cincinnati and an MFA in creative writing from Butler University, where she directed the Creative Writing for Wellness program. She has two daughters, one husband, three dogs, one cat, and one horse.
+* Delete “emma hudelson” and “portrait” under the author photo
+* Add “social: @efhudelson” in the footer
+
+Books: 
+* Delete everything associated with the “forthcoming” book. Nothing there.
+* Delete “ a braided memoir” in the header
+* Read more
+    * Delete “a memoir” in the header above the title
+    * delete “--Emma Hudelson” in the header below the title and subtitle
+    * Under praise for Sky Watch, 1-2 sentence pull quotes from these blurbs in this order. Only show the first three, then have a “read more” link that opens the rest and opens the full blurbs.
+        * “With the heart and humor of Susan Orlean and the research chops of Laura Hillenbrand, Hudelson has written a chronicle and a testament to the American Saddlebred which will surely enter the canon of great equestrian writing. Framing a three-generation love for horses around the storied rise of the five-gaited champion, Sky Watch makes for a story that is at once educational, propulsive, and immensely entertaining. This book made a railbird out of me—I couldn't look away!”—Courtney Maum, author of The Year of the Horses
+        * “In meticulously reported detail—from what contractions feel like to a mare, to how riding an exquisite Saddlebred ‘sends sparks through my spine’—Emma Hudelson details the author's ‘horse-sized love’ for a legendary stallion. Interwoven in this biography of an equine athlete is Hudelson's own journey to motherhood, and ultimately how reclaiming horses after a misspent youth helped her make ‘amends to myself.’ Hudelson's flair for writing and deeply researched history makes her own story and this legendary horse's come movingly alive.” —Sarah Maslin Nir, two-time finalist for the Pulitzer Prize and author of Horse Crazy: The Story of a Woman and a World in Love with an Animal and the Once Upon a Horse series
+        * “Great horses live at the center of many stories—their own, those of their keepers, those of their fans. Sometimes they even shape the times in which they live. Sky Watch’s constellation of tales is plotted with great skill and energy by Hudelson, giving us a compelling insight into an esoteric world where the high-stepping American Saddlebred is king.”—Susanna Forrest, author of The Age of the Horse and If Wishes Were Horses
+        * “Anyone who loves horses will love Sky Watch, which tells the tale of one of the greatest American Saddlebreds of all time. Through meticulous research and beautiful, down-to-earth prose, Hudelson places me ringside, letting me relive the drama and excitement of the 1980s show horse world exactly as it happened. All horse enthusiasts have their own Sky Watch, a horse who inspires them for decades to come. This book is their story, too.”—William Marple, American Saddlebred historian
+        * “Sky Watch: Chasing an American Saddlebred Story is a powerful testament to the special relationship between people and animals, and the things we can learn from one and other. In the tradition of great human-animal nonfiction such as Helen Macdonald's H is for Hawk and Lyanda Lynn Haupt’s Mozart's Starling, Hudelson seamlessly weaves her own story alongside the historical account of a famed animal, sharing both the coming-of-age tale of Sky Watch, a champion Saddlebred horse, and Hudelson’s own coming of age story, as a horsewoman and a mother. A beautiful showing of love and passion between humans and non-humans, Hudelson embraces generations of both horses and horsewomen, creating a saga rivaling a multi-generational Russian novel. Hudelson describes competing with Saddlebreds as “a show of horse-human partnership and a test of skill” but this could just as easily describe the book Sky Watch itself. A triumphant work, this is a must-read for anyone who loves animals, but especially for those who are wading into parenthood or who have wanted to pursue a passion that feels like a fantasy. Sky Watch will show you the way.”—E.B. Bartels, author of Good Grief: On Loving Pets, Here and Hereafter
+        * “Emma Hudelson’s Sky Watch is a beautiful braided memoir deftly weaving the dramatic story of Saddlebred horses’ biggest star, Sky Watch, the history of horsemanship, and Hudelson’s own life with horses. I loved being immersed in this world, and was moved by the obsession, adventure, and the biggest delight of all—how we care for one another, allowing what's brightest about those we love, both human and animal, to shine.”—Tessa Fontaine, author of The Electric Woman
+        * “A love story with many deep levels—from the research into champion Sky Watch and the breed of the American Saddlebred, to the love of young girls and horses, to the love of mothers and daughters—Emma Hudelson’s book is well-researched, thoughtful, engaging, smart, and lively. As a horse lover and a reader, I adored it. If you love animals, don’t miss this gem.” –Annie Hartnett, author of Rabbit Cake and Unlikely Animals
+        * “What is more compelling than a remarkable horse making history? In this engaging first-person narrative, Emma Hudelson weaves the rise of show horse Sky Watch with a portrait of the magical, mysterious world of American Saddlebred horses and her own powerful story with the breed. Beautiful horses and masterful showmanship abound, but ultimately this is a story about love — in all its forms.” —Kristen Iversen, author of Full Body Burden and Molly Brown
+        * “The story of Sky Watch is irresistible. It has drama, surprise, intrigue, and a cast of compelling figures, none more remarkable than our four-legged hero. Hudelson is the perfect guide—knowledgeable and determined, adept with narrative and deeply engaged. Her passion for both Sky Watch and the American Saddlebred is clear, contagious, and propulsive. I loved learning about this horse and this world.”—Chris Bachelder, author of Dayswork and The Throwback Special
+        * “While this subject matter will surely appeal to those already comfortable at a stable or fairground, Sky Watch: Chasing an American Saddlebred Story also resonates strongly with anyone interested in the relationships between animals and humans in general, and how those relationships shape and are shaped by American history. Hudelson tells a big, complex story about our families, our culture, and a powerful and intelligent species-other, and tells it beautifully: the weave of personal memoir and historical reconstruction, the multi-dimensional characterization of both humans and horses, the skillful pacing and searching and empathic narrative persona, all make Sky Watch both wonderfully informative and a pleasure to read.”—Andrew Levy, author of Huck Finn’s America and Brain Wider Than the Sky
+        * “‘Most people live their entire lives without knowing American Saddlebreds exist, and they seem to do just fine,’ Emma Hudelson writes in this fascinating story of the great American Saddlebred Sky Watch. To those that know them, she adds, ‘they’re portals to an otherworldly place…a space outside of time.’ In Sky Watch, Hudelson takes us to this place outside of time as she paints a portrait of a legendary horse, a story filled with setbacks, victories, and a great rivalry, and then deftly weaves in her own love of the Saddlebred and its beauty, a love passed down from her mother and offered now to the next generation.” –Susan Neville, author of The Town of Whispering Dolls and Sailing the Inland Sea
+        * “Whether they rack, race, or roll, horses are still an integral part of our lives and the stories of the great ones draw us in like few others. Hudelson’s Sky Watch shares not only the story of this champion Saddlebred and his great career in the ring, drawing us into this rich world of both splendor and power, but also one woman’s contemplation of the role horses have played and will continue to play as she enters a new phase in her life. From the first page to the final one, Sky Watch is an utterly fascinating look at a classic equine world that will leave you rushing to learn more about Saddlebreds while also running to hug your favorite equine friend.”—Jennifer Kelly, author of Foxes of Belair: Gallant Fox, Omaha, & the Quest for the Triple Crown
+        * “Emma Hudelson’s story of Saddlebred champion Sky Watch is as buoyant and spirited as his signature winning rack.  In her personal, lyrical and ultimately brave explanation of how a great horse like Sky Watch became a  magical and redemptive force in her own life,  she makes him that for the rest of us as well. This book will be enjoyed and cherished by anyone whose life has been changed for the better through their love of a horse.” —Mary Perdue, author of Landaluce: The Story of Seattle Slew's First Champion
+    * Under “Reviews and Media:”
+        * These three reviews, with review title and author displayed, with one sentence pull quote and link:
+            * https://www.sagecigarettes.com/?p=4266
+            * https://www.sportstoriespress.com/notebook/book-notes-sky-watch-chasing-an-american-saddlebred-reviewed-by-caroline-grass
+            * https://thegoodlifereview.com/2024/07/27/rory-gould-review-of-sky-watch-by-emma-hudelson/
+    * Make photo of Sky Watch smaller and delete the text underneath
+    * Delete “ask your local bookseller” under “buy” links (it links to my “contact me”)
+    * Question—does the hello@emmahudelson.com really work as an email address? If so, please remove the full email and replace the @ with (at) so I don’t get spammed
+    * Delete the “INDIANAPOLIS, INDIANA Available for readings, workshops, and press nationwide & virtually” text
+* Delete the “Press” and “Events” pages entirely
+* Contact
+    * Delete everything except the form and “hello(at)emmahudelson.com if that email address works. If it doesn’t, delete it.
+* Writing for Wellness: Delete everything except the following. 
+    * One text block with the following: 
+        * Writing for Wellness harnesses the therapeutic power of creative writing, turning the blank page into a site of exploration, revelation, and even healing. In my writing for wellness workshops, the focus is on process, not product. We write from a generative prompt that invites sensory and memory work, reflection, and integration, then share our experiences and, if it feels right, share what we've written. Writing in this way releases stress, reduces chronic illness symptoms, and improves physical and emotional health. Check out the science behind it here! I directed the Writing for Wellness initiative with the Butler University Master of Fine Arts in Creative Writing program in 2023-2024 and I’ve led workshops both virtually and in various communities. 
+    * A second text block with the following:
+        * Writing Your Wilderness is a seasonal, nature-based approach to writing for wellness, offered in partnership with Bailey Sims of Mind Body Nature Counseling—you can learn more and find the interactive workbook here. For as long as humans have been writing, we've written about and through the natural world. Of course we have! Humans are, at our center, natural beings, with our own cycles and seasons. Our digital, indoor lifestyle disconnects us from nature, which can lead to dissociation and dysregulation. When we find ourselves in this state, our thoughts become stuck or catastrophic. This is when we look to our body and the natural world as raw and real resources that can help us process emotions, untangle thoughts, and lead us toward whole-body wellness. Weaving a creative writing practice into these nature-based and body-based therapeutic practices can reconnect us to the natural world, to ourselves, and to the wilderness that lives inside us all. 
+* Writing
+    * Delete “writing” that’s in all caps at the top of the page
+    * Delete “A running list of books, essays, reviews, and columns. For the most current bylines, follow along on Instagram.”
+    * Delete “Looking for a specific piece that isn't listed? Send a note — most back-issue journals will dig out a copy on request.”
+    * Under “Selected Work,” please include only the following linked titles, with the publication title and date below. They do not need to be center justified as they are here. For “Horse/Wild,” “Horse/Crazy,” “Horse/Woman,” and “Conception,” just remove the links for now. Keep the link and text about the audio podcast for “Swallow.”
+* Writing to Heal or Writing to Share
+* Southeast Review, November 2024
+* 
+* Bridled Joy
+* Indianapolis Monthly, September 2024
+* 
+* When Riders Write
+* The Cincinnati Review, December 2022
+* 
+* Damline
+* Flying Island Journal, May 2020
+* 
+* Horse/Wild
+* Thin Air Magazine, March 2020
+* 
+* Horse/Crazy
+* The Chattahoochee Review, December 2019
+* 
+* Taste
+* The Rumpus, March 2019
+* 
+* Swallow
+* Print: The Nasiona, December 2018
+* Audio: The Nasiona Podcast, Episode 9: Daughterhood
+* 
+* Aspirin
+* 805 Lit+Art, December 2018
+* 
+* Horse/Woman
+* Foglifter, November 2018
+* 
+* Nail Polish
+* Lost Balloon, August 2017
+*  
+* Conception
+* Linden Avenue, July 2017
+* 
+* Sometimes Smoothies and Yoga Aren't Enough
+* The Manifest-Station, January 2016
+
+
+￼

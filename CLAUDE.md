@@ -119,7 +119,7 @@ For smaller edits that don't warrant the full pattern, edit directly — but pre
 
 ## Git
 
-- Remote: `https://github.com/benhudelson/emmahudelson` (private)
+- Remote: `https://github.com/emmahudelson/emmahudelson` (public)
 - Default branch: `main`
 - Commits: terse, descriptive, one per logical change
 - GitHub Pages deploys from `main`; the site is live on push
