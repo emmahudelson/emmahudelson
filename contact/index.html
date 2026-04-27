@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
 
-  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <!-- Fonts loaded via @import in /css/tokens.css: Manrope (display) + Public Sans (body) + DM Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -67,7 +67,6 @@
       font-family: var(--font-display);
       font-style: italic;
       color: var(--accent-deep);
-      font-variation-settings: 'opsz' 36, 'SOFT' 50;
     }
     .form-sent[hidden] { display: none; }
 
@@ -100,7 +99,6 @@
       text-decoration: none;
       border-bottom: 1px solid var(--rule);
       padding-bottom: 0.12em;
-      font-variation-settings: 'opsz' 60, 'SOFT' 50, 'wght' 340;
       transition: color var(--dur) var(--ease),
                   border-color var(--dur) var(--ease);
       word-break: break-word;
