@@ -29,7 +29,7 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## Books
 
-- [ ] VALIDATING-15 — Delete site-wide mentions of hello@emmahudelson.com (site-wide) — The address does not receive mail. Remove every instance of hello@emmahudelson.com across the site (no obfuscated form, no contact-link version). — PR https://github.com/emmahudelson/emmahudelson/pull/10
+- [x] MERGED-15 — Delete site-wide mentions of hello@emmahudelson.com (site-wide) — The address does not receive mail. Remove every instance of hello@emmahudelson.com across the site (no obfuscated form, no contact-link version). — PR https://github.com/emmahudelson/emmahudelson/pull/10
 - [ ] #16 — Delete forthcoming book content (/books) — Remove everything tied to the forthcoming/second book. Nothing should appear for it.
 - [ ] #17 — Delete "a braided memoir" header (/books) — Remove "a braided memoir" from the books-page header.
 
