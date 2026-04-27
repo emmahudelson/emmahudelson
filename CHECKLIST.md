@@ -30,8 +30,8 @@ BLOCKED-N items are paused on missing assets or external decisions.
 ## Books
 
 - [x] MERGED-15 — Delete site-wide mentions of hello@emmahudelson.com (site-wide) — The address does not receive mail. Remove every instance of hello@emmahudelson.com across the site (no obfuscated form, no contact-link version). — PR https://github.com/emmahudelson/emmahudelson/pull/10
-- [ ] VALIDATING-16 — Delete forthcoming book content (/books) — Remove everything tied to the forthcoming/second book. Nothing should appear for it. — PR https://github.com/emmahudelson/emmahudelson/pull/13
-- [ ] VALIDATING-17 — Delete "a braided memoir" header (/books) — Remove "a braided memoir" from the books-page header. — PR https://github.com/emmahudelson/emmahudelson/pull/13
+- [x] MERGED-16 — Delete forthcoming book content (/books) — Remove everything tied to the forthcoming/second book. Nothing should appear for it. — PR https://github.com/emmahudelson/emmahudelson/pull/13
+- [x] MERGED-17 — Delete "a braided memoir" header (/books) — Remove "a braided memoir" from the books-page header. — PR https://github.com/emmahudelson/emmahudelson/pull/13
 
 ## Books → Sky Watch detail
 
