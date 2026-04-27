@@ -12,7 +12,7 @@ BLOCKED-N items are paused on missing assets or external decisions.
 - [x] MERGED-4 — Tone down beige in tokens.css (site-wide) — Adjust `--paper` and any warm-cream values in css/tokens.css to a cleaner, less warm, less sepia-toned background. Cooler/closer-to-white cream, not "old timey King's Island photo." — PR https://github.com/emmahudelson/emmahudelson/pull/4
 - [x] MERGED-5 — Delete "Indianapolis, IN" from footer (footer) — Remove the Indianapolis, IN line from the global footer. — PR https://github.com/emmahudelson/emmahudelson/pull/5
 - [x] MERGED-6 — Delete "elsewhere" footer block (footer) — Remove the "elsewhere" heading and everything beneath it from the global footer. — PR https://github.com/emmahudelson/emmahudelson/pull/6
-- [ ] VALIDATING-7 — Delete "the book" footer block (footer) — Remove the "the book" heading and everything beneath it from the global footer. — PR https://github.com/emmahudelson/emmahudelson/pull/7
+- [x] MERGED-7 — Delete "the book" footer block (footer) — Remove the "the book" heading and everything beneath it from the global footer. — PR https://github.com/emmahudelson/emmahudelson/pull/7
 - [ ] #8 — Footer: hide on landing page, add (c)2026 elsewhere (footer + landing) — No footer on the homepage. On every other page, add "(c)2026" beneath the three-asterisk pyramid.
 
 ## Landing page
