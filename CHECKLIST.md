@@ -61,4 +61,4 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## Page deletions
 
-- [ ] #32 — Delete /press and /events pages entirely (site-wide) — Remove the press and events pages: delete their directories and remove the links from the global nav.
+- [ ] VALIDATING-32 — Delete /press and /events pages entirely (site-wide) — Remove the press and events pages: delete their directories and remove the links from the global nav. — PR https://github.com/emmahudelson/emmahudelson/pull/9
