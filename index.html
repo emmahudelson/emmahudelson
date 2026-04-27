@@ -120,7 +120,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 60% center; /* favor the horse / motion, not dead center */
+      object-position: center top; /* portrait image — crop from top */
       /* Warm duotone: B&W + slight sepia. Subtle. */
       filter: grayscale(1) contrast(1.04) sepia(0.18) brightness(0.98);
       /* Paper-toned blend softens pure blacks into the cream field */
@@ -160,13 +160,11 @@
     /* ---------- Reveal choreography ---------- */
     /* Wordmark and meta come in on load; the image fades a beat later. */
     .home-wordmark,
-    .home-meta,
     .home-image {
       opacity: 0;
       animation: homeFade var(--dur-slow) var(--ease) forwards;
     }
     .home-wordmark { animation-delay: 80ms; }
-    .home-meta     { animation-delay: 360ms; }
     .home-image    { animation-delay: 240ms; }
 
     @keyframes homeFade {
@@ -175,7 +173,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       .home-wordmark,
-      .home-meta,
       .home-image {
         opacity: 1;
         animation: none;
@@ -259,17 +256,10 @@
           <h1 id="home-wordmark" class="wordmark home-wordmark">Emma<span class="break"> </span>Hudelson</h1>
         </div>
 
-        <p class="home-meta" aria-label="Emma Hudelson — literary nonfiction writer based between Indianapolis and Kentucky">
-          <span>Literary nonfiction</span>
-          <span class="dot" aria-hidden="true">&middot;</span>
-          <span>Indianapolis</span>
-          <span class="dot" aria-hidden="true">&middot;</span>
-          <span>Kentucky</span>
-        </p>
       </div>
 
-      <figure class="home-image" role="img" aria-label="A quiet moment inside an American Saddlebred show arena.">
-        <img src="/assets/images/saddlebred-arena.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+      <figure class="home-image" role="img" aria-label="Horse.">
+        <img src="/assets/images/horse.jpeg" alt="Horse" loading="eager" fetchpriority="high" decoding="async">
       </figure>
     </section>
   </main>
