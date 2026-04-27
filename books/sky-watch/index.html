@@ -147,6 +147,31 @@
       color: var(--fg-mute);
       line-height: 1.4;
     }
+    .praise-more {
+      max-width: 1080px;
+      margin: var(--s-7) auto 0;
+    }
+    .praise-more > summary {
+      list-style: none;
+      cursor: pointer;
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg);
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid var(--fg);
+      padding-bottom: 0.15em;
+    }
+    .praise-more > summary::-webkit-details-marker { display: none; }
+    .praise-more > summary::marker { content: ''; }
+    .praise-more[open] > summary { margin-bottom: var(--s-7); }
+    .praise-more .praise-grid {
+      margin-top: 0;
+    }
 
     /* ---------- Archival plate ----------------------------------------- */
     .plate {
@@ -410,48 +435,102 @@
       </div>
       <div class="praise-grid stagger">
         <figure class="praise-item">
-          <blockquote><span class="openq">&ldquo;</span>A beautiful braided memoir deftly weaving the dramatic story of Saddlebred horses&rsquo; biggest star, Sky Watch; the history of horsemanship; and Hudelson&rsquo;s own life with horses.&rdquo;</blockquote>
+          <blockquote><span class="openq">&ldquo;</span><em>Sky Watch</em> makes for a story that is at once educational, propulsive, and immensely entertaining. This book made a railbird out of me&mdash;I couldn&rsquo;t look away!&rdquo;</blockquote>
           <figcaption>
-            <span class="praise-who">Tessa Fontaine</span>
-            <span class="praise-work">author of <em>The Electric Woman</em></span>
+            <span class="praise-who">Courtney Maum</span>
+            <span class="praise-work">author of <em>The Year of the Horses</em></span>
           </figcaption>
         </figure>
         <figure class="praise-item">
-          <blockquote><span class="openq">&ldquo;</span>What is more compelling than a remarkable horse making history? Beautiful horses and masterful showmanship abound, but ultimately this is a story about love&mdash;in all its forms.&rdquo;</blockquote>
-          <figcaption>
-            <span class="praise-who">Kristen Iversen</span>
-            <span class="praise-work">author of <em>Full Body Burden</em></span>
-          </figcaption>
-        </figure>
-        <figure class="praise-item">
-          <blockquote><span class="openq">&ldquo;</span>With the heart and humor of Susan Orlean and the research chops of Laura Hillenbrand, Hudelson has written a chronicle and a testament to the American Saddlebred that will surely enter the canon of great equestrian writing.&rdquo;</blockquote>
-          <figcaption>
-            <span class="praise-who">Foreword Reviews</span>
-            <span class="praise-work">2024 INDIES Award Finalist</span>
-          </figcaption>
-        </figure>
-        <figure class="praise-item">
-          <blockquote><span class="openq">&ldquo;</span>Hudelson is the perfect guide&mdash;knowledgeable and determined, adept with narrative and deeply engaged. Her passion for both Sky Watch and the American Saddlebred is clear, contagious, and propulsive.&rdquo;</blockquote>
-          <figcaption>
-            <span class="praise-who">Chris Bachelder</span>
-            <span class="praise-work">author of <em>The Throwback Special</em></span>
-          </figcaption>
-        </figure>
-        <figure class="praise-item">
-          <blockquote><span class="openq">&ldquo;</span>In meticulously reported detail, Emma Hudelson details her &lsquo;horse-sized love&rsquo; for a legendary stallion. Hudelson&rsquo;s flair for writing and deeply researched history make her own story and this legendary horse&rsquo;s come movingly alive.&rdquo;</blockquote>
+          <blockquote><span class="openq">&ldquo;</span>Hudelson&rsquo;s flair for writing and deeply researched history makes her own story and this legendary horse&rsquo;s come movingly alive.&rdquo;</blockquote>
           <figcaption>
             <span class="praise-who">Sarah Maslin Nir</span>
-            <span class="praise-work">two-time Pulitzer finalist, author of <em>Horse Crazy</em></span>
+            <span class="praise-work">two-time Pulitzer finalist, author of <em>Horse Crazy: The Story of a Woman and a World in Love with an Animal</em></span>
           </figcaption>
         </figure>
         <figure class="praise-item">
-          <blockquote><span class="openq">&ldquo;</span>A book that anyone who has ever loved a horse&mdash;or tried to explain why&mdash;will recognize as true.&rdquo;</blockquote>
+          <blockquote><span class="openq">&ldquo;</span><em>Sky Watch&rsquo;s</em> constellation of tales is plotted with great skill and energy by Hudelson, giving us a compelling insight into an esoteric world where the high-stepping American Saddlebred is king.&rdquo;</blockquote>
           <figcaption>
-            <span class="praise-who">2025 Equine Media Award</span>
-            <span class="praise-work">winner, book category</span>
+            <span class="praise-who">Susanna Forrest</span>
+            <span class="praise-work">author of <em>The Age of the Horse</em> and <em>If Wishes Were Horses</em></span>
           </figcaption>
         </figure>
       </div>
+      <details class="praise-more reveal">
+        <summary>Read more</summary>
+        <div class="praise-grid">
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>Anyone who loves horses will love <em>Sky Watch</em>, which tells the tale of one of the greatest American Saddlebreds of all time. Through meticulous research and beautiful, down-to-earth prose, Hudelson places me ringside, letting me relive the drama and excitement of the 1980s show horse world exactly as it happened. All horse enthusiasts have their own Sky Watch, a horse who inspires them for decades to come. This book is their story, too.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">William Marple</span>
+              <span class="praise-work">American Saddlebred historian</span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span><em>Sky Watch: Chasing an American Saddlebred Story</em> is a powerful testament to the special relationship between people and animals, and the things we can learn from one and other. In the tradition of great human-animal nonfiction such as Helen Macdonald&rsquo;s <em>H is for Hawk</em> and Lyanda Lynn Haupt&rsquo;s <em>Mozart&rsquo;s Starling</em>, Hudelson seamlessly weaves her own story alongside the historical account of a famed animal. A triumphant work, this is a must-read for anyone who loves animals, but especially for those who are wading into parenthood or who have wanted to pursue a passion that feels like a fantasy. <em>Sky Watch</em> will show you the way.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">E.B. Bartels</span>
+              <span class="praise-work">author of <em>Good Grief: On Loving Pets, Here and Hereafter</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>Emma Hudelson&rsquo;s <em>Sky Watch</em> is a beautiful braided memoir deftly weaving the dramatic story of Saddlebred horses&rsquo; biggest star, Sky Watch, the history of horsemanship, and Hudelson&rsquo;s own life with horses. I loved being immersed in this world, and was moved by the obsession, adventure, and the biggest delight of all&mdash;how we care for one another, allowing what&rsquo;s brightest about those we love, both human and animal, to shine.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Tessa Fontaine</span>
+              <span class="praise-work">author of <em>The Electric Woman</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>A love story with many deep levels&mdash;from the research into champion Sky Watch and the breed of the American Saddlebred, to the love of young girls and horses, to the love of mothers and daughters&mdash;Emma Hudelson&rsquo;s book is well-researched, thoughtful, engaging, smart, and lively. As a horse lover and a reader, I adored it. If you love animals, don&rsquo;t miss this gem.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Annie Hartnett</span>
+              <span class="praise-work">author of <em>Rabbit Cake</em> and <em>Unlikely Animals</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>What is more compelling than a remarkable horse making history? In this engaging first-person narrative, Emma Hudelson weaves the rise of show horse Sky Watch with a portrait of the magical, mysterious world of American Saddlebred horses and her own powerful story with the breed. Beautiful horses and masterful showmanship abound, but ultimately this is a story about love&mdash;in all its forms.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Kristen Iversen</span>
+              <span class="praise-work">author of <em>Full Body Burden</em> and <em>Molly Brown</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>The story of Sky Watch is irresistible. It has drama, surprise, intrigue, and a cast of compelling figures, none more remarkable than our four-legged hero. Hudelson is the perfect guide&mdash;knowledgeable and determined, adept with narrative and deeply engaged. Her passion for both Sky Watch and the American Saddlebred is clear, contagious, and propulsive. I loved learning about this horse and this world.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Chris Bachelder</span>
+              <span class="praise-work">author of <em>Dayswork</em> and <em>The Throwback Special</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>While this subject matter will surely appeal to those already comfortable at a stable or fairground, <em>Sky Watch: Chasing an American Saddlebred Story</em> also resonates strongly with anyone interested in the relationships between animals and humans in general, and how those relationships shape and are shaped by American history. Hudelson tells a big, complex story about our families, our culture, and a powerful and intelligent species-other, and tells it beautifully: the weave of personal memoir and historical reconstruction, the multi-dimensional characterization of both humans and horses, the skillful pacing and searching and empathic narrative persona, all make <em>Sky Watch</em> both wonderfully informative and a pleasure to read.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Andrew Levy</span>
+              <span class="praise-work">author of <em>Huck Finn&rsquo;s America</em> and <em>A Brain Wider Than the Sky</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>&lsquo;Most people live their entire lives without knowing American Saddlebreds exist, and they seem to do just fine,&rsquo; Emma Hudelson writes in this fascinating story of the great American Saddlebred Sky Watch. To those that know them, she adds, &lsquo;they&rsquo;re portals to an otherworldly place&hellip;a space outside of time.&rsquo; In <em>Sky Watch</em>, Hudelson takes us to this place outside of time as she paints a portrait of a legendary horse, a story filled with setbacks, victories, and a great rivalry, and then deftly weaves in her own love of the Saddlebred and its beauty, a love passed down from her mother and offered now to the next generation.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Susan Neville</span>
+              <span class="praise-work">author of <em>The Town of Whispering Dolls</em> and <em>Sailing the Inland Sea</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>Whether they rack, race, or roll, horses are still an integral part of our lives and the stories of the great ones draw us in like few others. Hudelson&rsquo;s <em>Sky Watch</em> shares not only the story of this champion Saddlebred and his great career in the ring, drawing us into this rich world of both splendor and power, but also one woman&rsquo;s contemplation of the role horses have played and will continue to play as she enters a new phase in her life. From the first page to the final one, <em>Sky Watch</em> is an utterly fascinating look at a classic equine world that will leave you rushing to learn more about Saddlebreds while also running to hug your favorite equine friend.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Jennifer Kelly</span>
+              <span class="praise-work">author of <em>Foxes of Belair: Gallant Fox, Omaha, &amp; the Quest for the Triple Crown</em></span>
+            </figcaption>
+          </figure>
+          <figure class="praise-item">
+            <blockquote><span class="openq">&ldquo;</span>Emma Hudelson&rsquo;s story of Saddlebred champion Sky Watch is as buoyant and spirited as his signature winning rack. In her personal, lyrical and ultimately brave explanation of how a great horse like Sky Watch became a magical and redemptive force in her own life, she makes him that for the rest of us as well. This book will be enjoyed and cherished by anyone whose life has been changed for the better through their love of a horse.&rdquo;</blockquote>
+            <figcaption>
+              <span class="praise-who">Mary Perdue</span>
+              <span class="praise-work">author of <em>Landaluce: The Story of Seattle Slew&rsquo;s First Champion</em></span>
+            </figcaption>
+          </figure>
+        </div>
+      </details>
     </div>
   </section>
 
