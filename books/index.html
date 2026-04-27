@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/css/site.css">
 
   <title>Books — Emma Hudelson</title>
-  <meta name="description" content="Books by Emma Hudelson — Sky Watch: Chasing an American Saddlebred Story (University Press of Kentucky, 2024), and a second book in progress.">
+  <meta name="description" content="Books by Emma Hudelson — Sky Watch: Chasing an American Saddlebred Story (University Press of Kentucky, 2024).">
   <link rel="canonical" href="https://emmahudelson.com/books">
 
   <style>
@@ -185,50 +185,6 @@
     }
 
     /* =====================================================================
-       Forthcoming — a considered blank. Treated as a row but with no cover.
-       The cover slot holds an asterism set in a hairline frame that echoes
-       the same dimensions as a real cover (so the rhythm isn't broken).
-       ===================================================================== */
-    .book-entry.forthcoming .book-cover-slot {
-      min-height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--rule);
-      max-width: 220px;
-    }
-    .book-entry.forthcoming .placeholder-mark {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--fg-mute);
-      letter-spacing: 0.4em;
-      user-select: none;
-      transform: translateX(0.2em); /* optical center for the ornament's left-heavy shape */
-    }
-    .book-entry.forthcoming .placeholder-mark::before { content: '\2042'; }
-
-    .book-entry.forthcoming .book-title-slot {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.2vw + 0.5rem, 3rem);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: var(--tr-display);
-      color: var(--fg-mute);
-      margin: 0 0 var(--s-3);
-      font-style: italic;
-    }
-    .book-entry.forthcoming .book-title-slot .dash {
-      font-style: normal;
-      letter-spacing: 0.1em;
-      color: var(--rule);
-      margin-left: 0.3em;
-    }
-    .book-entry.forthcoming .book-teaser {
-      font-style: italic;
-      color: var(--fg-mute);
-    }
-
-    /* =====================================================================
        Closing note
        ===================================================================== */
     .books-note {
@@ -257,10 +213,6 @@
       .book-cover-slot img {
         max-width: 180px;
       }
-      .book-entry.forthcoming .book-cover-slot {
-        min-height: 220px;
-        max-width: 180px;
-      }
       .books-intro {
         margin-bottom: var(--s-7);
       }
@@ -271,10 +223,6 @@
 
     @media (max-width: 520px) {
       .book-cover-slot img {
-        max-width: 160px;
-      }
-      .book-entry.forthcoming .book-cover-slot {
-        min-height: 200px;
         max-width: 160px;
       }
     }
@@ -310,7 +258,7 @@
     </div>
 
     <section class="books-intro reveal">
-      <p>A short catalog &mdash; one book out in the world, one on the desk, taking shape.</p>
+      <p>A short catalog &mdash; one book out in the world.</p>
     </section>
 
     <section class="book-list" aria-label="Books by Emma Hudelson">
@@ -334,8 +282,6 @@
 
           <p class="book-imprint">
             University Press of Kentucky
-            <span class="sep">&middot;</span>
-            A braided memoir
           </p>
 
           <p class="book-awards">
@@ -343,31 +289,6 @@
           </p>
 
           <a class="book-readmore" href="/books/sky-watch">Read more</a>
-        </div>
-      </article>
-
-      <!-- ─── Forthcoming ─────────────────────────────────────── -->
-      <article class="book-entry forthcoming reveal" aria-label="A second book, forthcoming">
-        <div class="book-cover-slot" aria-hidden="true">
-          <span class="placeholder-mark"></span>
-        </div>
-
-        <div class="book-body">
-          <span class="book-index-number">II &nbsp;&middot;&nbsp; Forthcoming</span>
-
-          <p class="book-title-slot">
-            <em>A new book</em><span class="dash">&mdash;</span>
-          </p>
-
-          <p class="book-imprint">
-            In progress
-            <span class="sep">&middot;</span>
-            Subject: TBA
-          </p>
-
-          <p class="book-teaser">
-            A considered blank. Notes are stacking up; pages are beginning to turn. More in time.
-          </p>
         </div>
       </article>
 
