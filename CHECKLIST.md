@@ -35,14 +35,14 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## Books → Sky Watch detail
 
-- [ ] #18 — Delete "a memoir" eyebrow above title (/books/sky-watch) — Remove the "a memoir" header above the title.
-- [ ] #19 — Delete "—Emma Hudelson" byline under subtitle (/books/sky-watch) — Remove the "—Emma Hudelson" line beneath the title and subtitle.
+- [ ] VALIDATING-18 — Delete "a memoir" eyebrow above title (/books/sky-watch) — Remove the "a memoir" header above the title. — PR https://github.com/emmahudelson/emmahudelson/pull/14
+- [ ] VALIDATING-19 — Delete "—Emma Hudelson" byline under subtitle (/books/sky-watch) — Remove the "—Emma Hudelson" line beneath the title and subtitle. — PR https://github.com/emmahudelson/emmahudelson/pull/14
 - [ ] #20 — Praise: show three 1–2 sentence pull quotes with read-more (/books/sky-watch) — Under "Praise for Sky Watch," show only the first three blurbs as 1–2 sentence pull quotes (in the source order: Courtney Maum, Sarah Maslin Nir, Susanna Forrest). Add a "read more" link that expands the remaining blurbs and shows full text for all of them. Order, blurbs, and pull-quote selections per instructions.txt.
 - [ ] #21 — Reviews and Media: three reviews with title, author, pull quote, link (/books/sky-watch) — Under "Reviews and Media," show these three reviews with the review title and author displayed plus a one-sentence pull quote and link: sagecigarettes.com/?p=4266; sportstoriespress.com/notebook/book-notes-sky-watch-chasing-an-american-saddlebred-reviewed-by-caroline-grass; thegoodlifereview.com/2024/07/27/rory-gould-review-of-sky-watch-by-emma-hudelson/.
-- [ ] #22 — Shrink Sky Watch photo, delete caption text (/books/sky-watch) — Make the Sky Watch (horse) photo smaller and remove the text beneath it.
-- [ ] #23 — Delete "ask your local bookseller" link (/books/sky-watch) — Remove "ask your local bookseller" from under the Buy links (it currently links to Contact).
-- [ ] #24 — Remove email line from Sky Watch page (/books/sky-watch) — Delete the hello@emmahudelson.com line entirely from this page (address does not receive mail).
-- [ ] #25 — Delete "Indianapolis, Indiana — available for readings…" line (/books/sky-watch) — Remove the "INDIANAPOLIS, INDIANA Available for readings, workshops, and press nationwide & virtually" text.
+- [ ] VALIDATING-22 — Shrink Sky Watch photo, delete caption text (/books/sky-watch) — Make the Sky Watch (horse) photo smaller and remove the text beneath it. — PR https://github.com/emmahudelson/emmahudelson/pull/14
+- [ ] VALIDATING-23 — Delete "ask your local bookseller" link (/books/sky-watch) — Remove "ask your local bookseller" from under the Buy links (it currently links to Contact). — PR https://github.com/emmahudelson/emmahudelson/pull/14
+- [ ] VALIDATING-24 — Remove email line from Sky Watch page (/books/sky-watch) — Delete the hello@emmahudelson.com line entirely from this page (address does not receive mail). — PR https://github.com/emmahudelson/emmahudelson/pull/14
+- [ ] VALIDATING-25 — Delete "Indianapolis, Indiana — available for readings…" line (/books/sky-watch) — Remove the "INDIANAPOLIS, INDIANA Available for readings, workshops, and press nationwide & virtually" text. — PR https://github.com/emmahudelson/emmahudelson/pull/14
 
 ## Writing for Wellness
 
