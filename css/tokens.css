@@ -1,14 +1,14 @@
 /* =========================================================================
    emmahudelson.com — design tokens
    Typographic-first editorial minimalism. Near-black on warm paper,
-   one muted earth accent, two distinctive serif families.
+   one muted earth accent, characterful sans-serif system.
    ========================================================================= */
 
 /* --- Fonts -------------------------------------------------------------- */
-/* Fraunces  — display: wordmark + headings. Variable; opsz + wght + soft. */
-/* Newsreader — body / editorial running text. Variable; opsz italic.      */
-/* DM Mono   — small-caps labels, meta, eyebrows. Quiet typewriter voice.  */
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..700,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap');
+/* Manrope    — display: wordmark + headings. Variable wght 200..800.       */
+/* Public Sans — body / editorial running text. Variable wght 100..900 + ital. */
+/* DM Mono    — small-caps labels, meta, eyebrows. Quiet typewriter voice.  */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@200..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   /* ---------------------------------------------------------------------
@@ -42,9 +42,13 @@
 
   /* ---------------------------------------------------------------------
      TYPE — families
+     Site-wide sans-serif system: Manrope for display + wordmark,
+     Public Sans for body / editorial running text, DM Mono for
+     small-caps labels and meta. Token NAMES preserved for downstream
+     consumers (--font-serif now points to a sans body face).
      --------------------------------------------------------------------- */
-  --font-display: 'Fraunces', 'Times New Roman', Times, serif;
-  --font-serif:   'Newsreader', 'Iowan Old Style', 'Charter', Georgia, serif;
+  --font-display: 'Manrope', 'Helvetica Neue', sans-serif;
+  --font-serif:   'Public Sans', 'Manrope', 'Helvetica Neue', sans-serif;
   --font-sans:    'DM Mono', 'Menlo', 'Courier New', monospace;
 
   /* ---------------------------------------------------------------------
@@ -68,8 +72,8 @@
   --lh-loose:  1.8;
 
   /* Tracking (defaults applied per-context) */
-  --tr-wordmark: 0.005em;
-  --tr-display:  -0.01em;
+  --tr-wordmark: -0.025em;
+  --tr-display:  -0.02em;
   --tr-label:    0.22em;
 
   /* ---------------------------------------------------------------------
@@ -145,12 +149,11 @@ img, picture, svg, video {
 /* Headings default to display face, tight leading */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   line-height: var(--lh-tight);
   letter-spacing: var(--tr-display);
   color: var(--fg);
   margin: 0 0 var(--s-5);
-  font-variation-settings: 'opsz' 48, 'SOFT' 30;
 }
 
 p { margin: 0 0 var(--s-5); }

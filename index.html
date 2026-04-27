@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
 
-  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <!-- Fonts loaded via @import in /css/tokens.css: Manrope (display) + Public Sans (body) + DM Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -78,10 +78,10 @@
     }
     .home-wordmark .break { display: block; }
 
-    /* A hair of hand-tuned tracking; opsz already maxed at 144 */
+    /* Hand-tuned tracking for sans display at hero scale */
     @media (min-width: 1200px) {
       .home-wordmark {
-        letter-spacing: 0.008em;
+        letter-spacing: -0.035em;
       }
     }
 

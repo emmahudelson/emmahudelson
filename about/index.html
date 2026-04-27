@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
 
-  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <!-- Fonts loaded via @import in /css/tokens.css: Manrope (display) + Public Sans (body) + DM Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -89,7 +89,6 @@
       font-weight: 300;
       line-height: 1.15;
       letter-spacing: var(--tr-display);
-      font-variation-settings: 'opsz' 72, 'SOFT' 40;
       color: var(--fg);
       margin: 0 0 var(--s-6);
     }
@@ -112,7 +111,6 @@
       padding: 0.05em 0.08em 0 0;
       font-weight: 350;
       color: var(--accent-deep);
-      font-variation-settings: 'opsz' 144, 'SOFT' 30;
     }
 
     /* --- Pullquote — typographic set-piece ----------------------------- */
@@ -128,7 +126,6 @@
       line-height: 1.35;
       letter-spacing: -0.005em;
       color: var(--fg);
-      font-variation-settings: 'opsz' 72, 'SOFT' 50;
       text-wrap: balance;
       position: relative;
     }
@@ -203,7 +200,6 @@
       color: var(--accent-deep);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      font-variation-settings: 'opsz' 36, 'SOFT' 50;
       transition: color var(--dur) var(--ease),
                   border-color var(--dur) var(--ease);
       width: max-content;

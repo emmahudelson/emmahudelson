@@ -39,10 +39,9 @@
 .display-xl {
   font-family: var(--font-display);
   font-size: var(--fs-display-xl);
-  font-weight: 350;
+  font-weight: 600;
   line-height: var(--lh-tight);
   letter-spacing: var(--tr-display);
-  font-variation-settings: 'opsz' 144, 'SOFT' 30;
   color: var(--fg);
   margin: 0;
 }
@@ -50,10 +49,9 @@
 .display-l {
   font-family: var(--font-display);
   font-size: var(--fs-display-l);
-  font-weight: 350;
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: var(--tr-display);
-  font-variation-settings: 'opsz' 120, 'SOFT' 30;
   color: var(--fg);
   margin: 0;
 }
@@ -61,10 +59,9 @@
 .display-m {
   font-family: var(--font-display);
   font-size: var(--fs-display-m);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.1;
   letter-spacing: var(--tr-display);
-  font-variation-settings: 'opsz' 72, 'SOFT' 40;
   color: var(--fg);
   margin: 0;
 }
@@ -91,10 +88,9 @@
 .section-title {
   font-family: var(--font-display);
   font-size: var(--fs-h2);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: var(--tr-display);
-  font-variation-settings: 'opsz' 60, 'SOFT' 40;
   margin: 0 0 var(--s-5);
 }
 
@@ -109,10 +105,9 @@
 .page-title {
   font-family: var(--font-display);
   font-size: var(--fs-display-l);
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: var(--tr-display);
-  font-variation-settings: 'opsz' 120, 'SOFT' 30;
   margin: 0 0 var(--s-5);
 }
 
@@ -120,6 +115,7 @@
   font-family: var(--font-serif);
   font-size: var(--fs-lead);
   font-style: italic;
+  font-weight: 400;
   color: var(--fg-2);
   line-height: 1.5;
   max-width: var(--measure);
@@ -133,19 +129,18 @@
      - md: slightly tighter
      - sm (mobile): stacks to two lines (Emma / Hudelson), weight lightens,
        tracking tightens, optical size adjusts for smaller display.
-   Uses Fraunces variable axes opsz + wght + SOFT.
+   Uses Manrope at heavy display weight; tracking and weight shift across breakpoints.
    ========================================================================== */
 .wordmark {
   font-family: var(--font-display);
   font-size: var(--fs-display-xl);
-  font-weight: 300;
+  font-weight: 700;
   line-height: 0.92;
   letter-spacing: var(--tr-wordmark);
   color: var(--fg);
   margin: 0;
-  font-variation-settings: 'opsz' 144, 'SOFT' 20, 'wght' 320;
   /* allow it to break naturally on narrow screens */
-  word-spacing: 0.04em;
+  word-spacing: 0.02em;
   text-wrap: balance;
 }
 
@@ -154,17 +149,18 @@
 
 @media (min-width: 1200px) {
   .wordmark {
-    letter-spacing: 0.012em;
-    font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 300;
+    /* widest screens: tight tracking, slightly relaxed weight; type breathes via size */
+    letter-spacing: -0.03em;
+    font-weight: 650;
   }
 }
 
 @media (max-width: 900px) {
   .wordmark {
     font-size: clamp(3rem, 14vw, 5.5rem);
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
     line-height: 0.95;
-    font-variation-settings: 'opsz' 96, 'SOFT' 50, 'wght' 360;
+    font-weight: 700;
   }
   .wordmark .break { display: block; }
 }
@@ -172,8 +168,8 @@
 @media (max-width: 520px) {
   .wordmark {
     font-size: clamp(2.75rem, 17vw, 4.25rem);
-    letter-spacing: -0.005em;
-    font-variation-settings: 'opsz' 72, 'SOFT' 60, 'wght' 380;
+    letter-spacing: -0.015em;
+    font-weight: 750;
   }
 }
 
@@ -181,12 +177,11 @@
 .nav-brand {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 420;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1;
   color: var(--fg);
   text-decoration: none;
-  font-variation-settings: 'opsz' 36, 'SOFT' 20, 'wght' 420;
   white-space: nowrap;
   transition: color var(--dur) var(--ease);
 }
@@ -357,12 +352,11 @@
 .footer-brand {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 350;
+  font-weight: 650;
   line-height: 1;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.02em;
   color: var(--fg);
   text-decoration: none;
-  font-variation-settings: 'opsz' 48, 'SOFT' 30, 'wght' 340;
 }
 .footer-brand:hover { color: var(--accent-deep); text-decoration: none; }
 
@@ -446,12 +440,12 @@
   gap: 0.4em;
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   font-size: var(--fs-lead);
   color: var(--accent-deep);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  font-variation-settings: 'opsz' 36, 'SOFT' 50;
+  letter-spacing: -0.005em;
   transition: color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
               gap var(--dur) var(--ease);
