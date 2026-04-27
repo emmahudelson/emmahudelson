@@ -1,7 +1,8 @@
 /* =========================================================================
    emmahudelson.com — design tokens
-   Typographic-first editorial minimalism. Near-black on warm paper,
-   one muted earth accent, characterful sans-serif system.
+   Typographic-first editorial minimalism. Near-black on cool off-white
+   paper (a whisper of warmth, no sepia), one muted earth accent,
+   characterful sans-serif system.
    ========================================================================= */
 
 /* --- Fonts -------------------------------------------------------------- */
@@ -13,18 +14,19 @@
 :root {
   /* ---------------------------------------------------------------------
      COLOR
-     Near-black ink on warm cream paper with one muted earth accent.
-     Mood: good paper, natural light, a barn in the morning.
+     Near-black ink on cool off-white paper. A whisper of warmth keeps it
+     from reading clinical, but the sepia is gone — closer to fine book
+     stock than to an old photograph. One muted earth accent.
      --------------------------------------------------------------------- */
-  --paper:        #F7F3EB;  /* primary background, warm cream */
-  --paper-alt:    #F0EADC;  /* alternating section background */
-  --paper-deep:   #E6DDC7;  /* deepest tier; reserved for set-apart callouts */
+  --paper:        #F8F7F4;  /* primary background, cool off-white (hint of warmth) */
+  --paper-alt:    #F1EFEA;  /* alternating section background */
+  --paper-deep:   #E5E2DA;  /* deepest tier; reserved for set-apart callouts */
 
-  --ink:          #14130F;  /* primary text, near-black with warm undertone */
-  --ink-soft:     #2E2B25;  /* secondary / long-form body */
-  --ink-mute:     #7B766C;  /* captions, meta, small-caps labels */
+  --ink:          #14130F;  /* primary text, near-black */
+  --ink-soft:     #2A2A28;  /* secondary / long-form body — neutral dark */
+  --ink-mute:     #76746E;  /* captions, meta, small-caps labels — neutral gray */
 
-  --rule:         #D6CDBB;  /* hairline dividers */
+  --rule:         #D5D2CB;  /* hairline dividers — neutral */
 
   --accent:       #8A4B3A;  /* muted terracotta / barn umber — links, flourish */
   --accent-deep:  #6B3728;  /* link hover, active accent */
