@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- head.html (inlined) -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <title>Books — Emma Hudelson</title>
+  <meta name="description" content="Books by Emma Hudelson — Sky Watch: Chasing an American Saddlebred Story (University Press of Kentucky, 2024), and a second book in progress.">
+  <link rel="canonical" href="https://emmahudelson.com/books">
+
+  <style>
+    /* =====================================================================
+       Books index — editorial list. Not a grid of thumbnails.
+       Each entry is a row: cover (or ornamental placeholder) left, meta right.
+       Hairline rules between entries. Generous vertical air.
+       ===================================================================== */
+
+    .books-intro {
+      max-width: var(--measure-wide);
+      margin: 0 auto var(--s-9);
+      padding: 0 var(--page-gutter);
+    }
+    .books-intro p {
+      font-family: var(--font-serif);
+      font-size: var(--fs-lead);
+      font-style: italic;
+      color: var(--fg-2);
+      line-height: 1.55;
+      margin: 0;
+      max-width: var(--measure);
+    }
+
+    .book-list {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 0 var(--page-gutter);
+    }
+
+    .book-entry {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-8);
+      padding: var(--s-8) 0;
+      border-top: 1px solid var(--rule);
+      align-items: start;
+    }
+    .book-entry:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ─ Cover slot ─ */
+    .book-cover-slot {
+      position: relative;
+    }
+    .book-cover-slot img {
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+      display: block;
+    }
+
+    /* ─ Text column ─ */
+    .book-body {
+      padding-top: var(--s-2);
+    }
+
+    .book-index-number {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin-bottom: var(--s-4);
+      display: block;
+    }
+
+    .book-title-link {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.2vw + 0.5rem, 3rem);
+      font-weight: 350;
+      line-height: 1.05;
+      letter-spacing: var(--tr-display);
+      color: var(--fg);
+      text-decoration: none;
+      display: inline-block;
+      margin: 0 0 var(--s-3);
+      font-variation-settings: 'opsz' 96, 'SOFT' 30;
+      border-bottom: 1px solid transparent;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+    }
+    .book-title-link em { font-style: italic; }
+    .book-title-link:hover,
+    .book-title-link:focus-visible {
+      color: var(--accent-deep);
+      border-bottom-color: var(--accent-deep);
+      text-decoration: none;
+    }
+
+    .book-subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.125rem, 0.8vw + 0.9rem, 1.4rem);
+      color: var(--fg-2);
+      line-height: 1.3;
+      margin: 0 0 var(--s-5);
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+    }
+
+    .book-imprint {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin: 0 0 var(--s-5);
+    }
+    .book-imprint .sep {
+      display: inline-block;
+      margin: 0 0.6em;
+      color: var(--rule);
+    }
+
+    .book-teaser {
+      font-family: var(--font-serif);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      color: var(--fg-2);
+      max-width: 34em;
+      margin: 0 0 var(--s-5);
+    }
+
+    .book-awards {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      color: var(--accent-deep);
+      margin: 0 0 var(--s-6);
+      max-width: 34em;
+      line-height: 1.4;
+    }
+
+    .book-readmore {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: var(--fs-lead);
+      color: var(--accent-deep);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      font-variation-settings: 'opsz' 36, 'SOFT' 50;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.4em;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease),
+                  gap var(--dur) var(--ease);
+    }
+    .book-readmore::after {
+      content: '\2192';
+      font-style: normal;
+      font-family: var(--font-serif);
+      transition: transform var(--dur) var(--ease);
+      display: inline-block;
+    }
+    .book-readmore:hover,
+    .book-readmore:focus-visible {
+      color: var(--fg);
+      border-bottom-color: var(--fg);
+      text-decoration: none;
+    }
+    .book-readmore:hover::after,
+    .book-readmore:focus-visible::after {
+      transform: translateX(4px);
+    }
+
+    /* =====================================================================
+       Forthcoming — a considered blank. Treated as a row but with no cover.
+       The cover slot holds an asterism set in a hairline frame that echoes
+       the same dimensions as a real cover (so the rhythm isn't broken).
+       ===================================================================== */
+    .book-entry.forthcoming .book-cover-slot {
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--rule);
+      max-width: 220px;
+    }
+    .book-entry.forthcoming .placeholder-mark {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--fg-mute);
+      letter-spacing: 0.4em;
+      user-select: none;
+      transform: translateX(0.2em); /* optical center for the ornament's left-heavy shape */
+    }
+    .book-entry.forthcoming .placeholder-mark::before { content: '\2042'; }
+
+    .book-entry.forthcoming .book-title-slot {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.2vw + 0.5rem, 3rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: var(--tr-display);
+      color: var(--fg-mute);
+      margin: 0 0 var(--s-3);
+      font-variation-settings: 'opsz' 96, 'SOFT' 50;
+      font-style: italic;
+    }
+    .book-entry.forthcoming .book-title-slot .dash {
+      font-style: normal;
+      letter-spacing: 0.1em;
+      color: var(--rule);
+      margin-left: 0.3em;
+    }
+    .book-entry.forthcoming .book-teaser {
+      font-style: italic;
+      color: var(--fg-mute);
+    }
+
+    /* =====================================================================
+       Closing note
+       ===================================================================== */
+    .books-note {
+      max-width: var(--measure);
+      margin: var(--s-9) auto 0;
+      padding: 0 var(--page-gutter);
+      text-align: center;
+    }
+    .books-note p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-mute);
+      margin: 0;
+    }
+
+    /* =====================================================================
+       Responsive
+       ===================================================================== */
+    @media (max-width: 900px) {
+      .book-entry {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        padding: var(--s-7) 0;
+      }
+      .book-cover-slot img {
+        max-width: 180px;
+      }
+      .book-entry.forthcoming .book-cover-slot {
+        min-height: 220px;
+        max-width: 180px;
+      }
+      .books-intro {
+        margin-bottom: var(--s-7);
+      }
+      .books-note {
+        margin-top: var(--s-7);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .book-cover-slot img {
+        max-width: 160px;
+      }
+      .book-entry.forthcoming .book-cover-slot {
+        min-height: 200px;
+        max-width: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav.html (inlined) -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="page">
+      <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a class="nav-link" href="/about">About</a></li>
+        <li><a class="nav-link active" href="/books">Books</a></li>
+        <li><a class="nav-link" href="/writing">Writing</a></li>
+        <li><a class="nav-link" href="/press">Press</a></li>
+        <li><a class="nav-link" href="/wellness">Wellness</a></li>
+        <li><a class="nav-link" href="/events">Events</a></li>
+        <li><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page">
+      <section class="page-head">
+        <p class="eyebrow">A catalog</p>
+        <h1 class="page-title">Books</h1>
+      </section>
+    </div>
+
+    <section class="books-intro reveal">
+      <p>A short catalog &mdash; one book out in the world, one on the desk, taking shape.</p>
+    </section>
+
+    <section class="book-list" aria-label="Books by Emma Hudelson">
+
+      <!-- ─── Sky Watch ────────────────────────────────────────── -->
+      <article class="book-entry reveal">
+        <div class="book-cover-slot">
+          <a href="/books/sky-watch" aria-label="Read more about Sky Watch">
+            <img src="/assets/images/sky-watch-cover.jpg" alt="Sky Watch: Chasing an American Saddlebred Story — book cover">
+          </a>
+        </div>
+
+        <div class="book-body">
+          <span class="book-index-number">I &nbsp;&middot;&nbsp; 2024</span>
+
+          <a class="book-title-link" href="/books/sky-watch">
+            <em>Sky Watch</em>
+          </a>
+
+          <p class="book-subtitle">Chasing an American Saddlebred Story</p>
+
+          <p class="book-imprint">
+            University Press of Kentucky
+            <span class="sep">&middot;</span>
+            A braided memoir
+          </p>
+
+          <p class="book-teaser">
+            A braided memoir about a legendary American Saddlebred stallion, an obsession, and the years horses carry us back to ourselves.
+          </p>
+
+          <p class="book-awards">
+            Winner, 2025 Equine Media Award &middot; Foreword INDIES finalist
+          </p>
+
+          <a class="book-readmore" href="/books/sky-watch">Read more</a>
+        </div>
+      </article>
+
+      <!-- ─── Forthcoming ─────────────────────────────────────── -->
+      <article class="book-entry forthcoming reveal" aria-label="A second book, forthcoming">
+        <div class="book-cover-slot" aria-hidden="true">
+          <span class="placeholder-mark"></span>
+        </div>
+
+        <div class="book-body">
+          <span class="book-index-number">II &nbsp;&middot;&nbsp; Forthcoming</span>
+
+          <p class="book-title-slot">
+            <em>A new book</em><span class="dash">&mdash;</span>
+          </p>
+
+          <p class="book-imprint">
+            In progress
+            <span class="sep">&middot;</span>
+            Subject: TBA
+          </p>
+
+          <p class="book-teaser">
+            A considered blank. Notes are stacking up; pages are beginning to turn. More in time.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <div class="books-note reveal">
+      <p>For rights, review copies, or speaking inquiries, see <a href="/contact">contact</a>.</p>
+    </div>
+
+  </main>
+
+  <!-- footer.html (inlined) -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="page">
+      <div class="footer-col">
+        <a class="footer-brand" href="/">Emma Hudelson</a>
+        <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-label">Elsewhere</span>
+        <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+        <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+        <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-label">The book</span>
+        <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+        <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+</body>
+</html>

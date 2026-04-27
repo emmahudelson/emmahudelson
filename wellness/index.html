@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <title>Writing for Wellness — Emma Hudelson</title>
+  <meta name="description" content="Writing for Wellness workshops with Emma Hudelson — generative, prompt-based sessions for teens, adults in recovery, medical students, healthcare workers, and community members.">
+  <link rel="canonical" href="https://emmahudelson.com/wellness">
+
+  <style>
+    /* =====================================================================
+       WELLNESS — page-specific layout
+       practice two-col • formats grid • who grid w/ 01–06 • venues grid
+       • seasonal pullout • cta
+       Tokens only — no hex, no radius, no shadow.
+       ===================================================================== */
+
+    /* ── Practice + benefits ───────────────────────────────────────────── */
+    .practice {
+      padding: 0 0 var(--s-7);
+    }
+    .practice .two-col {
+      gap: var(--s-9);
+      align-items: start;
+    }
+
+    .practice-intro p + p {
+      margin-top: var(--s-4);
+    }
+    .practice-intro p {
+      font-size: var(--fs-lead);
+      color: var(--fg-2);
+      line-height: 1.55;
+    }
+
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .benefits-list li {
+      padding: var(--s-5) 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 2.25rem 1fr;
+      gap: var(--s-4);
+      align-items: baseline;
+    }
+    .benefits-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .benefits-list .b-num {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      color: var(--fg-mute);
+      font-weight: 500;
+    }
+    .benefits-list strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--fg);
+      margin-bottom: var(--s-1);
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+    }
+    .benefits-list p {
+      margin: 0;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-2);
+      line-height: 1.5;
+    }
+
+    /* ── Section shell (formats, who, venues, seasonal) ────────────────── */
+    .section {
+      padding: var(--s-9) 0 0;
+    }
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      margin-bottom: var(--s-7);
+      padding-top: var(--s-6);
+      border-top: 1px solid var(--rule);
+    }
+    .section-head .section-title { margin: 0; max-width: var(--measure-wide); }
+
+    /* ── Formats grid ──────────────────────────────────────────────────── */
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-7) var(--s-8);
+    }
+    .format-item {
+      padding-top: var(--s-4);
+      border-top: 1px solid var(--rule);
+    }
+    .format-kind {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 500;
+      margin: 0 0 var(--s-3);
+    }
+    .format-name {
+      font-family: var(--font-display);
+      font-size: 1.625rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin: 0 0 var(--s-3);
+      color: var(--fg);
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+      letter-spacing: var(--tr-display);
+    }
+    .format-name em { font-style: italic; }
+    .format-desc {
+      font-size: var(--fs-body-sm);
+      color: var(--fg-2);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Who grid w/ 01–06 numbering ───────────────────────────────────── */
+    .who-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 var(--s-8);
+    }
+    .who-item {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr;
+      gap: var(--s-4);
+      align-items: baseline;
+      padding: var(--s-5) 0;
+      border-top: 1px solid var(--rule);
+    }
+    .who-item:last-of-type,
+    .who-item:nth-last-of-type(2) {
+      border-bottom: 1px solid var(--rule);
+    }
+    .who-num {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      color: var(--accent-deep);
+      font-weight: 500;
+    }
+    .who-text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--fg);
+      margin-bottom: var(--s-1);
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+    }
+    .who-text p {
+      margin: 0;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-2);
+      line-height: 1.55;
+    }
+
+    /* ── Venues — 3-col hairline grid ──────────────────────────────────── */
+    .venues-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 var(--s-7);
+    }
+    .venues-list li {
+      padding: var(--s-5) 0;
+      border-top: 1px solid var(--rule);
+    }
+    .venues-list li:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .venue-name {
+      font-family: var(--font-display);
+      font-size: 1.1875rem;
+      font-weight: 400;
+      color: var(--fg);
+      margin: 0 0 var(--s-2);
+      font-variation-settings: 'opsz' 48, 'SOFT' 30;
+      line-height: 1.2;
+    }
+    .venue-type {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── Seasonal pullout — quiet two-column on deep paper ─────────────── */
+    .seasonal-card {
+      background: var(--paper-alt);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: var(--s-8) 0;
+      margin-top: var(--s-8);
+    }
+    .seasonal-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: var(--s-8);
+      align-items: baseline;
+    }
+    .seasonal-inner .eyebrow { margin-bottom: var(--s-3); }
+    .seasonal-inner .section-title {
+      margin: 0;
+      max-width: 12ch;
+    }
+    .seasonal-inner p {
+      margin: 0;
+      font-size: var(--fs-lead);
+      color: var(--fg-2);
+      line-height: 1.55;
+      max-width: var(--measure);
+    }
+    .seasonal-inner p + p { margin-top: var(--s-4); }
+
+    /* ── CTA block ─────────────────────────────────────────────────────── */
+    .cta-block {
+      padding: var(--s-9) 0 var(--s-8);
+      text-align: left;
+    }
+    .cta-block .asterism { margin: 0 0 var(--s-6); text-align: left; padding-left: 0; }
+    .cta-block .eyebrow { margin-bottom: var(--s-3); }
+    .cta-block h2 {
+      font-family: var(--font-display);
+      font-size: var(--fs-display-m);
+      font-weight: 350;
+      line-height: 1.05;
+      letter-spacing: var(--tr-display);
+      font-variation-settings: 'opsz' 96, 'SOFT' 30;
+      margin: 0 0 var(--s-5);
+      max-width: var(--measure-wide);
+    }
+    .cta-block h2 em { font-style: italic; }
+
+    /* ── Responsive ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .practice .two-col { gap: var(--s-6); }
+      .formats-grid { grid-template-columns: 1fr; gap: var(--s-6); }
+      .who-list { grid-template-columns: 1fr; }
+      .who-item:nth-last-of-type(2) { border-bottom: none; }
+      .who-item:last-of-type { border-bottom: 1px solid var(--rule); }
+      .venues-list { grid-template-columns: 1fr; }
+      .venues-list li:nth-last-child(-n+3) { border-bottom: none; }
+      .venues-list li:last-child { border-bottom: 1px solid var(--rule); }
+      .section { padding-top: var(--s-7); }
+      .section-head { padding-top: var(--s-5); margin-bottom: var(--s-5); }
+      .seasonal-inner {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+      }
+      .seasonal-inner .section-title { max-width: none; }
+      .cta-block { padding: var(--s-7) 0 var(--s-6); }
+    }
+
+    @media (max-width: 520px) {
+      .benefits-list li { grid-template-columns: 2rem 1fr; gap: var(--s-3); }
+      .who-item { grid-template-columns: 2.25rem 1fr; gap: var(--s-3); }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="page">
+    <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link" href="/about">About</a></li>
+      <li><a class="nav-link" href="/books">Books</a></li>
+      <li><a class="nav-link" href="/writing">Writing</a></li>
+      <li><a class="nav-link" href="/press">Press</a></li>
+      <li><a class="nav-link active" href="/wellness">Wellness</a></li>
+      <li><a class="nav-link" href="/events">Events</a></li>
+      <li><a class="nav-link" href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── Page head ─────────────────────────────────────────────────────── -->
+  <header class="page-head reveal">
+    <div class="page">
+      <p class="eyebrow accent">Teaching &amp; workshops</p>
+      <h1 class="page-title">Writing for Wellness</h1>
+      <p class="page-lede">
+        I direct the Writing for Wellness initiative with the Butler University Master
+        of Fine Arts in Creative Writing program, and lead generative workshops both
+        virtually and in the Indianapolis community.
+      </p>
+    </div>
+  </header>
+
+  <!-- ── Practice + benefits ──────────────────────────────────────────── -->
+  <section class="practice">
+    <div class="page">
+      <div class="two-col">
+        <div class="practice-intro reveal">
+          <p class="eyebrow accent">The practice</p>
+          <p>
+            In my writing for wellness workshops, the focus is on process, not product.
+            We write from a generative prompt that invites sensory and memory work,
+            reflection, and integration, then share our experiences and — if it feels
+            right — share what we've written.
+          </p>
+          <p>
+            Research consistently shows that writing in this way releases stress,
+            reduces symptoms of chronic illness, and improves physical and emotional
+            health. Participants don't need to consider themselves writers. They need
+            only a willingness to put something true on the page.
+          </p>
+        </div>
+
+        <div class="reveal" style="transition-delay:150ms">
+          <p class="eyebrow">Research-backed benefits</p>
+          <ul class="benefits-list">
+            <li>
+              <span class="b-num">01</span>
+              <div>
+                <strong>Stress reduction</strong>
+                <p>Expressive writing lowers cortisol and measurably reduces stress responses.</p>
+              </div>
+            </li>
+            <li>
+              <span class="b-num">02</span>
+              <div>
+                <strong>Chronic illness relief</strong>
+                <p>Writing about difficult experiences reduces symptom severity in conditions including asthma, arthritis, and autoimmune disease.</p>
+              </div>
+            </li>
+            <li>
+              <span class="b-num">03</span>
+              <div>
+                <strong>Emotional processing</strong>
+                <p>Narrative-making helps the brain integrate difficult memories and experiences.</p>
+              </div>
+            </li>
+            <li>
+              <span class="b-num">04</span>
+              <div>
+                <strong>Community &amp; connection</strong>
+                <p>Shared writing creates authentic bonds between participants.</p>
+              </div>
+            </li>
+            <li>
+              <span class="b-num">05</span>
+              <div>
+                <strong>Improved physical health</strong>
+                <p>Pennebaker's foundational research links journaling to stronger immune function.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Formats ──────────────────────────────────────────────────────── -->
+  <section class="section" id="formats">
+    <div class="page">
+      <div class="section-head reveal">
+        <p class="eyebrow">Formats</p>
+        <h2 class="section-title">How we <em>work together</em></h2>
+      </div>
+      <div class="formats-grid stagger">
+        <div class="format-item">
+          <p class="format-kind">Corporate</p>
+          <p class="format-name"><em>Workplace wellness</em></p>
+          <p class="format-desc">
+            Single-session or multi-week workshops for teams and employees facing
+            burnout, transition, or the need for creative renewal. Ideal for
+            healthcare organizations, startups, and corporate offices.
+          </p>
+        </div>
+        <div class="format-item">
+          <p class="format-kind">Education</p>
+          <p class="format-name"><em>Classroom &amp; campus</em></p>
+          <p class="format-desc">
+            Workshops for pre-med students, medical students, undergraduate
+            courses, and K–12 classrooms. Especially valuable for students in
+            high-stress academic environments.
+          </p>
+        </div>
+        <div class="format-item">
+          <p class="format-kind">Community</p>
+          <p class="format-name"><em>Community spaces</em></p>
+          <p class="format-desc">
+            Workshops for addiction recovery groups, hospital patients and staff,
+            community organizations, and public library programs across Indiana.
+          </p>
+        </div>
+        <div class="format-item">
+          <p class="format-kind">Virtual</p>
+          <p class="format-name"><em>Online workshops</em></p>
+          <p class="format-desc">
+            Fully virtual sessions available for groups anywhere. Same generative,
+            prompt-based approach, adapted for the digital environment.
+          </p>
+        </div>
+        <div class="format-item">
+          <p class="format-kind">Ongoing</p>
+          <p class="format-name"><em>Series &amp; programs</em></p>
+          <p class="format-desc">
+            Multi-session programming for organizations that want sustained engagement.
+            Custom curricula available for specific wellness goals.
+          </p>
+        </div>
+        <div class="format-item">
+          <p class="format-kind">Individual</p>
+          <p class="format-name"><em>Private coaching</em></p>
+          <p class="format-desc">
+            One-on-one sessions for individuals exploring personal narrative,
+            memoir, or the use of writing in their own wellness practice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Participants ─────────────────────────────────────────────────── -->
+  <section class="section" id="participants">
+    <div class="page">
+      <div class="section-head reveal">
+        <p class="eyebrow">Participants</p>
+        <h2 class="section-title">Who the <em>workshops serve</em></h2>
+      </div>
+      <div class="who-list stagger">
+        <div class="who-item">
+          <span class="who-num">01</span>
+          <div class="who-text">
+            <strong>Teens &amp; adults in recovery</strong>
+            <p>Writing as a tool for processing, reflection, and narrative-building during addiction recovery programs.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <span class="who-num">02</span>
+          <div class="who-text">
+            <strong>Pre-med &amp; medical students</strong>
+            <p>Helping future physicians develop empathy, process the weight of medical training, and maintain their humanity through writing.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <span class="who-num">03</span>
+          <div class="who-text">
+            <strong>Healthcare workers</strong>
+            <p>Supporting nurses, physicians, and healthcare staff in processing the emotional demands of patient care and systemic burnout.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <span class="who-num">04</span>
+          <div class="who-text">
+            <strong>Corporate employees</strong>
+            <p>Writing for Wellness as an antidote to workplace burnout — restoring creativity, connection, and personal voice.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <span class="who-num">05</span>
+          <div class="who-text">
+            <strong>Students of all ages</strong>
+            <p>From elementary through university — teaching students to use writing as a tool for self-knowledge and emotional regulation.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <span class="who-num">06</span>
+          <div class="who-text">
+            <strong>Community members</strong>
+            <p>Anyone who wants to write — regardless of prior experience — and discover what the page can hold.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Track record / Venues ────────────────────────────────────────── -->
+  <section class="section" id="venues">
+    <div class="page">
+      <div class="section-head reveal">
+        <p class="eyebrow">Track record</p>
+        <h2 class="section-title">Where I've <em>led workshops</em></h2>
+      </div>
+      <ul class="venues-list stagger">
+        <li>
+          <p class="venue-name">University of Cincinnati College of Medicine</p>
+          <p class="venue-type">Medical education</p>
+        </li>
+        <li>
+          <p class="venue-name">Eskenazi Hospital</p>
+          <p class="venue-type">Healthcare</p>
+        </li>
+        <li>
+          <p class="venue-name">Fairbanks Addiction Treatment Center</p>
+          <p class="venue-type">Recovery</p>
+        </li>
+        <li>
+          <p class="venue-name">Butler University MFA Program</p>
+          <p class="venue-type">Higher education</p>
+        </li>
+        <li>
+          <p class="venue-name">Indianapolis Public Schools</p>
+          <p class="venue-type">K–12 education</p>
+        </li>
+        <li>
+          <p class="venue-name">Hope Academy</p>
+          <p class="venue-type">Community education</p>
+        </li>
+        <li>
+          <p class="venue-name">Community Health Network</p>
+          <p class="venue-type">Healthcare</p>
+        </li>
+        <li>
+          <p class="venue-name">Indianapolis community organizations</p>
+          <p class="venue-type">Community</p>
+        </li>
+        <li>
+          <p class="venue-name">Virtual — nationwide</p>
+          <p class="venue-type">Remote programming</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Seasonal series ──────────────────────────────────────────────── -->
+  <section class="seasonal-card reveal" id="seasonal">
+    <div class="page">
+      <div class="seasonal-inner">
+        <div>
+          <p class="eyebrow accent">A seasonal series</p>
+          <h2 class="section-title"><em>Writing the natural world</em></h2>
+        </div>
+        <div>
+          <p>
+            A seasonal, nature-based approach to writing for wellness, offered in
+            partnership with Bailey Sims of Mind Body Nature Counseling. For as long
+            as humans have been writing, we've written about and through the natural
+            world. Keep an eye out for the next session.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────────────────── -->
+  <section class="cta-block reveal">
+    <div class="page">
+      <span class="asterism" aria-hidden="true"></span>
+      <p class="eyebrow">Begin</p>
+      <h2>Bring a workshop <em>to your community</em>.</h2>
+      <div class="cta-row">
+        <a class="btn" href="/contact">Bring a workshop to your community</a>
+        <a class="btn-text" href="/contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="page">
+    <div class="footer-col">
+      <a class="footer-brand" href="/">Emma Hudelson</a>
+      <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">Elsewhere</span>
+      <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+      <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">The book</span>
+      <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+      <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <title>Contact — Emma Hudelson</title>
+  <meta name="description" content="Contact Emma Hudelson for readings, workshops, press inquiries, and event bookings.">
+  <link rel="canonical" href="https://emmahudelson.com/contact">
+
+  <style>
+    /* ── Contact page ──────────────────────────────────
+       Quiet typographic space. Form on the left, a
+       direct-email set-piece + socials + location on
+       the right. Generous whitespace, hairline rules,
+       underline-only inputs (.field handles that).
+       ───────────────────────────────────────────────── */
+    .contact-body {
+      padding-left: var(--page-gutter);
+      padding-right: var(--page-gutter);
+      max-width: var(--page-max);
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
+      gap: clamp(var(--s-6), 5vw, var(--s-9));
+      align-items: start;
+      padding-bottom: var(--s-9);
+    }
+
+    /* Left — form column */
+    .contact-form-col {
+      max-width: var(--measure);
+    }
+    .contact-form-col .eyebrow {
+      margin-bottom: var(--s-5);
+    }
+    .contact-form {
+      margin: 0;
+    }
+    .contact-form .field:last-of-type {
+      margin-bottom: var(--s-6);
+    }
+    .contact-form .btn {
+      margin-top: var(--s-2);
+    }
+    .form-sent {
+      margin-top: var(--s-6);
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--rule);
+      font-family: var(--font-serif);
+      font-size: var(--fs-body);
+      color: var(--fg-2);
+    }
+    .form-sent em {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--accent-deep);
+      font-variation-settings: 'opsz' 36, 'SOFT' 50;
+    }
+    .form-sent[hidden] { display: none; }
+
+    /* Right — direct email + socials + location */
+    .contact-aside {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-8);
+      padding-top: 0;
+    }
+
+    /* Direct-email set piece */
+    .direct-email {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: var(--s-6) 0 var(--s-7);
+    }
+    .direct-email .eyebrow {
+      margin-bottom: var(--s-4);
+    }
+    .direct-email-link {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 350;
+      font-size: clamp(1.4rem, 2vw + 0.6rem, 1.9rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      color: var(--accent-deep);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.12em;
+      font-variation-settings: 'opsz' 60, 'SOFT' 50, 'wght' 340;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+      word-break: break-word;
+    }
+    .direct-email-link:hover,
+    .direct-email-link:focus-visible {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+      text-decoration: none;
+    }
+    .direct-email-note {
+      margin: var(--s-4) 0 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-mute);
+      line-height: 1.5;
+      max-width: 36ch;
+    }
+
+    /* Socials — text only, stacked list */
+    .elsewhere .eyebrow {
+      margin-bottom: var(--s-4);
+    }
+    .elsewhere-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+    }
+    .elsewhere-list a {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body);
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.12em;
+      width: max-content;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+    }
+    .elsewhere-list a:hover,
+    .elsewhere-list a:focus-visible {
+      color: var(--accent-deep);
+      border-bottom-color: var(--accent-deep);
+      text-decoration: none;
+    }
+
+    /* Location note — quiet meta at the very bottom of aside */
+    .location-note {
+      display: block;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-mute);
+      line-height: 1.55;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--rule);
+      max-width: 42ch;
+    }
+    .location-note .city {
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      display: block;
+      margin-bottom: var(--s-2);
+    }
+
+    /* Ornament between page head and form, gentle editorial pause */
+    .contact-ornament {
+      margin: 0 0 var(--s-7);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--s-7);
+        padding-bottom: var(--s-8);
+      }
+      .contact-form-col {
+        max-width: 100%;
+      }
+      .contact-aside {
+        gap: var(--s-7);
+      }
+      .direct-email {
+        padding: var(--s-5) 0 var(--s-6);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="page">
+    <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link" href="/about">About</a></li>
+      <li><a class="nav-link" href="/books">Books</a></li>
+      <li><a class="nav-link" href="/writing">Writing</a></li>
+      <li><a class="nav-link" href="/press">Press</a></li>
+      <li><a class="nav-link" href="/wellness">Wellness</a></li>
+      <li><a class="nav-link" href="/events">Events</a></li>
+      <li><a class="nav-link active" href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <section class="page-head reveal">
+    <div class="page">
+      <p class="eyebrow">Contact</p>
+      <h1 class="page-title">Get in touch</h1>
+      <p class="page-lede">For readings, workshops, press inquiries, or anything else — a note goes directly to Emma's inbox. Expect a reply within a few days.</p>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="contact-grid">
+
+      <!-- Form column -->
+      <div class="contact-form-col reveal">
+        <p class="eyebrow accent">Send a note</p>
+        <form class="contact-form" id="contactForm"
+              action="mailto:hello@emmahudelson.com"
+              method="post"
+              enctype="text/plain">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required
+                   placeholder="name@domain.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required
+                      placeholder="A note about a workshop, reading, press inquiry, or event…"></textarea>
+          </div>
+          <button class="btn" type="submit">Send</button>
+        </form>
+
+        <div class="form-sent" id="formSent" hidden>
+          <p><em>Thank you.</em> Your note is opening in your mail app — hit send and Emma will be in touch soon.</p>
+        </div>
+      </div>
+
+      <!-- Aside: direct email set-piece + socials + location -->
+      <aside class="contact-aside reveal" style="transition-delay:.12s">
+
+        <div class="direct-email">
+          <p class="eyebrow">Or write directly</p>
+          <a class="direct-email-link" href="mailto:hello@emmahudelson.com"><em>hello@emmahudelson.com</em></a>
+          <p class="direct-email-note">If you'd rather skip the form, a plain email works just as well.</p>
+        </div>
+
+        <div class="elsewhere">
+          <p class="eyebrow">Or find me</p>
+          <ul class="elsewhere-list">
+            <li><a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="mailto:hello@emmahudelson.com">hello@emmahudelson.com</a></li>
+          </ul>
+        </div>
+
+        <p class="location-note">
+          <span class="city">Indianapolis, Indiana</span>
+          <em>Available for readings, workshops, and press nationwide &amp; virtually.</em>
+        </p>
+
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="page">
+    <div class="footer-col">
+      <a class="footer-brand" href="/">Emma Hudelson</a>
+      <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">Elsewhere</span>
+      <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+      <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">The book</span>
+      <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+      <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tiny enhancement: when the mailto form submits, reveal the thank-you
+  // confirmation. The form still opens the user's mail client as intended.
+  (function () {
+    var form = document.getElementById('contactForm');
+    var sent = document.getElementById('formSent');
+    if (!form || !sent) return;
+    form.addEventListener('submit', function () {
+      // Defer to next tick so the mailto handoff isn't blocked
+      setTimeout(function () { sent.hidden = false; }, 0);
+    });
+  })();
+</script>
+<script src="/js/nav.js"></script>
+</body>
+</html>

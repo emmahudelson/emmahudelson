@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <title>Sky Watch — Emma Hudelson</title>
+  <meta name="description" content="Sky Watch: Chasing an American Saddlebred Story — a braided memoir by Emma Hudelson (University Press of Kentucky, 2024). Winner of the 2025 Equine Media Award.">
+  <link rel="canonical" href="https://emmahudelson.com/books/sky-watch">
+
+  <style>
+    /* =====================================================================
+       Sky Watch — dedicated book page
+       Page-specific layout and ornament. Uses tokens only.
+       ===================================================================== */
+
+    /* ---------- Masthead ------------------------------------------------ */
+    .book-masthead {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-8);
+      border-bottom: 1px solid var(--rule);
+    }
+    .book-masthead .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--s-8);
+      align-items: center;
+    }
+    .book-masthead .eyebrow {
+      display: block;
+      margin-bottom: var(--s-5);
+    }
+    .book-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(3.5rem, 9vw + 0.5rem, 8rem);
+      line-height: 0.92;
+      letter-spacing: -0.018em;
+      font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 320;
+      margin: 0 0 var(--s-4);
+      color: var(--fg);
+    }
+    .book-subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.25rem, 1.4vw + 0.6rem, 1.75rem);
+      color: var(--fg-2);
+      line-height: 1.2;
+      margin: 0 0 var(--s-6);
+      font-variation-settings: 'opsz' 60, 'SOFT' 60;
+      max-width: 32ch;
+    }
+    .book-byline {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg);
+      margin: 0;
+    }
+    .book-byline::before {
+      content: '—';
+      margin-right: 0.65em;
+      color: var(--fg-mute);
+    }
+    .book-cover-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .book-cover {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+    }
+
+    /* ---------- Praise (first) ----------------------------------------- */
+    .praise {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-8);
+    }
+    .praise-head {
+      text-align: center;
+      margin-bottom: var(--s-8);
+    }
+    .praise-head .eyebrow {
+      margin: 0;
+    }
+    .praise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--s-8);
+      row-gap: var(--s-8);
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .praise-item {
+      margin: 0;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--rule);
+    }
+    .praise-item blockquote {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.15rem, 0.5vw + 1rem, 1.5rem);
+      line-height: 1.4;
+      color: var(--fg);
+      margin: 0 0 var(--s-5);
+      padding: 0;
+      border: 0;
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+      letter-spacing: -0.003em;
+    }
+    .praise-item blockquote .openq {
+      color: var(--accent);
+      font-size: 1.35em;
+      line-height: 0;
+      vertical-align: -0.12em;
+      margin-right: 0.04em;
+    }
+    .praise-item figcaption {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-1);
+    }
+    .praise-who {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+    .praise-work {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-caption);
+      color: var(--fg-mute);
+      line-height: 1.4;
+    }
+
+    /* ---------- Archival plate ----------------------------------------- */
+    .plate {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-8);
+    }
+    .plate-figure {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .plate-figure img {
+      width: 100%;
+      height: auto;
+      filter: grayscale(1) contrast(1.02);
+    }
+    .plate-figure figcaption {
+      margin-top: var(--s-4);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--rule);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-caption);
+      line-height: 1.5;
+      color: var(--fg-mute);
+      max-width: 60ch;
+    }
+    .plate-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg);
+      margin-right: 0.9em;
+    }
+
+    /* ---------- About the book ----------------------------------------- */
+    .about {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-8);
+    }
+    .about-head {
+      text-align: center;
+      margin-bottom: var(--s-7);
+    }
+    .about-head .eyebrow {
+      margin: 0;
+    }
+    .prose {
+      max-width: var(--measure);
+      margin: 0 auto;
+      font-family: var(--font-serif);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      color: var(--fg-2);
+    }
+    .prose p {
+      margin: 0 0 var(--s-5);
+    }
+    .prose p em {
+      color: var(--fg);
+    }
+    .prose-drop::first-letter {
+      font-family: var(--font-display);
+      font-size: 4.2em;
+      float: left;
+      line-height: 0.88;
+      padding: 0.12em 0.12em 0 0;
+      color: var(--accent-deep);
+      font-weight: 400;
+      font-variation-settings: 'opsz' 144, 'SOFT' 20;
+    }
+
+    /* ---------- Buy ----------------------------------------------------- */
+    .buy {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-8);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .buy-head {
+      text-align: center;
+      margin-bottom: var(--s-6);
+    }
+    .buy-head .eyebrow { margin: 0; }
+    .buy-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: var(--s-5) var(--s-7);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .buy-link {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.25rem, 0.6vw + 1.1rem, 1.625rem);
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.08em;
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+    }
+    .buy-link:hover,
+    .buy-link:focus-visible {
+      color: var(--accent-deep);
+      border-bottom-color: var(--accent-deep);
+      text-decoration: none;
+    }
+
+    /* ---------- Reviews & media ---------------------------------------- */
+    .media {
+      padding-top: var(--s-9);
+      padding-bottom: var(--s-9);
+    }
+    .media-head {
+      text-align: center;
+      margin-bottom: var(--s-7);
+    }
+    .media-head .eyebrow { margin: 0; }
+    .media-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 980px;
+      border-top: 1px solid var(--rule);
+    }
+    .media-list li {
+      border-bottom: 1px solid var(--rule);
+    }
+    .media-list a {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-5);
+      align-items: baseline;
+      padding: var(--s-5) 0;
+      color: var(--fg);
+      text-decoration: none;
+      transition: color var(--dur) var(--ease),
+                  padding var(--dur) var(--ease),
+                  background-color var(--dur) var(--ease);
+    }
+    .media-list a:hover,
+    .media-list a:focus-visible {
+      color: var(--accent-deep);
+      padding-left: var(--s-3);
+      padding-right: var(--s-3);
+      background: var(--paper-alt);
+      text-decoration: none;
+    }
+    .media-where {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+    }
+    .media-list a:hover .media-where,
+    .media-list a:focus-visible .media-where {
+      color: var(--accent-deep);
+    }
+    .media-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.125rem, 0.4vw + 1rem, 1.375rem);
+      line-height: 1.25;
+      font-variation-settings: 'opsz' 48, 'SOFT' 40;
+    }
+
+    /* ---------- Responsive --------------------------------------------- */
+    @media (max-width: 900px) {
+      .book-masthead {
+        padding-top: var(--s-7);
+        padding-bottom: var(--s-6);
+      }
+      .book-masthead .grid {
+        grid-template-columns: 1fr;
+        gap: var(--s-7);
+      }
+      .book-cover-wrap { order: -1; }
+      .book-cover { max-width: 240px; }
+
+      .praise { padding-top: var(--s-7); padding-bottom: var(--s-6); }
+      .praise-grid {
+        grid-template-columns: 1fr;
+        row-gap: var(--s-7);
+      }
+
+      .plate { padding-top: var(--s-7); padding-bottom: var(--s-6); }
+      .about { padding-top: var(--s-7); padding-bottom: var(--s-6); }
+      .buy   { padding-top: var(--s-7); padding-bottom: var(--s-6); }
+      .media { padding-top: var(--s-7); padding-bottom: var(--s-7); }
+
+      .buy-list { gap: var(--s-4) var(--s-6); }
+
+      .media-list a {
+        grid-template-columns: 1fr;
+        gap: var(--s-2);
+        padding: var(--s-4) 0;
+      }
+      .media-list a:hover,
+      .media-list a:focus-visible {
+        padding-left: var(--s-2);
+        padding-right: var(--s-2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="page">
+    <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link" href="/about">About</a></li>
+      <li><a class="nav-link active" href="/books">Books</a></li>
+      <li><a class="nav-link" href="/writing">Writing</a></li>
+      <li><a class="nav-link" href="/press">Press</a></li>
+      <li><a class="nav-link" href="/wellness">Wellness</a></li>
+      <li><a class="nav-link" href="/events">Events</a></li>
+      <li><a class="nav-link" href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── Masthead ────────────────────────────────────────────────────── -->
+  <section class="book-masthead">
+    <div class="page">
+      <div class="grid reveal">
+        <div class="book-masthead-text">
+          <span class="eyebrow accent">A memoir &nbsp;·&nbsp; University Press of Kentucky &nbsp;·&nbsp; 2024</span>
+          <h1 class="book-title"><em>Sky Watch</em></h1>
+          <p class="book-subtitle">Chasing an American Saddlebred Story</p>
+          <p class="book-byline">Emma Hudelson</p>
+        </div>
+        <div class="book-cover-wrap">
+          <img
+            src="/assets/images/sky-watch-cover.jpg"
+            alt="Sky Watch: Chasing an American Saddlebred Story — book cover"
+            class="book-cover"
+            width="720" height="1080">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Praise (first, per house style) ─────────────────────────────── -->
+  <section class="praise">
+    <div class="page">
+      <div class="praise-head reveal">
+        <span class="eyebrow">Praise for <em>Sky Watch</em></span>
+      </div>
+      <div class="praise-grid stagger">
+        <figure class="praise-item">
+          <blockquote><span class="openq">&ldquo;</span>A beautiful braided memoir deftly weaving the dramatic story of Saddlebred horses&rsquo; biggest star, Sky Watch; the history of horsemanship; and Hudelson&rsquo;s own life with horses.&rdquo;</blockquote>
+          <figcaption>
+            <span class="praise-who">Tessa Fontaine</span>
+            <span class="praise-work">author of <em>The Electric Woman</em></span>
+          </figcaption>
+        </figure>
+        <figure class="praise-item">
+          <blockquote><span class="openq">&ldquo;</span>What is more compelling than a remarkable horse making history? Beautiful horses and masterful showmanship abound, but ultimately this is a story about love&mdash;in all its forms.&rdquo;</blockquote>
+          <figcaption>
+            <span class="praise-who">Kristen Iversen</span>
+            <span class="praise-work">author of <em>Full Body Burden</em></span>
+          </figcaption>
+        </figure>
+        <figure class="praise-item">
+          <blockquote><span class="openq">&ldquo;</span>With the heart and humor of Susan Orlean and the research chops of Laura Hillenbrand, Hudelson has written a chronicle and a testament to the American Saddlebred that will surely enter the canon of great equestrian writing.&rdquo;</blockquote>
+          <figcaption>
+            <span class="praise-who">Foreword Reviews</span>
+            <span class="praise-work">2024 INDIES Award Finalist</span>
+          </figcaption>
+        </figure>
+        <figure class="praise-item">
+          <blockquote><span class="openq">&ldquo;</span>Hudelson is the perfect guide&mdash;knowledgeable and determined, adept with narrative and deeply engaged. Her passion for both Sky Watch and the American Saddlebred is clear, contagious, and propulsive.&rdquo;</blockquote>
+          <figcaption>
+            <span class="praise-who">Chris Bachelder</span>
+            <span class="praise-work">author of <em>The Throwback Special</em></span>
+          </figcaption>
+        </figure>
+        <figure class="praise-item">
+          <blockquote><span class="openq">&ldquo;</span>In meticulously reported detail, Emma Hudelson details her &lsquo;horse-sized love&rsquo; for a legendary stallion. Hudelson&rsquo;s flair for writing and deeply researched history make her own story and this legendary horse&rsquo;s come movingly alive.&rdquo;</blockquote>
+          <figcaption>
+            <span class="praise-who">Sarah Maslin Nir</span>
+            <span class="praise-work">two-time Pulitzer finalist, author of <em>Horse Crazy</em></span>
+          </figcaption>
+        </figure>
+        <figure class="praise-item">
+          <blockquote><span class="openq">&ldquo;</span>A book that anyone who has ever loved a horse&mdash;or tried to explain why&mdash;will recognize as true.&rdquo;</blockquote>
+          <figcaption>
+            <span class="praise-who">2025 Equine Media Award</span>
+            <span class="praise-work">winner, book category</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Archival plate ──────────────────────────────────────────────── -->
+  <section class="plate">
+    <div class="page">
+      <figure class="plate-figure reveal">
+        <img
+          src="/assets/images/saddlebred-arena.jpg"
+          alt="An American Saddlebred in the ring under arena lights."
+          width="1440" height="960">
+        <figcaption>
+          <span class="plate-label">Plate</span>
+          An American Saddlebred in the ring&mdash;the kind of stage where <em>Sky&nbsp;Watch</em> once drew crowds by the thousand.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── About the book ──────────────────────────────────────────────── -->
+  <section class="about">
+    <div class="page">
+      <div class="about-head reveal">
+        <span class="eyebrow">About the book</span>
+      </div>
+      <div class="prose reveal">
+        <p class="prose-drop">
+          Horse shows used to draw crowds by the thousands to state fairs and venues such as Madison Square Garden. And in the 1980s, no performance horse filled more arena seats than the American Saddlebred Sky Watch. He pushed the saddle seat industry to a peak that hasn&rsquo;t been seen since.
+        </p>
+        <p>
+          An athlete through and through, the stallion dominated the sport with the same power and intensity as a Kentucky Derby winner. With unmatched talent, Sky Watch earned four World Grand Championships and twelve World titles overall&mdash;making his career one for the history books.
+        </p>
+        <p>
+          Years after Sky Watch finished competing, videos of his legacy in the ring captured the heart of author and lifelong horsewoman Emma Hudelson. Her fascination with the unstoppable stallion sent her on a journey to discover how a horse becomes a legend, convinced that if she could capture the magic behind the greatest show horse of all time, she might understand her own obsession with Saddlebreds.
+        </p>
+        <div class="asterism" aria-hidden="true"></div>
+        <p>
+          <em>Sky Watch: Chasing an American Saddlebred Story</em> is not only the tale of a remarkable horse, but of the American Saddlebred breed and the way these horses carried one rider back to herself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Where to buy ────────────────────────────────────────────────── -->
+  <section class="buy">
+    <div class="page">
+      <div class="buy-head reveal">
+        <span class="eyebrow">Where to buy</span>
+      </div>
+      <div class="buy-list stagger">
+        <a class="buy-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+        <a class="buy-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+        <a class="buy-link" href="https://www.amazon.com/Sky-Watch-Chasing-American-Saddlebred/dp/0813199107" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy-link" href="/contact">Ask your local bookseller</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reviews & media ─────────────────────────────────────────────── -->
+  <section class="media">
+    <div class="page">
+      <div class="media-head reveal">
+        <span class="eyebrow">Reviews &amp; media</span>
+      </div>
+      <ul class="media-list stagger">
+        <li>
+          <a href="https://mirrorindy.org/local-author-emma-hudelson-sky-watch-horse/" target="_blank" rel="noopener">
+            <span class="media-where">Mirror Indy</span>
+            <span class="media-title">Local author pens biography of champion horse, tells her own story</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://thegoodlifereview.com/2024/07/27/rory-gould-review-of-sky-watch-by-emma-hudelson/" target="_blank" rel="noopener">
+            <span class="media-where">The Good Life Review</span>
+            <span class="media-title">Under Saddle and Spirit&mdash;a review of <em>Sky Watch</em></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson" target="_blank" rel="noopener">
+            <span class="media-where">The Southeast Review</span>
+            <span class="media-title">Craft essay: On braided nonfiction</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.indianawriters.org/blogs/news/team-members/emma-hudelson/" target="_blank" rel="noopener">
+            <span class="media-where">Indiana Writers Center</span>
+            <span class="media-title">Profile&mdash;Emma Hudelson</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="page">
+    <div class="footer-col">
+      <a class="footer-brand" href="/">Emma Hudelson</a>
+      <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">Elsewhere</span>
+      <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+      <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">The book</span>
+      <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+      <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>

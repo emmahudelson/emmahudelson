@@ -1,0 +1,593 @@
+/* =========================================================================
+   emmahudelson.com — shared components
+   Depends on /css/tokens.css. Cooperates with /js/nav.js:
+     - #navToggle (button) + #navLinks (ul) markup contract
+     - .reveal and .stagger visibility driven by IntersectionObserver
+   ========================================================================= */
+
+/* ==========================================================================
+   LAYOUT PRIMITIVES
+   ========================================================================== */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.measure {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.measure-wide {
+  max-width: var(--measure-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-8);
+}
+
+/* ==========================================================================
+   TYPE UTILITIES
+   ========================================================================== */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-xl);
+  font-weight: 350;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-display);
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  color: var(--fg);
+  margin: 0;
+}
+
+.display-l {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 350;
+  line-height: 1.05;
+  letter-spacing: var(--tr-display);
+  font-variation-settings: 'opsz' 120, 'SOFT' 30;
+  color: var(--fg);
+  margin: 0;
+}
+
+.display-m {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-m);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: var(--tr-display);
+  font-variation-settings: 'opsz' 72, 'SOFT' 40;
+  color: var(--fg);
+  margin: 0;
+}
+
+/* Small-caps label — DM Mono, uppercase, wide-tracked. Used as eyebrow/meta. */
+.eyebrow,
+.meta,
+.section-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  display: inline-block;
+  margin: 0 0 var(--s-4);
+}
+
+.eyebrow.accent,
+.meta.accent {
+  color: var(--accent-deep);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: var(--tr-display);
+  font-variation-settings: 'opsz' 60, 'SOFT' 40;
+  margin: 0 0 var(--s-5);
+}
+
+/* Interior page masthead */
+.page-head {
+  padding-top: var(--s-9);
+  padding-bottom: var(--s-7);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--s-8);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: var(--tr-display);
+  font-variation-settings: 'opsz' 120, 'SOFT' 30;
+  margin: 0 0 var(--s-5);
+}
+
+.page-lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lead);
+  font-style: italic;
+  color: var(--fg-2);
+  line-height: 1.5;
+  max-width: var(--measure);
+  margin: 0;
+}
+
+/* ==========================================================================
+   WORDMARK
+   The single most important element. Responsive-by-design.
+     - xl: "Emma Hudelson" on one generous line; breathing letter-spacing
+     - md: slightly tighter
+     - sm (mobile): stacks to two lines (Emma / Hudelson), weight lightens,
+       tracking tightens, optical size adjusts for smaller display.
+   Uses Fraunces variable axes opsz + wght + SOFT.
+   ========================================================================== */
+.wordmark {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-xl);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: var(--tr-wordmark);
+  color: var(--fg);
+  margin: 0;
+  font-variation-settings: 'opsz' 144, 'SOFT' 20, 'wght' 320;
+  /* allow it to break naturally on narrow screens */
+  word-spacing: 0.04em;
+  text-wrap: balance;
+}
+
+/* Honor an explicit break between given + surname when author desires */
+.wordmark .break { display: inline; }
+
+@media (min-width: 1200px) {
+  .wordmark {
+    letter-spacing: 0.012em;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30, 'wght' 300;
+  }
+}
+
+@media (max-width: 900px) {
+  .wordmark {
+    font-size: clamp(3rem, 14vw, 5.5rem);
+    letter-spacing: 0;
+    line-height: 0.95;
+    font-variation-settings: 'opsz' 96, 'SOFT' 50, 'wght' 360;
+  }
+  .wordmark .break { display: block; }
+}
+
+@media (max-width: 520px) {
+  .wordmark {
+    font-size: clamp(2.75rem, 17vw, 4.25rem);
+    letter-spacing: -0.005em;
+    font-variation-settings: 'opsz' 72, 'SOFT' 60, 'wght' 380;
+  }
+}
+
+/* Nav-brand is a condensed, smaller variant of the wordmark */
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 420;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--fg);
+  text-decoration: none;
+  font-variation-settings: 'opsz' 36, 'SOFT' 20, 'wght' 420;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease);
+}
+.nav-brand:hover,
+.nav-brand:focus-visible {
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   NAV — solid paper, sticky. No hamburger at desktop.
+   ========================================================================== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+}
+
+.site-nav .page {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-5);
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+  gap: clamp(var(--s-4), 2.2vw, var(--s-6));
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  padding: 0;
+  line-height: 1;
+  position: relative;
+  transition: color var(--dur) var(--ease);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease);
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: var(--accent-deep);
+}
+
+/* Mobile toggle — three bars animating into an X */
+.nav-toggle {
+  display: none;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  align-self: center;
+}
+.nav-toggle span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--fg);
+  transition: transform var(--dur) var(--ease),
+              opacity var(--dur) var(--ease),
+              top var(--dur) var(--ease);
+}
+.nav-toggle span:nth-child(1) { top: 4px; }
+.nav-toggle span:nth-child(2) { top: 12px; }
+.nav-toggle span:nth-child(3) { top: 20px; }
+.nav-toggle.open span:nth-child(1) { top: 12px; transform: rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { top: 12px; transform: rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: var(--s-5) var(--page-gutter) var(--s-7);
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--dur-slow) var(--ease),
+                opacity var(--dur) var(--ease);
+  }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links li {
+    width: 100%;
+    border-top: 1px solid var(--rule);
+  }
+  .nav-links li:last-child { border-bottom: 1px solid var(--rule); }
+
+  .nav-link {
+    display: block;
+    padding: var(--s-4) 0;
+    font-size: 0.8125rem;
+  }
+  .nav-link::after { display: none; }
+}
+
+/* ==========================================================================
+   FOOTER — three-column grid. Mobile: single column stack.
+   ========================================================================== */
+.site-footer {
+  margin-top: var(--s-10);
+  padding: var(--s-8) 0 var(--s-7);
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--fg-2);
+}
+
+.site-footer .page {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: var(--s-7);
+  align-items: start;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 350;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  color: var(--fg);
+  text-decoration: none;
+  font-variation-settings: 'opsz' 48, 'SOFT' 30, 'wght' 340;
+}
+.footer-brand:hover { color: var(--accent-deep); text-decoration: none; }
+
+.footer-meta {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  margin-top: var(--s-3);
+}
+
+.footer-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  margin-bottom: var(--s-2);
+}
+
+.footer-link {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body-sm);
+  font-style: italic;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  width: max-content;
+  transition: color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent-deep);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .site-footer .page {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+}
+
+/* ==========================================================================
+   PRIMITIVES — button, text-button, CTA row
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  padding: 0.875rem 1.375rem;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease),
+              color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+.btn:hover,
+.btn:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-lead);
+  color: var(--accent-deep);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  font-variation-settings: 'opsz' 36, 'SOFT' 50;
+  transition: color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              gap var(--dur) var(--ease);
+}
+.btn-text::after {
+  content: '\2192'; /* → */
+  font-style: normal;
+  font-family: var(--font-serif);
+  transition: transform var(--dur) var(--ease);
+  display: inline-block;
+}
+.btn-text:hover,
+.btn-text:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  text-decoration: none;
+}
+.btn-text:hover::after,
+.btn-text:focus-visible::after {
+  transform: translateX(3px);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5) var(--s-6);
+  margin: var(--s-6) 0;
+}
+
+/* ==========================================================================
+   FORMS — underline-only
+   ========================================================================== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin-bottom: var(--s-5);
+}
+.field label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-mute);
+}
+.field input,
+.field textarea {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color var(--dur) var(--ease);
+}
+.field input:focus,
+.field textarea:focus {
+  border-bottom-color: var(--accent-deep);
+  border-bottom-width: 2px;
+  padding-bottom: calc(0.5rem - 1px);
+}
+.field textarea { resize: vertical; min-height: 8rem; }
+
+/* ==========================================================================
+   DIVIDERS & ORNAMENTS
+   ========================================================================== */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--s-7) 0;
+}
+
+.asterism {
+  display: block;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--fg-mute);
+  letter-spacing: 0.4em;
+  margin: var(--s-8) 0;
+  user-select: none;
+}
+.asterism::before { content: '\2042'; } /* ⁂ */
+
+/* ==========================================================================
+   MOTION — scroll reveal + stagger. Triggered by js/nav.js IntersectionObserver
+   which adds .visible to elements with .reveal or .stagger.
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur-slow) var(--ease),
+              transform var(--dur-slow) var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur-slow) var(--ease),
+              transform var(--dur-slow) var(--ease);
+}
+.stagger.visible > * { opacity: 1; transform: translateY(0); }
+.stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger.visible > *:nth-child(2) { transition-delay: 80ms; }
+.stagger.visible > *:nth-child(3) { transition-delay: 160ms; }
+.stagger.visible > *:nth-child(4) { transition-delay: 240ms; }
+.stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
+.stagger.visible > *:nth-child(6) { transition-delay: 400ms; }
+.stagger.visible > *:nth-child(7) { transition-delay: 480ms; }
+.stagger.visible > *:nth-child(8) { transition-delay: 560ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .stagger > * { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   RESPONSIVE — shared layout primitives mobile counterparts
+   ========================================================================== */
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+  .page-head {
+    padding-top: var(--s-7);
+    padding-bottom: var(--s-5);
+    margin-bottom: var(--s-6);
+  }
+}

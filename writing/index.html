@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <title>Writing — Emma Hudelson</title>
+  <meta name="description" content="Selected publications by Emma Hudelson — essays, reviews, interviews, and columns.">
+  <link rel="canonical" href="https://emmahudelson.com/writing">
+
+  <style>
+    /* =========================================================================
+       Writing — selected publications
+       Editorial table layout: year · kind · title · where.
+       Desktop uses a 4-column grid; mobile stacks row-by-row.
+       ========================================================================= */
+
+    .writing-wrap {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 0 var(--page-gutter);
+    }
+
+    /* The list itself is rendered with semantic <ol>/<li> for accessibility
+       and to avoid the weight of a real <table>. Grid gives us tidy columns. */
+    .pub-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 90px 160px 1fr auto;
+      align-items: baseline;
+      gap: var(--s-5);
+      padding: var(--s-5) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .pub-year {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 400;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      line-height: 1.4;
+    }
+
+    .pub-kind {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      line-height: 1.4;
+    }
+
+    .pub-title {
+      font-family: var(--font-display);
+      font-size: 1.375rem;       /* 22px, tuned to sit confidently in the row */
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: var(--tr-display);
+      font-variation-settings: 'opsz' 48, 'SOFT' 30;
+      color: var(--fg);
+      margin: 0;
+    }
+    .pub-title em { font-style: italic; color: inherit; }
+
+    .pub-title a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+    }
+    .pub-title a:hover,
+    .pub-title a:focus-visible {
+      color: var(--accent-deep);
+      border-bottom-color: var(--accent-deep);
+      text-decoration: none;
+    }
+
+    .pub-where {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-mute);
+      text-align: right;
+      line-height: 1.4;
+    }
+    .pub-where em { font-style: italic; }
+
+    /* Closing note */
+    .writing-note {
+      max-width: var(--measure);
+      margin: var(--s-8) auto 0;
+      color: var(--fg-2);
+      font-size: var(--fs-body-sm);
+    }
+    .writing-note p { margin: 0; }
+
+    /* -------------------------------------------------------------------------
+       Mobile: table-as-list. Each entry stacks.
+       ------------------------------------------------------------------------- */
+    @media (max-width: 900px) {
+      .pub-item {
+        grid-template-columns: 1fr;
+        gap: var(--s-2);
+        padding: var(--s-6) 0;
+      }
+      .pub-year { order: 1; }
+      .pub-kind { order: 2; }
+      .pub-title {
+        order: 3;
+        font-size: 1.25rem;
+        margin-top: var(--s-2);
+      }
+      .pub-where {
+        order: 4;
+        text-align: left;
+        margin-top: var(--s-1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="page">
+    <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link" href="/about">About</a></li>
+      <li><a class="nav-link" href="/books">Books</a></li>
+      <li><a class="nav-link active" href="/writing">Writing</a></li>
+      <li><a class="nav-link" href="/press">Press</a></li>
+      <li><a class="nav-link" href="/wellness">Wellness</a></li>
+      <li><a class="nav-link" href="/events">Events</a></li>
+      <li><a class="nav-link" href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <div class="writing-wrap">
+
+    <section class="page-head reveal">
+      <p class="eyebrow">Writing</p>
+      <h1 class="page-title">Selected work</h1>
+      <p class="page-lede">
+        A running list of books, essays, reviews, and columns. For the most current
+        bylines, follow along on <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>.
+      </p>
+    </section>
+
+    <ol class="pub-list stagger" role="list">
+
+      <li class="pub-item">
+        <span class="pub-year">2024</span>
+        <span class="pub-kind">Book</span>
+        <p class="pub-title"><a href="/books/sky-watch"><em>Sky Watch: Chasing an American Saddlebred Story</em></a></p>
+        <span class="pub-where">University Press of Kentucky</span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2024</span>
+        <span class="pub-kind">Profile</span>
+        <p class="pub-title"><a href="https://www.indianawriters.org/blogs/news/team-members/emma-hudelson/" target="_blank" rel="noopener"><em>Profile — Emma Hudelson</em></a></p>
+        <span class="pub-where">Indiana Writers Center</span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2023</span>
+        <span class="pub-kind">Interview</span>
+        <p class="pub-title"><a href="https://www.cincinnatireview.com/interviews/marianne-chan-emma-hudelson-and-maggie-su-on-artistic-legacy/" target="_blank" rel="noopener"><em>On Creating an Artistic Legacy</em></a></p>
+        <span class="pub-where"><em>The Cincinnati Review</em></span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2022</span>
+        <span class="pub-kind">Review</span>
+        <p class="pub-title"><a href="https://www.cincinnatireview.com/articles/when-riders-write-by-emma-hudelson/" target="_blank" rel="noopener"><em>When Riders Write</em></a></p>
+        <span class="pub-where"><em>The Cincinnati Review</em> 19.2</span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2022</span>
+        <span class="pub-kind">Craft essay</span>
+        <p class="pub-title"><a href="https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson" target="_blank" rel="noopener"><em>On braided nonfiction</em></a></p>
+        <span class="pub-where"><em>The Southeast Review</em></span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2021</span>
+        <span class="pub-kind">Essay</span>
+        <p class="pub-title"><a href="http://www.flyingislandjournal.org/2021/05/damline-creative-nonfiction-by-emma.html" target="_blank" rel="noopener"><em>Damline</em></a></p>
+        <span class="pub-where"><em>Flying Island Journal</em></span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2021</span>
+        <span class="pub-kind">Essay</span>
+        <p class="pub-title"><em>Personal essay on equine obsession</em></p>
+        <span class="pub-where"><em>The Chattahoochee Review</em></span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2020</span>
+        <span class="pub-kind">Essay</span>
+        <p class="pub-title"><em>On women, ambition, and moving forward</em></p>
+        <span class="pub-where"><em>The Rumpus</em></span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2019</span>
+        <span class="pub-kind">Essay</span>
+        <p class="pub-title"><em>Feature essay</em></p>
+        <span class="pub-where"><em>BUST</em></span>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">—</span>
+        <span class="pub-kind">Column</span>
+        <p class="pub-title"><em>Ongoing coverage of the show-horse world</em></p>
+        <span class="pub-where"><em>Saddle &amp; Bridle</em></span>
+      </li>
+
+    </ol>
+
+    <div class="asterism" aria-hidden="true"></div>
+
+    <div class="writing-note reveal">
+      <p>
+        Looking for a specific piece that isn't listed?
+        <a href="/contact">Send a note</a> — most back-issue journals will dig out a copy on request.
+      </p>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="page">
+    <div class="footer-col">
+      <a class="footer-brand" href="/">Emma Hudelson</a>
+      <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">Elsewhere</span>
+      <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+      <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">The book</span>
+      <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+      <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>

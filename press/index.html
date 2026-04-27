@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    Shared <head> boilerplate for emmahudelson.com
+    ------------------------------------------------------------------
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <title>Press — Emma Hudelson</title>
+  <meta name="description" content="Press and media coverage for Sky Watch by Emma Hudelson — reviews, interviews, and awards including the 2025 Equine Media Award.">
+  <link rel="canonical" href="https://emmahudelson.com/press">
+
+  <style>
+    /* ------------------------------------------------------------------
+       Press — page-specific styles
+       Editorial press kit: awards as typographic pullquotes, praise as
+       smaller-scale blurbs, reviews as a hairlined list, video as a
+       deliberate "to come" note.
+       ------------------------------------------------------------------ */
+
+    main { padding-bottom: var(--s-8); }
+
+    .press-lede {
+      max-width: var(--measure);
+      font-family: var(--font-serif);
+      font-size: var(--fs-lead);
+      font-style: italic;
+      color: var(--fg-2);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* -- Section scaffolding --------------------------------------- */
+    .press-section {
+      padding-top: var(--s-8);
+      padding-bottom: var(--s-8);
+    }
+
+    .press-section + .press-section {
+      border-top: 1px solid var(--rule);
+    }
+
+    .press-section-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-2);
+      margin-bottom: var(--s-7);
+    }
+
+    .press-section-head .eyebrow {
+      margin-bottom: 0;
+    }
+
+    .press-section-head .section-title {
+      margin: 0;
+      max-width: 28ch;
+    }
+
+    .press-section-head .section-note {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body-sm);
+      color: var(--fg-mute);
+      margin: var(--s-2) 0 0;
+      max-width: var(--measure);
+    }
+
+    /* -- Awards: typographic pullquote cards ----------------------- */
+    .awards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .award {
+      padding: var(--s-7) var(--s-6);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--s-5);
+      min-height: 18rem;
+      background: var(--paper);
+    }
+
+    .award + .award {
+      border-left: 1px solid var(--rule);
+    }
+
+    .award-year {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 500;
+    }
+
+    .award-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 1.6vw + 1rem, 2.15rem);
+      font-weight: 320;
+      line-height: 1.08;
+      letter-spacing: -0.008em;
+      font-variation-settings: 'opsz' 72, 'SOFT' 40, 'wght' 320;
+      color: var(--fg);
+      margin: var(--s-4) 0 0;
+    }
+
+    .award-category {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: var(--fs-lead);
+      font-weight: 350;
+      color: var(--fg-2);
+      margin-top: var(--s-3);
+      line-height: 1.35;
+      font-variation-settings: 'opsz' 36, 'SOFT' 60;
+    }
+
+    .award-for {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      margin-top: var(--s-6);
+      padding-top: var(--s-4);
+      border-top: 1px solid var(--rule);
+    }
+
+    .award-for em {
+      font-family: var(--font-display);
+      font-style: italic;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-size: var(--fs-body-sm);
+      color: var(--fg);
+      font-variation-settings: 'opsz' 24, 'SOFT' 50;
+    }
+
+    /* -- Featured praise ------------------------------------------- */
+    .praise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-7);
+    }
+
+    .praise {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--rule);
+    }
+
+    .praise-index {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+    }
+
+    .praise-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 0.4vw + 1rem, 1.3rem);
+      font-style: italic;
+      font-weight: 350;
+      line-height: 1.4;
+      color: var(--fg);
+      margin: 0;
+      font-variation-settings: 'opsz' 36, 'SOFT' 50;
+      text-wrap: pretty;
+    }
+
+    .praise-attribution {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-1);
+      margin-top: auto;
+      padding-top: var(--s-4);
+    }
+
+    .praise-who {
+      font-family: var(--font-display);
+      font-size: var(--fs-body-sm);
+      font-weight: 420;
+      line-height: 1.2;
+      color: var(--fg);
+      font-variation-settings: 'opsz' 24, 'SOFT' 40;
+    }
+
+    .praise-work {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-caption);
+      color: var(--fg-mute);
+      line-height: 1.4;
+    }
+
+    /* -- Reviews list ---------------------------------------------- */
+    .reviews {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .review {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .review-link {
+      display: grid;
+      grid-template-columns: 7rem 1fr auto;
+      gap: var(--s-6);
+      align-items: baseline;
+      padding: var(--s-5) 0;
+      text-decoration: none;
+      color: var(--fg);
+      transition: color var(--dur) var(--ease);
+    }
+
+    .review-link:hover,
+    .review-link:focus-visible {
+      color: var(--accent-deep);
+      text-decoration: none;
+    }
+
+    .review-num {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+    }
+
+    .review-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }
+
+    .review-where {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 500;
+    }
+
+    .review-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.2rem, 0.6vw + 1rem, 1.5rem);
+      font-weight: 350;
+      line-height: 1.2;
+      color: inherit;
+      font-variation-settings: 'opsz' 48, 'SOFT' 50;
+    }
+
+    .review-arrow {
+      font-family: var(--font-serif);
+      font-style: normal;
+      font-size: var(--fs-body);
+      color: var(--fg-mute);
+      align-self: center;
+      transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+      display: inline-block;
+    }
+
+    .review-link:hover .review-arrow,
+    .review-link:focus-visible .review-arrow {
+      transform: translateX(4px);
+      color: var(--accent-deep);
+    }
+
+    /* -- Video & audio: forthcoming note ---------------------------- */
+    .forthcoming {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-5);
+      padding: var(--s-8) var(--s-7);
+      border: 1px solid var(--rule);
+      text-align: center;
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+    }
+
+    .forthcoming-mark {
+      font-family: var(--font-serif);
+      color: var(--fg-mute);
+      letter-spacing: 0.4em;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .forthcoming-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 0.8vw + 1rem, 1.75rem);
+      font-style: italic;
+      font-weight: 350;
+      color: var(--fg);
+      margin: 0;
+      line-height: 1.2;
+      font-variation-settings: 'opsz' 60, 'SOFT' 50;
+    }
+
+    .forthcoming-note {
+      font-family: var(--font-serif);
+      font-size: var(--fs-body-sm);
+      color: var(--fg-2);
+      line-height: 1.5;
+      margin: 0 auto;
+      max-width: 44ch;
+    }
+
+    .forthcoming-meta {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+    }
+
+    /* -- Press inquiries CTA --------------------------------------- */
+    .inquiries {
+      max-width: var(--measure);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .inquiries-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-display-m);
+      font-weight: 320;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      font-variation-settings: 'opsz' 96, 'SOFT' 40, 'wght' 320;
+      color: var(--fg);
+      margin: 0 0 var(--s-5);
+    }
+
+    .inquiries-title em {
+      font-style: italic;
+    }
+
+    .inquiries-body {
+      font-family: var(--font-serif);
+      font-size: var(--fs-lead);
+      font-style: italic;
+      color: var(--fg-2);
+      line-height: 1.5;
+      margin: 0 0 var(--s-6);
+    }
+
+    /* -- Responsive ------------------------------------------------ */
+    @media (max-width: 900px) {
+      .awards {
+        grid-template-columns: 1fr;
+      }
+      .award + .award {
+        border-left: 0;
+        border-top: 1px solid var(--rule);
+      }
+      .award {
+        min-height: 0;
+        padding: var(--s-6) var(--s-5);
+      }
+
+      .praise-grid {
+        grid-template-columns: 1fr;
+        gap: var(--s-6);
+      }
+
+      .review-link {
+        grid-template-columns: 1fr auto;
+        gap: var(--s-3) var(--s-5);
+        padding: var(--s-4) 0;
+      }
+      .review-num {
+        grid-column: 1 / -1;
+        margin-bottom: calc(-1 * var(--s-2));
+      }
+
+      .forthcoming {
+        padding: var(--s-6) var(--s-5);
+      }
+
+      .press-section {
+        padding-top: var(--s-7);
+        padding-bottom: var(--s-7);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Primary">
+    <div class="page">
+      <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a class="nav-link" href="/about">About</a></li>
+        <li><a class="nav-link" href="/books">Books</a></li>
+        <li><a class="nav-link" href="/writing">Writing</a></li>
+        <li><a class="nav-link active" href="/press">Press</a></li>
+        <li><a class="nav-link" href="/wellness">Wellness</a></li>
+        <li><a class="nav-link" href="/events">Events</a></li>
+        <li><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page">
+
+      <!-- ── Page head ────────────────────────────────── -->
+      <section class="page-head">
+        <p class="eyebrow">Press</p>
+        <h1 class="page-title">Press &amp; media</h1>
+        <p class="press-lede">
+          Reviews, interviews, and awards for <em>Sky Watch: Chasing an American
+          Saddlebred Story</em> and Emma Hudelson&rsquo;s wider body of work.
+        </p>
+      </section>
+
+      <!-- ── Awards ───────────────────────────────────── -->
+      <section class="press-section reveal" aria-labelledby="awards-heading">
+        <header class="press-section-head">
+          <p class="eyebrow accent">Honors</p>
+          <h2 class="section-title" id="awards-heading">Awards &amp; recognition</h2>
+        </header>
+
+        <div class="awards">
+          <article class="award">
+            <div>
+              <p class="award-year">2025</p>
+              <h3 class="award-title">Equine Media Award</h3>
+              <p class="award-category">Winner, book category</p>
+            </div>
+            <p class="award-for">For <em>Sky Watch: Chasing an American Saddlebred Story</em></p>
+          </article>
+
+          <article class="award">
+            <div>
+              <p class="award-year">2024</p>
+              <h3 class="award-title">Foreword INDIES Award</h3>
+              <p class="award-category">Finalist, Adult Nonfiction</p>
+            </div>
+            <p class="award-for">For <em>Sky Watch: Chasing an American Saddlebred Story</em></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── Featured praise ──────────────────────────── -->
+      <section class="press-section reveal" aria-labelledby="praise-heading">
+        <header class="press-section-head">
+          <p class="eyebrow accent">Praise</p>
+          <h2 class="section-title" id="praise-heading">What critics are saying</h2>
+        </header>
+
+        <div class="praise-grid stagger">
+          <figure class="praise">
+            <span class="praise-index">i.</span>
+            <blockquote class="praise-quote">&ldquo;With the heart and humor of Susan Orlean and the research chops of Laura Hillenbrand, Hudelson has written a chronicle and a testament to the American Saddlebred that will surely enter the canon of great equestrian writing.&rdquo;</blockquote>
+            <figcaption class="praise-attribution">
+              <span class="praise-who">Foreword Reviews</span>
+              <span class="praise-work">2024 INDIES Award Finalist</span>
+            </figcaption>
+          </figure>
+
+          <figure class="praise">
+            <span class="praise-index">ii.</span>
+            <blockquote class="praise-quote">&ldquo;In meticulously reported detail, Emma Hudelson details her &lsquo;horse-sized love&rsquo; for a legendary stallion. Hudelson&rsquo;s flair for writing and deeply researched history make her own story and this legendary horse&rsquo;s come movingly alive.&rdquo;</blockquote>
+            <figcaption class="praise-attribution">
+              <span class="praise-who">Sarah Maslin Nir</span>
+              <span class="praise-work">two-time Pulitzer finalist, author of <em>Horse Crazy</em></span>
+            </figcaption>
+          </figure>
+
+          <figure class="praise">
+            <span class="praise-index">iii.</span>
+            <blockquote class="praise-quote">&ldquo;A book that anyone who has ever loved a horse &mdash; or tried to explain why &mdash; will recognize as true.&rdquo;</blockquote>
+            <figcaption class="praise-attribution">
+              <span class="praise-who">2025 Equine Media Award</span>
+              <span class="praise-work">winner, book category</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ── Reviews & coverage ───────────────────────── -->
+      <section class="press-section reveal" aria-labelledby="coverage-heading">
+        <header class="press-section-head">
+          <p class="eyebrow accent">Coverage</p>
+          <h2 class="section-title" id="coverage-heading">Reviews &amp; interviews</h2>
+        </header>
+
+        <ul class="reviews">
+          <li class="review">
+            <a class="review-link" href="https://mirrorindy.org/local-author-emma-hudelson-sky-watch-horse/" target="_blank" rel="noopener">
+              <span class="review-num">No. 01</span>
+              <span class="review-body">
+                <span class="review-where">Mirror Indy</span>
+                <span class="review-title">Local author pens biography of champion horse, tells her own story</span>
+              </span>
+              <span class="review-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="review">
+            <a class="review-link" href="https://thegoodlifereview.com/2024/07/27/rory-gould-review-of-sky-watch-by-emma-hudelson/" target="_blank" rel="noopener">
+              <span class="review-num">No. 02</span>
+              <span class="review-body">
+                <span class="review-where">The Good Life Review</span>
+                <span class="review-title">Under Saddle and Spirit &mdash; a review of <em>Sky Watch</em></span>
+              </span>
+              <span class="review-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="review">
+            <a class="review-link" href="https://www.indianawriters.org/blogs/news/team-members/emma-hudelson/" target="_blank" rel="noopener">
+              <span class="review-num">No. 03</span>
+              <span class="review-body">
+                <span class="review-where">Indiana Writers Center</span>
+                <span class="review-title">Profile &mdash; Emma Hudelson</span>
+              </span>
+              <span class="review-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── Video & audio (forthcoming) ──────────────── -->
+      <section class="press-section reveal" aria-labelledby="video-heading">
+        <header class="press-section-head">
+          <p class="eyebrow accent">Multimedia</p>
+          <h2 class="section-title" id="video-heading">Video &amp; audio</h2>
+        </header>
+
+        <div class="forthcoming">
+          <span class="forthcoming-mark" aria-hidden="true">&#8258;</span>
+          <p class="forthcoming-title">Media appearances forthcoming</p>
+          <p class="forthcoming-note">
+            Readings, interviews, and recorded conversations are gathered here as
+            they air. For scheduling or to request a conversation,
+            <a href="/contact">get in touch</a>.
+          </p>
+          <span class="forthcoming-meta">To come</span>
+        </div>
+      </section>
+
+      <!-- ── Press inquiries ──────────────────────────── -->
+      <section class="press-section reveal" aria-labelledby="inquiries-heading">
+        <div class="inquiries">
+          <p class="eyebrow accent">Inquiries</p>
+          <h2 class="inquiries-title" id="inquiries-heading">For <em>press copies</em>, interview requests, or review coverage.</h2>
+          <p class="inquiries-body">
+            Booksellers, festival organizers, and editors &mdash; Emma is glad
+            to hear from you.
+          </p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn" href="/contact">Get in touch</a>
+            <a class="btn-text" href="/books">Read about <em>Sky&nbsp;Watch</em></a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="page">
+      <div class="footer-col">
+        <a class="footer-brand" href="/">Emma Hudelson</a>
+        <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-label">Elsewhere</span>
+        <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+        <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+        <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-label">The book</span>
+        <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+        <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+</body>
+</html>

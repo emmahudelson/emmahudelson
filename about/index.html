@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    Shared <head> boilerplate for emmahudelson.com
+    ------------------------------------------------------------------
+    Each page pastes this immediately after <!DOCTYPE html> + <html>.
+    Pages are responsible for adding:
+      - <title>Page Title — Emma Hudelson</title>
+      - <meta name="description" content="...">
+      - <link rel="canonical" href="https://emmahudelson.com/...">
+      - any page-specific <style> block (inside page <head>, AFTER site.css)
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- Fonts: Fraunces (display) + Newsreader (body) + DM Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets: tokens FIRST (defines custom props), then shared components -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+
+  <!-- PAGE: insert <title>, <meta name="description">, and page-specific <style> below -->
+  <title>About — Emma Hudelson</title>
+  <meta name="description" content="About Emma Hudelson — nonfiction writer, tenure-track professor at EKU, director of the Writing for Wellness program at Butler University, and author of Sky Watch.">
+  <link rel="canonical" href="https://emmahudelson.com/about">
+
+  <style>
+    /* ==========================================================================
+       About — page specific
+       Asymmetric two-column: narrow portrait column + wide bio column.
+       Pullquote breaks out of the bio column as a centered set-piece.
+       Facts rail is a dl grid with small-caps terms + serif descriptions.
+       ========================================================================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+      gap: clamp(var(--s-6), 6vw, var(--s-9));
+      align-items: start;
+      padding-top: var(--s-7);
+      padding-bottom: var(--s-8);
+    }
+
+    /* --- Portrait column ----------------------------------------------- */
+    .portrait-figure {
+      margin: 0;
+      position: sticky;
+      top: calc(var(--nav-h) + var(--s-5));
+    }
+    .portrait-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      /* Warm duotone: desaturate, contrast bump, subtle sepia for paper tone */
+      filter: grayscale(1) contrast(1.04) sepia(0.18) brightness(0.98);
+    }
+    .portrait-figure figcaption {
+      margin-top: var(--s-4);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--rule);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--s-4);
+    }
+    .portrait-figure figcaption .cap-role {
+      color: var(--fg-mute);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+    }
+
+    /* --- Bio column ---------------------------------------------------- */
+    .bio-col { max-width: var(--measure); }
+
+    .bio-col .eyebrow { margin-bottom: var(--s-2); }
+
+    .bio-col .bio-intro {
+      font-family: var(--font-display);
+      font-size: var(--fs-display-m);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: var(--tr-display);
+      font-variation-settings: 'opsz' 72, 'SOFT' 40;
+      color: var(--fg);
+      margin: 0 0 var(--s-6);
+    }
+
+    .bio-col p {
+      font-family: var(--font-serif);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      color: var(--fg-2);
+      margin: 0 0 var(--s-5);
+    }
+    .bio-col p em { color: var(--fg); }
+
+    /* First body paragraph — drop cap, editorial convention */
+    .bio-col p.bio-lead::first-letter {
+      font-family: var(--font-display);
+      float: left;
+      font-size: 3.9em;
+      line-height: 0.88;
+      padding: 0.05em 0.08em 0 0;
+      font-weight: 350;
+      color: var(--accent-deep);
+      font-variation-settings: 'opsz' 144, 'SOFT' 30;
+    }
+
+    /* --- Pullquote — typographic set-piece ----------------------------- */
+    .pullquote {
+      margin: var(--s-8) 0;
+      padding: var(--s-6) 0 var(--s-6);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 1.2vw + 1rem, 1.875rem);
+      line-height: 1.35;
+      letter-spacing: -0.005em;
+      color: var(--fg);
+      font-variation-settings: 'opsz' 72, 'SOFT' 50;
+      text-wrap: balance;
+      position: relative;
+    }
+    .pullquote::before {
+      content: '\2042'; /* ⁂ */
+      display: block;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-style: normal;
+      font-size: 1.1rem;
+      letter-spacing: 0.4em;
+      color: var(--fg-mute);
+      margin: 0 0 var(--s-5);
+    }
+
+    /* --- Facts rail ---------------------------------------------------- */
+    .facts-block {
+      margin-top: var(--s-8);
+      padding-top: var(--s-6);
+      border-top: 1px solid var(--rule);
+    }
+    .facts-block .eyebrow { margin-bottom: var(--s-5); }
+
+    .facts {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      column-gap: var(--s-5);
+      row-gap: 0;
+      margin: 0;
+    }
+    .facts dt {
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 500;
+      letter-spacing: var(--tr-label);
+      text-transform: uppercase;
+      color: var(--fg-mute);
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .facts dd {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+      color: var(--fg-2);
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .facts dd em { color: var(--fg); }
+
+    /* --- Elsewhere (socials) ------------------------------------------ */
+    .elsewhere {
+      margin-top: var(--s-8);
+      padding-top: var(--s-6);
+      border-top: 1px solid var(--rule);
+    }
+    .elsewhere .eyebrow { margin-bottom: var(--s-4); }
+    .elsewhere-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }
+    .elsewhere-list a {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: var(--fs-lead);
+      color: var(--accent-deep);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      font-variation-settings: 'opsz' 36, 'SOFT' 50;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+      width: max-content;
+    }
+    .elsewhere-list a:hover,
+    .elsewhere-list a:focus-visible {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+      text-decoration: none;
+    }
+    .elsewhere-list .handle {
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: var(--fs-meta);
+      letter-spacing: 0.12em;
+      color: var(--fg-mute);
+      margin-left: var(--s-3);
+      text-transform: none;
+    }
+
+    /* --- Responsive ----------------------------------------------------- */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--s-6);
+        padding-top: var(--s-5);
+        padding-bottom: var(--s-6);
+      }
+      .portrait-figure {
+        position: static;
+        max-width: 360px;
+      }
+      .bio-col .bio-intro { font-size: clamp(1.6rem, 5vw + 0.75rem, 2.25rem); }
+      .facts { grid-template-columns: 1fr; }
+      .facts dt { padding-bottom: 0; border-bottom: 0; padding-top: var(--s-4); }
+      .facts dd { padding-top: var(--s-2); }
+      .pullquote { margin: var(--s-7) 0; padding: var(--s-5) 0; }
+    }
+
+    @media (max-width: 520px) {
+      .bio-col p.bio-lead::first-letter {
+        font-size: 3.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!--
+  Shared site nav for emmahudelson.com
+  ------------------------------------------------------------------
+  Paste as-is into each page. Then add `class="nav-link active"` to
+  the <a> matching that page. The wordmark link always points to `/`.
+
+  Markup contract with /js/nav.js (do not change these ids/classes):
+    - button#navToggle   (mobile hamburger)
+    - ul#navLinks        (nav list; .open toggled at max-width: 900px)
+-->
+<nav class="site-nav" aria-label="Primary">
+  <div class="page">
+    <a class="nav-brand" href="/" aria-label="Emma Hudelson — home">Emma Hudelson</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link active" href="/about">About</a></li>
+      <li><a class="nav-link" href="/books">Books</a></li>
+      <li><a class="nav-link" href="/writing">Writing</a></li>
+      <li><a class="nav-link" href="/press">Press</a></li>
+      <li><a class="nav-link" href="/wellness">Wellness</a></li>
+      <li><a class="nav-link" href="/events">Events</a></li>
+      <li><a class="nav-link" href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <div class="page">
+
+    <section class="page-head reveal">
+      <p class="eyebrow">About</p>
+      <h1 class="page-title">Bio</h1>
+      <p class="page-lede">Nonfiction writer at work on horses, women, and wellness — and on the quiet machinery that moves between them.</p>
+    </section>
+
+    <section class="about-grid" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">About Emma</h2>
+
+      <!-- Portrait column -->
+      <figure class="portrait-figure reveal">
+        <img src="/assets/images/emma-portrait.jpg"
+             alt="Emma Hudelson, portrait, in warm duotone."
+             loading="lazy"
+             decoding="async">
+        <figcaption>
+          <span>Emma Hudelson</span>
+          <span class="cap-role">Portrait</span>
+        </figcaption>
+      </figure>
+
+      <!-- Bio column -->
+      <div class="bio-col">
+
+        <p class="eyebrow accent reveal">A short biography</p>
+
+        <p class="bio-intro reveal">
+          Emma Hudelson writes nonfiction about <em>horses</em>, women, and wellness — and about the quiet work of paying attention.
+        </p>
+
+        <div class="stagger reveal">
+
+          <p class="bio-lead">
+            Emma is a nonfiction writer from Indiana and the author of <em>Sky Watch: Chasing an American Saddlebred Story</em> (University Press of Kentucky, 2024). Her work has appeared in the <em>Cincinnati Review</em>, the <em>Chattahoochee Review</em>, and the <em>Rumpus</em>. <em>Sky Watch</em> won the 2025 Equine Media Award and was a Foreword Reviews INDIES Award finalist in adult nonfiction.
+          </p>
+
+          <p>
+            She writes about horses, women, and wellness, and she is passionate about the therapeutic power of expressive writing. She is a tenure-track professor at Eastern Kentucky University and directs the Writing for Wellness program at Butler University. She holds a PhD in creative writing from the University of Cincinnati and an MFA from Butler.
+          </p>
+
+        </div>
+
+        <blockquote class="pullquote reveal">
+          On his long back, the horse carries more than his human's physical weight. He holds hopes, sorrows, and fears and transmutes them into motion.
+        </blockquote>
+
+        <div class="stagger reveal">
+
+          <p>
+            Her Writing for Wellness work takes her to hospitals, addiction recovery centers, medical schools, and community centers, where she teaches the craft of expressive writing as a practice of noticing. When she's not teaching or writing, Emma is usually at the barn. She has two daughters, one husband, one dog, one cat, and one horse.
+          </p>
+
+          <p>
+            <em>Sky Watch</em> tells the story of a legendary Saddlebred stallion — four World Grand Championships, twelve World titles — and Emma's own parallel journey as a horsewoman trying to understand her obsession before it changed everything.
+          </p>
+
+        </div>
+
+        <!-- Facts rail -->
+        <div class="facts-block reveal">
+          <p class="eyebrow">At a glance</p>
+          <dl class="facts">
+            <dt>Based</dt>
+            <dd>Indianapolis, Indiana</dd>
+
+            <dt>Teaching</dt>
+            <dd>Tenure-track, Eastern Kentucky University &middot; Director, Writing for Wellness (Butler University MFA)</dd>
+
+            <dt>Education</dt>
+            <dd>PhD, Creative Writing — University of Cincinnati &middot; MFA — Butler University</dd>
+
+            <dt>Focus</dt>
+            <dd>Horses, women, wellness</dd>
+          </dl>
+        </div>
+
+        <!-- Elsewhere / socials -->
+        <div class="elsewhere reveal">
+          <p class="eyebrow">Elsewhere</p>
+          <ul class="elsewhere-list stagger">
+            <li>
+              <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram<span class="handle">@emma__hudelson</span></a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook<span class="handle">@emmahudelson</span></a>
+            </li>
+            <li>
+              <a href="mailto:hello@emmahudelson.com">Email<span class="handle">hello@emmahudelson.com</span></a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+<!--
+  Shared site footer for emmahudelson.com
+  ------------------------------------------------------------------
+  Three-column grid on desktop, stacked on mobile.
+  Bump © year here when needed — currently 2026.
+-->
+<footer class="site-footer" role="contentinfo">
+  <div class="page">
+    <div class="footer-col">
+      <a class="footer-brand" href="/">Emma Hudelson</a>
+      <p class="footer-meta">Indianapolis, Indiana &middot; &copy; 2026</p>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">Elsewhere</span>
+      <a class="footer-link" href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a>
+      <a class="footer-link" href="mailto:hello@emmahudelson.com">Email</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-label">The book</span>
+      <a class="footer-link" href="https://www.kentuckypress.com/9780813199108/sky-watch/" target="_blank" rel="noopener">University Press of Kentucky</a>
+      <a class="footer-link" href="https://bookshop.org/p/books/sky-watch-chasing-an-american-saddlebred-story-emma-hudelson/20150277" target="_blank" rel="noopener">Bookshop.org</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>

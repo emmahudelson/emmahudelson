@@ -1,0 +1,229 @@
+/* =========================================================================
+   emmahudelson.com — design tokens
+   Typographic-first editorial minimalism. Near-black on warm paper,
+   one muted earth accent, two distinctive serif families.
+   ========================================================================= */
+
+/* --- Fonts -------------------------------------------------------------- */
+/* Fraunces  — display: wordmark + headings. Variable; opsz + wght + soft. */
+/* Newsreader — body / editorial running text. Variable; opsz italic.      */
+/* DM Mono   — small-caps labels, meta, eyebrows. Quiet typewriter voice.  */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..700,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap');
+
+:root {
+  /* ---------------------------------------------------------------------
+     COLOR
+     Near-black ink on warm cream paper with one muted earth accent.
+     Mood: good paper, natural light, a barn in the morning.
+     --------------------------------------------------------------------- */
+  --paper:        #F7F3EB;  /* primary background, warm cream */
+  --paper-alt:    #F0EADC;  /* alternating section background */
+  --paper-deep:   #E6DDC7;  /* deepest tier; reserved for set-apart callouts */
+
+  --ink:          #14130F;  /* primary text, near-black with warm undertone */
+  --ink-soft:     #2E2B25;  /* secondary / long-form body */
+  --ink-mute:     #7B766C;  /* captions, meta, small-caps labels */
+
+  --rule:         #D6CDBB;  /* hairline dividers */
+
+  --accent:       #8A4B3A;  /* muted terracotta / barn umber — links, flourish */
+  --accent-deep:  #6B3728;  /* link hover, active accent */
+
+  /* Semantic aliases (downstream code references these) */
+  --bg:          var(--paper);
+  --bg-alt:      var(--paper-alt);
+  --bg-deep:     var(--paper-deep);
+  --fg:          var(--ink);
+  --fg-2:        var(--ink-soft);
+  --fg-mute:     var(--ink-mute);
+  --divider:     var(--rule);
+  --link:        var(--accent);
+  --link-hover:  var(--accent-deep);
+
+  /* ---------------------------------------------------------------------
+     TYPE — families
+     --------------------------------------------------------------------- */
+  --font-display: 'Fraunces', 'Times New Roman', Times, serif;
+  --font-serif:   'Newsreader', 'Iowan Old Style', 'Charter', Georgia, serif;
+  --font-sans:    'DM Mono', 'Menlo', 'Courier New', monospace;
+
+  /* ---------------------------------------------------------------------
+     TYPE — scale (fluid via clamp where it matters)
+     --------------------------------------------------------------------- */
+  --fs-display-xl: clamp(4rem, 12vw + 1rem, 9rem);   /* homepage wordmark */
+  --fs-display-l:  clamp(2.75rem, 6vw + 1rem, 5.5rem);/* interior page titles */
+  --fs-display-m:  clamp(2rem, 3.5vw + 0.75rem, 3.25rem);
+  --fs-h1:         clamp(1.875rem, 2.5vw + 1rem, 2.625rem);
+  --fs-h2:         clamp(1.5rem, 1.5vw + 0.9rem, 2rem);
+  --fs-h3:         clamp(1.2rem, 0.8vw + 0.9rem, 1.4rem);
+  --fs-lead:       clamp(1.125rem, 0.5vw + 1rem, 1.3125rem);
+  --fs-body:       1.1875rem;   /* 19px */
+  --fs-body-sm:    1.0625rem;   /* 17px */
+  --fs-caption:    0.875rem;    /* 14px */
+  --fs-meta:       0.75rem;     /* 12px — small caps label */
+
+  /* Line-heights */
+  --lh-tight:  1.04;
+  --lh-body:   1.62;
+  --lh-loose:  1.8;
+
+  /* Tracking (defaults applied per-context) */
+  --tr-wordmark: 0.005em;
+  --tr-display:  -0.01em;
+  --tr-label:    0.22em;
+
+  /* ---------------------------------------------------------------------
+     SPACING — 8px baseline
+     --------------------------------------------------------------------- */
+  --s-1:  0.25rem;   /* 4  */
+  --s-2:  0.5rem;    /* 8  */
+  --s-3:  0.75rem;   /* 12 */
+  --s-4:  1rem;      /* 16 */
+  --s-5:  1.5rem;    /* 24 */
+  --s-6:  2rem;      /* 32 */
+  --s-7:  3rem;      /* 48 */
+  --s-8:  4rem;      /* 64 */
+  --s-9:  6rem;      /* 96 */
+  --s-10: 8rem;      /* 128*/
+  --s-11: 10rem;     /* 160*/
+
+  /* ---------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------- */
+  --measure:       620px;   /* reading column */
+  --measure-wide:  780px;   /* generous reading column */
+  --page-max:      1320px;  /* outer wrapper */
+  --page-gutter:   clamp(1.5rem, 4vw, 4rem);
+  --nav-h:         70px;
+
+  /* ---------------------------------------------------------------------
+     MOTION — opacity fade-in + underline thicken only
+     --------------------------------------------------------------------- */
+  --ease:       cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast:   120ms;
+  --dur:        220ms;
+  --dur-slow:   420ms;
+}
+
+/* ==========================================================================
+   BASE RESETS
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  font-feature-settings: 'liga', 'kern', 'onum';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Never introduce radius anywhere downstream */
+img, picture, svg, video, canvas, iframe, input, textarea, select, button,
+table, td, th, figure, blockquote, aside, section, article, nav, header, footer {
+  border-radius: 0;
+}
+
+img, picture, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headings default to display face, tight leading */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-display);
+  color: var(--fg);
+  margin: 0 0 var(--s-5);
+  font-variation-settings: 'opsz' 48, 'SOFT' 30;
+}
+
+p { margin: 0 0 var(--s-5); }
+
+/* Italic inside display type stays currentColor — do not recolor */
+em, i { font-style: italic; color: inherit; }
+
+/* Links: underline-only, no radius, thicken on hover */
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--link);
+  transition: text-decoration-thickness var(--dur) var(--ease),
+              color var(--dur) var(--ease),
+              text-decoration-color var(--dur) var(--ease);
+}
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--link-hover);
+}
+a:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 3px;
+}
+
+/* Selection */
+::selection { background: var(--accent); color: var(--paper); }
+
+/* Horizontal rule — hairline */
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--s-7) 0;
+}
+
+/* Blockquote — editorial default */
+blockquote {
+  margin: 0 0 var(--s-6);
+  padding: 0 0 0 var(--s-5);
+  border-left: 1px solid var(--rule);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--fg-2);
+}
+
+/* Buttons default (no radius, no shadow, solid) */
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Form elements inherit */
+input, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
