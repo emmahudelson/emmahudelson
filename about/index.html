@@ -31,68 +31,28 @@
   <style>
     /* ==========================================================================
        About — page specific
-       Asymmetric two-column: narrow portrait column + wide bio column.
-       Pullquote breaks out of the bio column as a centered set-piece.
-       Facts rail is a dl grid with small-caps terms + serif descriptions.
+       Single-column: portrait above bio. Generous margins, editorial restraint.
        ========================================================================== */
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
-      gap: clamp(var(--s-6), 6vw, var(--s-9));
-      align-items: start;
+    .about-layout {
       padding-top: var(--s-7);
-      padding-bottom: var(--s-8);
+      padding-bottom: var(--s-9);
+      max-width: 680px;
     }
 
-    /* --- Portrait column ----------------------------------------------- */
+    /* --- Portrait --------------------------------------------------------- */
     .portrait-figure {
-      margin: 0;
-      position: sticky;
-      top: calc(var(--nav-h) + var(--s-5));
+      margin: 0 0 var(--s-7);
     }
     .portrait-figure img {
       width: 100%;
+      max-width: 420px;
       height: auto;
       display: block;
-      /* Warm duotone: desaturate, contrast bump, subtle sepia for paper tone */
       filter: grayscale(1) contrast(1.04) sepia(0.18) brightness(0.98);
     }
-    .portrait-figure figcaption {
-      margin-top: var(--s-4);
-      padding-top: var(--s-3);
-      border-top: 1px solid var(--rule);
-      font-family: var(--font-sans);
-      font-size: var(--fs-meta);
-      font-weight: 500;
-      letter-spacing: var(--tr-label);
-      text-transform: uppercase;
-      color: var(--fg-mute);
-      display: flex;
-      justify-content: space-between;
-      gap: var(--s-4);
-    }
-    .portrait-figure figcaption .cap-role {
-      color: var(--fg-mute);
-      font-weight: 400;
-      letter-spacing: 0.18em;
-    }
 
-    /* --- Bio column ---------------------------------------------------- */
-    .bio-col { max-width: var(--measure); }
-
-    .bio-col .eyebrow { margin-bottom: var(--s-2); }
-
-    .bio-col .bio-intro {
-      font-family: var(--font-display);
-      font-size: var(--fs-display-m);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: var(--tr-display);
-      color: var(--fg);
-      margin: 0 0 var(--s-6);
-    }
-
+    /* --- Bio -------------------------------------------------------------- */
     .bio-col p {
       font-family: var(--font-serif);
       font-size: var(--fs-body);
@@ -102,146 +62,14 @@
     }
     .bio-col p em { color: var(--fg); }
 
-    /* First body paragraph — drop cap, editorial convention */
-    .bio-col p.bio-lead::first-letter {
-      font-family: var(--font-display);
-      float: left;
-      font-size: 3.9em;
-      line-height: 0.88;
-      padding: 0.05em 0.08em 0 0;
-      font-weight: 350;
-      color: var(--accent-deep);
-    }
-
-    /* --- Pullquote — typographic set-piece ----------------------------- */
-    .pullquote {
-      margin: var(--s-8) 0;
-      padding: var(--s-6) 0 var(--s-6);
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.4rem, 1.2vw + 1rem, 1.875rem);
-      line-height: 1.35;
-      letter-spacing: -0.005em;
-      color: var(--fg);
-      text-wrap: balance;
-      position: relative;
-    }
-    .pullquote::before {
-      content: '\2042'; /* ⁂ */
-      display: block;
-      text-align: center;
-      font-family: var(--font-serif);
-      font-style: normal;
-      font-size: 1.1rem;
-      letter-spacing: 0.4em;
-      color: var(--fg-mute);
-      margin: 0 0 var(--s-5);
-    }
-
-    /* --- Facts rail ---------------------------------------------------- */
-    .facts-block {
-      margin-top: var(--s-8);
-      padding-top: var(--s-6);
-      border-top: 1px solid var(--rule);
-    }
-    .facts-block .eyebrow { margin-bottom: var(--s-5); }
-
-    .facts {
-      display: grid;
-      grid-template-columns: 140px minmax(0, 1fr);
-      column-gap: var(--s-5);
-      row-gap: 0;
-      margin: 0;
-    }
-    .facts dt {
-      font-family: var(--font-sans);
-      font-size: var(--fs-meta);
-      font-weight: 500;
-      letter-spacing: var(--tr-label);
-      text-transform: uppercase;
-      color: var(--fg-mute);
-      padding: var(--s-4) 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .facts dd {
-      margin: 0;
-      font-family: var(--font-serif);
-      font-size: var(--fs-body-sm);
-      line-height: 1.5;
-      color: var(--fg-2);
-      padding: var(--s-4) 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .facts dd em { color: var(--fg); }
-
-    /* --- Elsewhere (socials) ------------------------------------------ */
-    .elsewhere {
-      margin-top: var(--s-8);
-      padding-top: var(--s-6);
-      border-top: 1px solid var(--rule);
-    }
-    .elsewhere .eyebrow { margin-bottom: var(--s-4); }
-    .elsewhere-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--s-2);
-    }
-    .elsewhere-list a {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 400;
-      font-size: var(--fs-lead);
-      color: var(--accent-deep);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: color var(--dur) var(--ease),
-                  border-color var(--dur) var(--ease);
-      width: max-content;
-    }
-    .elsewhere-list a:hover,
-    .elsewhere-list a:focus-visible {
-      color: var(--ink);
-      border-bottom-color: var(--ink);
-      text-decoration: none;
-    }
-    .elsewhere-list .handle {
-      font-family: var(--font-sans);
-      font-style: normal;
-      font-size: var(--fs-meta);
-      letter-spacing: 0.12em;
-      color: var(--fg-mute);
-      margin-left: var(--s-3);
-      text-transform: none;
-    }
-
-    /* --- Responsive ----------------------------------------------------- */
+    /* --- Responsive ------------------------------------------------------- */
     @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: var(--s-6);
+      .about-layout {
         padding-top: var(--s-5);
-        padding-bottom: var(--s-6);
+        padding-bottom: var(--s-7);
       }
-      .portrait-figure {
-        position: static;
-        max-width: 360px;
-      }
-      .bio-col .bio-intro { font-size: clamp(1.6rem, 5vw + 0.75rem, 2.25rem); }
-      .facts { grid-template-columns: 1fr; }
-      .facts dt { padding-bottom: 0; border-bottom: 0; padding-top: var(--s-4); }
-      .facts dd { padding-top: var(--s-2); }
-      .pullquote { margin: var(--s-7) 0; padding: var(--s-5) 0; }
-    }
-
-    @media (max-width: 520px) {
-      .bio-col p.bio-lead::first-letter {
-        font-size: 3.4em;
+      .portrait-figure img {
+        max-width: 320px;
       }
     }
   </style>
@@ -280,85 +108,20 @@
 
   <div class="page">
 
-    <section class="page-head reveal">
-      <p class="eyebrow">About</p>
-      <h1 class="page-title">Bio</h1>
-    </section>
+    <div class="about-layout reveal">
 
-    <section class="about-grid" aria-labelledby="about-heading">
-      <h2 id="about-heading" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">About Emma</h2>
-
-      <!-- Portrait column -->
-      <figure class="portrait-figure reveal">
+      <figure class="portrait-figure">
         <img src="/assets/images/emma-portrait.jpg"
-             alt="Emma Hudelson, portrait, in warm duotone."
+             alt="Emma Hudelson"
              loading="lazy"
              decoding="async">
-        <figcaption>
-          <span>Emma Hudelson</span>
-          <span class="cap-role">Portrait</span>
-        </figcaption>
       </figure>
 
-      <!-- Bio column -->
-      <div class="bio-col">
-
-        <p class="eyebrow accent reveal">A short biography</p>
-
-        <div class="stagger reveal">
-
-          <p class="bio-lead">
-            Emma is a literary nonfiction writer from Indiana and the author of <em>Sky Watch: Chasing an American Saddlebred Story</em> (University Press of Kentucky, 2024). Her work has appeared in the <em>Cincinnati Review</em>, the <em>Chattahoochee Review</em>, and the <em>Rumpus</em>. <em>Sky Watch</em> won the 2025 Equine Media Award and was a Foreword Reviews INDIES Award finalist in adult nonfiction.
-          </p>
-
-          <p>
-            She writes about horses, women, and wellness, and she is passionate about the therapeutic power of expressive writing. She is a tenure-track professor at Eastern Kentucky University and directs the Writing for Wellness program at Butler University. She holds a PhD in creative writing from the University of Cincinnati and an MFA from Butler.
-          </p>
-
-        </div>
-
-        <div class="stagger reveal">
-
-          <p>
-            Her Writing for Wellness work takes her to hospitals, addiction recovery centers, medical schools, and community centers. When she's not teaching or writing, Emma is usually at the barn. She has two daughters, one husband, one dog, one cat, and one horse.
-          </p>
-
-        </div>
-
-        <!-- Facts rail -->
-        <div class="facts-block reveal">
-          <p class="eyebrow">At a glance</p>
-          <dl class="facts">
-            <dt>Based</dt>
-            <dd>Indianapolis, Indiana</dd>
-
-            <dt>Teaching</dt>
-            <dd>Tenure-track, Eastern Kentucky University &middot; Director, Writing for Wellness (Butler University MFA)</dd>
-
-            <dt>Education</dt>
-            <dd>PhD, Creative Writing — University of Cincinnati &middot; MFA — Butler University</dd>
-
-            <dt>Focus</dt>
-            <dd>Horses, women, wellness</dd>
-          </dl>
-        </div>
-
-        <!-- Elsewhere / socials -->
-        <div class="elsewhere reveal">
-          <p class="eyebrow">Elsewhere</p>
-          <ul class="elsewhere-list stagger">
-            <li>
-              <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram<span class="handle">@emma__hudelson</span></a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook<span class="handle">@emmahudelson</span></a>
-            </li>
-          </ul>
-        </div>
-
+      <div class="bio-col stagger">
+        <p>Emma Hudelson is a writer and Assistant Professor of Creative Writing at Eastern Kentucky University, where she is core faculty in the Bluegrass Writers Studio. <em>Sky Watch: Chasing an American Saddlebred Story</em> is her first book, and it received the 2025 Equine Media Award and was a finalist for the Foreword Indies Book of the Year. Her work can also be found in <em>the Cincinnati Review</em>, <em>the Chattahoochee Review</em>, and <em>the Rumpus</em>. Emma holds a PhD in creative writing from the University of Cincinnati and an MFA in creative writing from Butler University, where she directed the Creative Writing for Wellness program. She has two daughters, one husband, three dogs, one cat, and one horse.</p>
       </div>
 
-    </section>
+    </div>
 
   </div>
 
@@ -375,6 +138,7 @@
     <div class="footer-col">
       <div class="asterism" aria-hidden="true"></div>
       <p class="footer-meta">&copy; 2026</p>
+      <p class="footer-meta">social: <a href="https://www.instagram.com/efhudelson/" target="_blank" rel="noopener">@efhudelson</a></p>
     </div>
 
   </div>
