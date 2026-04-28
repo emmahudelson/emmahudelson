@@ -327,6 +327,7 @@
       text-decoration: none;
     }
     .media-where {
+      display: block;
       font-family: var(--font-sans);
       font-size: var(--fs-meta);
       font-weight: 500;
@@ -334,9 +335,24 @@
       text-transform: uppercase;
       color: var(--fg-mute);
     }
+    .media-byline {
+      display: block;
+      margin-top: var(--s-2);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-caption);
+      color: var(--fg-mute);
+      letter-spacing: 0;
+      text-transform: none;
+    }
     .media-list a:hover .media-where,
     .media-list a:focus-visible .media-where {
       color: var(--accent-deep);
+    }
+    .media-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
     }
     .media-title {
       font-family: var(--font-display);
@@ -344,6 +360,17 @@
       font-weight: 400;
       font-size: clamp(1.125rem, 0.4vw + 1rem, 1.375rem);
       line-height: 1.25;
+    }
+    .media-quote {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fs-body);
+      line-height: 1.5;
+      color: var(--fg-2);
+      max-width: 56ch;
     }
 
     /* ---------- Responsive --------------------------------------------- */
@@ -592,27 +619,39 @@
       </div>
       <ul class="media-list stagger">
         <li>
-          <a href="https://mirrorindy.org/local-author-emma-hudelson-sky-watch-horse/" target="_blank" rel="noopener">
-            <span class="media-where">Mirror Indy</span>
-            <span class="media-title">Local author pens biography of champion horse, tells her own story</span>
+          <a href="https://www.sagecigarettes.com/?p=4266" target="_blank" rel="noopener">
+            <div>
+              <span class="media-where">Sage Cigarettes Magazine</span>
+              <span class="media-byline">Reviewed by Peter McNerney</span>
+            </div>
+            <div class="media-body">
+              <span class="media-title">Back in the Saddle: A Story of Horses and Life</span>
+              <blockquote class="media-quote">&ldquo;She masterfully uses <em>Sky Watch</em>&rsquo;s story to educate the reader on the finer points of show horse competitions.&rdquo;</blockquote>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.sportstoriespress.com/notebook/book-notes-sky-watch-chasing-an-american-saddlebred-reviewed-by-caroline-grass" target="_blank" rel="noopener">
+            <div>
+              <span class="media-where">Sports Stories Press</span>
+              <span class="media-byline">Reviewed by Caroline Grass</span>
+            </div>
+            <div class="media-body">
+              <span class="media-title">Book Notes: <em>Sky Watch: Chasing an American Saddlebred</em></span>
+              <blockquote class="media-quote">&ldquo;For a breed designed to entertain a crowd, what does it mean when the crowd disappears?&rdquo;</blockquote>
+            </div>
           </a>
         </li>
         <li>
           <a href="https://thegoodlifereview.com/2024/07/27/rory-gould-review-of-sky-watch-by-emma-hudelson/" target="_blank" rel="noopener">
-            <span class="media-where">The Good Life Review</span>
-            <span class="media-title">Under Saddle and Spirit&mdash;a review of <em>Sky Watch</em></span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson" target="_blank" rel="noopener">
-            <span class="media-where">The Southeast Review</span>
-            <span class="media-title">Craft essay: On braided nonfiction</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.indianawriters.org/blogs/news/team-members/emma-hudelson/" target="_blank" rel="noopener">
-            <span class="media-where">Indiana Writers Center</span>
-            <span class="media-title">Profile&mdash;Emma Hudelson</span>
+            <div>
+              <span class="media-where">The Good Life Review</span>
+              <span class="media-byline">Reviewed by Rory Gould</span>
+            </div>
+            <div class="media-body">
+              <span class="media-title">Under Saddle and Spirit: Emma Hudelson&rsquo;s <em>Sky Watch</em></span>
+              <blockquote class="media-quote">&ldquo;To ride an American Saddlebred is to trot with God.&rdquo;</blockquote>
+            </div>
           </a>
         </li>
       </ul>
