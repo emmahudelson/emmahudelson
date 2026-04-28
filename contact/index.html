@@ -19,33 +19,16 @@
 
   <style>
     /* ── Contact page ──────────────────────────────────
-       Quiet typographic space. Form on the left, a
-       direct-email set-piece + socials + location on
-       the right. Generous whitespace, hairline rules,
-       underline-only inputs (.field handles that).
+       Single centered column: page heading + form only.
        ───────────────────────────────────────────────── */
     .contact-body {
       padding-left: var(--page-gutter);
       padding-right: var(--page-gutter);
-      max-width: var(--page-max);
+      max-width: var(--measure);
       margin: 0 auto;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
-      gap: clamp(var(--s-6), 5vw, var(--s-9));
-      align-items: start;
       padding-bottom: var(--s-9);
     }
 
-    /* Left — form column */
-    .contact-form-col {
-      max-width: var(--measure);
-    }
-    .contact-form-col .eyebrow {
-      margin-bottom: var(--s-5);
-    }
     .contact-form {
       margin: 0;
     }
@@ -69,132 +52,6 @@
       color: var(--accent-deep);
     }
     .form-sent[hidden] { display: none; }
-
-    /* Right — direct email + socials + location */
-    .contact-aside {
-      display: flex;
-      flex-direction: column;
-      gap: var(--s-8);
-      padding-top: 0;
-    }
-
-    /* Direct-email set piece */
-    .direct-email {
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: var(--s-6) 0 var(--s-7);
-    }
-    .direct-email .eyebrow {
-      margin-bottom: var(--s-4);
-    }
-    .direct-email-link {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 350;
-      font-size: clamp(1.4rem, 2vw + 0.6rem, 1.9rem);
-      line-height: 1.15;
-      letter-spacing: -0.005em;
-      color: var(--accent-deep);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 0.12em;
-      transition: color var(--dur) var(--ease),
-                  border-color var(--dur) var(--ease);
-      word-break: break-word;
-    }
-    .direct-email-link:hover,
-    .direct-email-link:focus-visible {
-      color: var(--ink);
-      border-bottom-color: var(--ink);
-      text-decoration: none;
-    }
-    .direct-email-note {
-      margin: var(--s-4) 0 0;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: var(--fs-body-sm);
-      color: var(--fg-mute);
-      line-height: 1.5;
-      max-width: 36ch;
-    }
-
-    /* Socials — text only, stacked list */
-    .elsewhere .eyebrow {
-      margin-bottom: var(--s-4);
-    }
-    .elsewhere-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--s-3);
-    }
-    .elsewhere-list a {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: var(--fs-body);
-      color: var(--fg);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 0.12em;
-      width: max-content;
-      transition: color var(--dur) var(--ease),
-                  border-color var(--dur) var(--ease);
-    }
-    .elsewhere-list a:hover,
-    .elsewhere-list a:focus-visible {
-      color: var(--accent-deep);
-      border-bottom-color: var(--accent-deep);
-      text-decoration: none;
-    }
-
-    /* Location note — quiet meta at the very bottom of aside */
-    .location-note {
-      display: block;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: var(--fs-body-sm);
-      color: var(--fg-mute);
-      line-height: 1.55;
-      padding-top: var(--s-5);
-      border-top: 1px solid var(--rule);
-      max-width: 42ch;
-    }
-    .location-note .city {
-      font-family: var(--font-sans);
-      font-style: normal;
-      font-size: var(--fs-meta);
-      font-weight: 500;
-      letter-spacing: var(--tr-label);
-      text-transform: uppercase;
-      color: var(--fg-mute);
-      display: block;
-      margin-bottom: var(--s-2);
-    }
-
-    /* Ornament between page head and form, gentle editorial pause */
-    .contact-ornament {
-      margin: 0 0 var(--s-7);
-    }
-
-    @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: var(--s-7);
-        padding-bottom: var(--s-8);
-      }
-      .contact-form-col {
-        max-width: 100%;
-      }
-      .contact-aside {
-        gap: var(--s-7);
-      }
-      .direct-email {
-        padding: var(--s-5) 0 var(--s-6);
-      }
-    }
   </style>
 </head>
 <body>
@@ -223,59 +80,32 @@
     <div class="page">
       <p class="eyebrow">Contact</p>
       <h1 class="page-title">Get in touch</h1>
-      <p class="page-lede">For readings, workshops, press inquiries, or anything else — a note goes directly to Emma's inbox. Expect a reply within a few days.</p>
     </div>
   </section>
 
-  <section class="contact-body">
-    <div class="contact-grid">
-
-      <!-- Form column -->
-      <div class="contact-form-col reveal">
-        <p class="eyebrow accent">Send a note</p>
-        <form class="contact-form" id="contactForm"
-              action="#"
-              method="post">
-          <div class="field">
-            <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" name="name" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" required
-                   placeholder="name@domain.com" autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="cf-message">Message</label>
-            <textarea id="cf-message" name="message" rows="5" required
-                      placeholder="A note about a workshop, reading, press inquiry, or event…"></textarea>
-          </div>
-          <button class="btn" type="submit">Send</button>
-        </form>
-
-        <div class="form-sent" id="formSent" hidden>
-          <p><em>Thank you.</em> Emma will be in touch soon.</p>
-        </div>
+  <section class="contact-body reveal">
+    <form class="contact-form" id="contactForm"
+          action="#"
+          method="post">
+      <div class="field">
+        <label for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="name" required autocomplete="name">
       </div>
+      <div class="field">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" required
+               placeholder="name@domain.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="5" required
+                  placeholder="A note about a workshop, reading, press inquiry, or event…"></textarea>
+      </div>
+      <button class="btn" type="submit">Send</button>
+    </form>
 
-      <!-- Aside: direct email set-piece + socials + location -->
-      <aside class="contact-aside reveal" style="transition-delay:.12s">
-
-        <div class="elsewhere">
-          <p class="eyebrow">Or find me</p>
-          <ul class="elsewhere-list">
-            <li><a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.facebook.com/emmahudelson" target="_blank" rel="noopener">Facebook</a></li>
-          </ul>
-        </div>
-
-        <p class="location-note">
-          <span class="city">Indianapolis, Indiana</span>
-          <em>Available for readings, workshops, and press nationwide &amp; virtually.</em>
-        </p>
-
-      </aside>
-
+    <div class="form-sent" id="formSent" hidden>
+      <p><em>Thank you.</em> Emma will be in touch soon.</p>
     </div>
   </section>
 
@@ -293,14 +123,11 @@
 </footer>
 
 <script>
-  // Tiny enhancement: when the mailto form submits, reveal the thank-you
-  // confirmation. The form still opens the user's mail client as intended.
   (function () {
     var form = document.getElementById('contactForm');
     var sent = document.getElementById('formSent');
     if (!form || !sent) return;
     form.addEventListener('submit', function () {
-      // Defer to next tick so the mailto handoff isn't blocked
       setTimeout(function () { sent.hidden = false; }, 0);
     });
   })();
