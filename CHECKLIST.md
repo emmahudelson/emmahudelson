@@ -57,7 +57,7 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## Contact
 
-- [ ] #31 — Strip Contact page to form only (/contact) — Delete everything on the contact page except the form. Do not include the hello@emmahudelson.com address (it does not work — address is being removed site-wide).
+- [ ] VALIDATING-31 — Strip Contact page to form only (/contact) — Delete everything on the contact page except the form. Do not include the hello@emmahudelson.com address (it does not work — address is being removed site-wide). — PR https://github.com/emmahudelson/emmahudelson/pull/19
 
 ## Page deletions
 
