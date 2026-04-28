@@ -20,8 +20,8 @@
   <style>
     /* =========================================================================
        Writing — selected publications
-       Editorial table layout: year · kind · title · where.
-       Desktop uses a 4-column grid; mobile stacks row-by-row.
+       Two-line format: title on top, publication + date below.
+       Single-column, left-aligned.
        ========================================================================= */
 
     .writing-wrap {
@@ -30,8 +30,7 @@
       padding: 0 var(--page-gutter);
     }
 
-    /* The list itself is rendered with semantic <ol>/<li> for accessibility
-       and to avoid the weight of a real <table>. Grid gives us tidy columns. */
+    /* The list is rendered with semantic <ol>/<li> for accessibility. */
     .pub-list {
       list-style: none;
       margin: 0;
@@ -40,42 +39,18 @@
     }
 
     .pub-item {
-      display: grid;
-      grid-template-columns: 90px 160px 1fr auto;
-      align-items: baseline;
-      gap: var(--s-5);
-      padding: var(--s-5) 0;
+      padding: var(--s-6) 0;
       border-bottom: 1px solid var(--rule);
-    }
-
-    .pub-year {
-      font-family: var(--font-sans);
-      font-size: var(--fs-meta);
-      font-weight: 400;
-      letter-spacing: var(--tr-label);
-      text-transform: uppercase;
-      color: var(--fg-mute);
-      line-height: 1.4;
-    }
-
-    .pub-kind {
-      font-family: var(--font-sans);
-      font-size: var(--fs-meta);
-      font-weight: 500;
-      letter-spacing: var(--tr-label);
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      line-height: 1.4;
     }
 
     .pub-title {
       font-family: var(--font-display);
-      font-size: 1.375rem;       /* 22px, tuned to sit confidently in the row */
+      font-size: 1.375rem;
       font-weight: 400;
       line-height: 1.22;
       letter-spacing: var(--tr-display);
       color: var(--fg);
-      margin: 0;
+      margin: 0 0 var(--s-2);
     }
     .pub-title em { font-style: italic; color: inherit; }
 
@@ -93,45 +68,41 @@
       text-decoration: none;
     }
 
-    .pub-where {
+    .pub-cite {
       font-family: var(--font-serif);
-      font-style: italic;
       font-size: var(--fs-body-sm);
       color: var(--fg-mute);
-      text-align: right;
-      line-height: 1.4;
+      line-height: 1.5;
+      margin: 0;
     }
-    .pub-where em { font-style: italic; }
+    .pub-cite em { font-style: italic; }
 
-    /* Closing note */
-    .writing-note {
-      max-width: var(--measure);
-      margin: var(--s-8) auto 0;
-      color: var(--fg-2);
-      font-size: var(--fs-body-sm);
+    /* Swallow audio line */
+    .pub-cite-audio {
+      display: block;
     }
-    .writing-note p { margin: 0; }
+    .pub-cite-audio a {
+      color: var(--fg-mute);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease);
+    }
+    .pub-cite-audio a:hover,
+    .pub-cite-audio a:focus-visible {
+      color: var(--accent-deep);
+      border-bottom-color: var(--accent-deep);
+    }
 
     /* -------------------------------------------------------------------------
-       Mobile: table-as-list. Each entry stacks.
+       Mobile: entries already single-column; just adjust sizing.
        ------------------------------------------------------------------------- */
     @media (max-width: 900px) {
       .pub-item {
-        grid-template-columns: 1fr;
-        gap: var(--s-2);
-        padding: var(--s-6) 0;
+        padding: var(--s-5) 0;
       }
-      .pub-year { order: 1; }
-      .pub-kind { order: 2; }
       .pub-title {
-        order: 3;
         font-size: 1.25rem;
-        margin-top: var(--s-2);
-      }
-      .pub-where {
-        order: 4;
-        text-align: left;
-        margin-top: var(--s-1);
       }
     }
   </style>
@@ -160,97 +131,113 @@
 
   <div class="writing-wrap">
 
-    <section class="page-head reveal">
-      <p class="eyebrow">Writing</p>
-      <h1 class="page-title">Selected work</h1>
-      <p class="page-lede">
-        A running list of books, essays, reviews, and columns. For the most current
-        bylines, follow along on <a href="https://www.instagram.com/emma__hudelson/" target="_blank" rel="noopener">Instagram</a>.
-      </p>
-    </section>
-
     <ol class="pub-list stagger" role="list">
 
+      <!-- 1. Writing to Heal or Writing to Share -->
       <li class="pub-item">
-        <span class="pub-year">2024</span>
-        <span class="pub-kind">Book</span>
-        <p class="pub-title"><a href="/books/sky-watch"><em>Sky Watch: Chasing an American Saddlebred Story</em></a></p>
-        <span class="pub-where">University Press of Kentucky</span>
+        <p class="pub-title">
+          <!-- TODO: replace with canonical URL -->
+          <a href="#tbd-writing-to-heal" target="_blank" rel="noopener"><em>Writing to Heal or Writing to Share</em></a>
+        </p>
+        <p class="pub-cite"><em>Southeast Review</em>, November 2024</p>
       </li>
 
+      <!-- 2. Bridled Joy -->
       <li class="pub-item">
-        <span class="pub-year">2024</span>
-        <span class="pub-kind">Profile</span>
-        <p class="pub-title"><a href="https://www.indianawriters.org/blogs/news/team-members/emma-hudelson/" target="_blank" rel="noopener"><em>Profile — Emma Hudelson</em></a></p>
-        <span class="pub-where">Indiana Writers Center</span>
+        <p class="pub-title">
+          <!-- TODO: replace with canonical URL -->
+          <a href="#tbd-bridled-joy" target="_blank" rel="noopener"><em>Bridled Joy</em></a>
+        </p>
+        <p class="pub-cite"><em>Indianapolis Monthly</em>, September 2024</p>
       </li>
 
+      <!-- 3. When Riders Write — keeping existing cincinnatireview.com link -->
       <li class="pub-item">
-        <span class="pub-year">2023</span>
-        <span class="pub-kind">Interview</span>
-        <p class="pub-title"><a href="https://www.cincinnatireview.com/interviews/marianne-chan-emma-hudelson-and-maggie-su-on-artistic-legacy/" target="_blank" rel="noopener"><em>On Creating an Artistic Legacy</em></a></p>
-        <span class="pub-where"><em>The Cincinnati Review</em></span>
+        <p class="pub-title">
+          <a href="https://www.cincinnatireview.com/articles/when-riders-write-by-emma-hudelson/" target="_blank" rel="noopener"><em>When Riders Write</em></a>
+        </p>
+        <p class="pub-cite"><em>The Cincinnati Review</em>, December 2022</p>
       </li>
 
+      <!-- 4. Damline — keeping existing flyingislandjournal.org link -->
       <li class="pub-item">
-        <span class="pub-year">2022</span>
-        <span class="pub-kind">Review</span>
-        <p class="pub-title"><a href="https://www.cincinnatireview.com/articles/when-riders-write-by-emma-hudelson/" target="_blank" rel="noopener"><em>When Riders Write</em></a></p>
-        <span class="pub-where"><em>The Cincinnati Review</em> 19.2</span>
+        <p class="pub-title">
+          <a href="http://www.flyingislandjournal.org/2021/05/damline-creative-nonfiction-by-emma.html" target="_blank" rel="noopener"><em>Damline</em></a>
+        </p>
+        <p class="pub-cite"><em>Flying Island Journal</em>, May 2020</p>
       </li>
 
+      <!-- 5. Horse/Wild — unlinked per instruction -->
       <li class="pub-item">
-        <span class="pub-year">2022</span>
-        <span class="pub-kind">Craft essay</span>
-        <p class="pub-title"><a href="https://www.southeastreview.org/single-post/craft-essay-by-emma-hudelson" target="_blank" rel="noopener"><em>On braided nonfiction</em></a></p>
-        <span class="pub-where"><em>The Southeast Review</em></span>
+        <p class="pub-title"><em>Horse/Wild</em></p>
+        <p class="pub-cite"><em>Thin Air Magazine</em>, March 2020</p>
       </li>
 
+      <!-- 6. Horse/Crazy — unlinked per instruction -->
       <li class="pub-item">
-        <span class="pub-year">2021</span>
-        <span class="pub-kind">Essay</span>
-        <p class="pub-title"><a href="http://www.flyingislandjournal.org/2021/05/damline-creative-nonfiction-by-emma.html" target="_blank" rel="noopener"><em>Damline</em></a></p>
-        <span class="pub-where"><em>Flying Island Journal</em></span>
+        <p class="pub-title"><em>Horse/Crazy</em></p>
+        <p class="pub-cite"><em>The Chattahoochee Review</em>, December 2019</p>
       </li>
 
+      <!-- 7. Taste -->
       <li class="pub-item">
-        <span class="pub-year">2021</span>
-        <span class="pub-kind">Essay</span>
-        <p class="pub-title"><em>Personal essay on equine obsession</em></p>
-        <span class="pub-where"><em>The Chattahoochee Review</em></span>
+        <p class="pub-title">
+          <!-- TODO: replace with canonical URL -->
+          <a href="#tbd-taste" target="_blank" rel="noopener"><em>Taste</em></a>
+        </p>
+        <p class="pub-cite"><em>The Rumpus</em>, March 2019</p>
       </li>
 
+      <!-- 8. Swallow — two citation lines: print + audio -->
       <li class="pub-item">
-        <span class="pub-year">2020</span>
-        <span class="pub-kind">Essay</span>
-        <p class="pub-title"><em>On women, ambition, and moving forward</em></p>
-        <span class="pub-where"><em>The Rumpus</em></span>
+        <p class="pub-title"><em>Swallow</em></p>
+        <p class="pub-cite">
+          Print: <em>The Nasiona</em>, December 2018<br>
+          <!-- TODO: replace with canonical podcast URL -->
+          <span class="pub-cite-audio">Audio: <a href="#tbd-swallow-audio" target="_blank" rel="noopener"><em>The Nasiona Podcast</em>, Episode 9: Daughterhood</a></span>
+        </p>
       </li>
 
+      <!-- 9. Aspirin -->
       <li class="pub-item">
-        <span class="pub-year">2019</span>
-        <span class="pub-kind">Essay</span>
-        <p class="pub-title"><em>Feature essay</em></p>
-        <span class="pub-where"><em>BUST</em></span>
+        <p class="pub-title">
+          <!-- TODO: replace with canonical URL -->
+          <a href="#tbd-aspirin" target="_blank" rel="noopener"><em>Aspirin</em></a>
+        </p>
+        <p class="pub-cite"><em>805 Lit+Art</em>, December 2018</p>
       </li>
 
+      <!-- 10. Horse/Woman — unlinked per instruction -->
       <li class="pub-item">
-        <span class="pub-year">—</span>
-        <span class="pub-kind">Column</span>
-        <p class="pub-title"><em>Ongoing coverage of the show-horse world</em></p>
-        <span class="pub-where"><em>Saddle &amp; Bridle</em></span>
+        <p class="pub-title"><em>Horse/Woman</em></p>
+        <p class="pub-cite"><em>Foglifter</em>, November 2018</p>
+      </li>
+
+      <!-- 11. Nail Polish -->
+      <li class="pub-item">
+        <p class="pub-title">
+          <!-- TODO: replace with canonical URL -->
+          <a href="#tbd-nail-polish" target="_blank" rel="noopener"><em>Nail Polish</em></a>
+        </p>
+        <p class="pub-cite"><em>Lost Balloon</em>, August 2017</p>
+      </li>
+
+      <!-- 12. Conception — unlinked per instruction -->
+      <li class="pub-item">
+        <p class="pub-title"><em>Conception</em></p>
+        <p class="pub-cite"><em>Linden Avenue</em>, July 2017</p>
+      </li>
+
+      <!-- 13. Sometimes Smoothies and Yoga Aren't Enough -->
+      <li class="pub-item">
+        <p class="pub-title">
+          <!-- TODO: replace with canonical URL -->
+          <a href="#tbd-sometimes-smoothies" target="_blank" rel="noopener"><em>Sometimes Smoothies and Yoga Aren't Enough</em></a>
+        </p>
+        <p class="pub-cite"><em>The Manifest-Station</em>, January 2016</p>
       </li>
 
     </ol>
-
-    <div class="asterism" aria-hidden="true"></div>
-
-    <div class="writing-note reveal">
-      <p>
-        Looking for a specific piece that isn't listed?
-        <a href="/contact">Send a note</a> — most back-issue journals will dig out a copy on request.
-      </p>
-    </div>
 
   </div>
 
