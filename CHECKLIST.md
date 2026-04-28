@@ -50,10 +50,10 @@ BLOCKED-N items are paused on missing assets or external decisions.
 
 ## Writing
 
-- [ ] #27 — Delete all-caps "WRITING" page header (/writing) — Remove the "WRITING" heading at the top of the page.
-- [ ] #28 — Delete intro blurb about running list / Instagram (/writing) — Remove "A running list of books, essays, reviews, and columns. For the most current bylines, follow along on Instagram."
-- [ ] #29 — Delete back-issues note (/writing) — Remove "Looking for a specific piece that isn't listed? Send a note — most back-issue journals will dig out a copy on request."
-- [ ] #30 — Rebuild Selected Work list per instructions.txt (/writing) — Under "Selected Work," show only the titles listed in instructions.txt with publication and date below each. Left-align (not centered). Keep links for: Writing to Heal or Writing to Share, Bridled Joy, Damline, Taste, Aspirin, Nail Polish, Sometimes Smoothies and Yoga Aren't Enough. Remove links (keep titles + cite) for: Horse/Wild, Horse/Crazy, Horse/Woman, Conception. For Swallow: keep both the print citation and the audio podcast link/text (The Nasiona Podcast, Episode 9: Daughterhood). Order matches instructions.txt.
+- [ ] VALIDATING-27 — Delete all-caps "WRITING" page header (/writing) — Remove the "WRITING" heading at the top of the page. — PR https://github.com/emmahudelson/emmahudelson/pull/18
+- [ ] VALIDATING-28 — Delete intro blurb about running list / Instagram (/writing) — Remove "A running list of books, essays, reviews, and columns. For the most current bylines, follow along on Instagram." — PR https://github.com/emmahudelson/emmahudelson/pull/18
+- [ ] VALIDATING-29 — Delete back-issues note (/writing) — Remove "Looking for a specific piece that isn't listed? Send a note — most back-issue journals will dig out a copy on request." — PR https://github.com/emmahudelson/emmahudelson/pull/18
+- [ ] VALIDATING-30 — Rebuild Selected Work list per instructions.txt (/writing) — Under "Selected Work," show only the titles listed in instructions.txt with publication and date below each. Left-align (not centered). Keep links for: Writing to Heal or Writing to Share, Bridled Joy, Damline, Taste, Aspirin, Nail Polish, Sometimes Smoothies and Yoga Aren't Enough. Remove links (keep titles + cite) for: Horse/Wild, Horse/Crazy, Horse/Woman, Conception. For Swallow: keep both the print citation and the audio podcast link/text (The Nasiona Podcast, Episode 9: Daughterhood). Order matches instructions.txt. — PR https://github.com/emmahudelson/emmahudelson/pull/18
 
 ## Contact
 
