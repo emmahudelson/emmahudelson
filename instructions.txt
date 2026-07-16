@@ -103,4 +103,23 @@ Books:
 * The Manifest-Station, January 2016
 
 
+Second pass:
+
+Books:
+* Change “books” to “Book”
+* Get rid of the landing page for Sky Watch and use only the page that currently opens when a user clicks “read more”
+* Under the title and subtitle, add “Winner, 2025 Equine Media Award” and “Foreword Indies Finalist”
+* Delete “A short catalog—one book out in the world” if it still appears anywhere.
+
+Writing:
+* Change title from “Writing” to “Other Writing”
+* Add the following link to “Swallow:” https://www.thenasiona.com/2018/12/29/swallow/
+
+Writing for Wellness
+* Revise the Writing for Wellness paragraph to the following:
+    * Writing in this way releases stress, reduces chronic illness symptoms, and improves physical and emotional health. Check out the science behind it here. I directed the Writing for Wellness initiative with the Butler University Master of Fine Arts in Creative Writing program in 2023–2024. There, I edited the journal WriteWell and led workshops for healthcare workers, teens and adults in addiction recovery, children in high-need schools, and medical students.
+* Revise the Writing Your Wilderness paragraph to the following:
+    * Writing Your Wilderness is a seasonal, nature-based approach to writing for wellness, offered in partnership with Bailey Sims of Mind Body Nature Counseling — you can learn more and find the interactive workbook here. For as long as humans have been writing, we've written about and through the natural world. Of course we have! Humans are, at our center, natural beings, with our own cycles and seasons. Our digital, indoor lifestyle disconnects us from nature, which can lead to dysregulation. When we find ourselves in this state, our thoughts become stuck or catastrophic. This is when we look to our body and the natural world as raw and real resources that can help us process emotions, untangle thoughts, and lead us toward whole-body wellness. Weaving a creative writing practice into these nature-based and body-based therapeutic practices can reconnect us to the natural world, to ourselves, and to the wilderness that lives inside us all.
+
+
 ￼
